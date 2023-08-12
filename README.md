@@ -3,5 +3,3 @@ Group capstone project for Moffat Bay website (Edit for more clarity at later da
 ## Contributors
 * Brittany Kyncl
 * Mark Witt
-* Tatiyana Dean
-* Joshua Aguilar
