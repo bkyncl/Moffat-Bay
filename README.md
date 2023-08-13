@@ -16,7 +16,8 @@ turn_in_stuff - This folder will contain copies of all documentation that has be
 
 
 ### Before running the server, some setup steps must be taken. 
-**Warning**
+> **Warning**
+
 **1.** Required software dependancies must be installed. to install these dependancies, run the following command from terminal in the moffat_bay parent directory:
 
 *pip install -r /required_installs.txt*
@@ -42,5 +43,6 @@ To continue setup of the MySQL database, from the command line in the parent mof
 
 Django will automatically setup the required db tables and structure for you. There is no need for further changes to the db, as django will not recognize them and this can cause errors. 
 
-**Note** 
+> **Note**
+
 *If you are fetching/pulling from the repo, you must still perform the migrate commads before working on the project further. this will help ensure that the db structure is consistant at all times. **IF** we run into an issue with a db not working correctly due to these issues, we will switch over to the sqlite3 db that is included with the project, for the remainder of coding and testing. Deployment will still remain as MySQL, and the commands are basically the same for both.*
