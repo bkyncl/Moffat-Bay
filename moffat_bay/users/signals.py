@@ -9,6 +9,7 @@ from .models import Profile
 def create_profile(sender, instance, created, **kwags):
     if created:
         Profile.objects.create(user=instance)
+        
 
 
 #save profile upon update of user account

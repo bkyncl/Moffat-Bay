@@ -24,25 +24,11 @@ turn_in_stuff - This folder will contain copies of all documentation that has be
 
 This will install all required dependancies for the project. 
 
-**2.** MySQL database must be configured and created. The included MySQL file (MySQL_Setup.sql) will setup the required user account within your MySQL database on your local machine. Please note: once the site is deployed it will have its own MySQL database on the host server which will hold all data. The local db will serve as a testing environment db to ensure funcionality. Please run the indicated sql file from your root account. 
+For now, during development we will just use the included db.sqlite3 for the database. it will function the same as if we were using MySQL, but the 
+db file will be able to be kept updated on GitHub, so the team will have any and all changes. 
 
-This file sets up the database, creates the user account, and sets up the permissions for the user account. 
-
-Username: **bravoteam**
+Username: **bkyncl**
 
 Password: **Bravo123**
 
-Permissions: **all on moffat_bay.***
-
-
-To continue setup of the MySQL database, from the command line in the parent moffat_bay project directory, run the following commands:
-
-*python manage.py makemigrations*
-
-*python manage.py migrate*
-
-Django will automatically setup the required db tables and structure for you. There is no need for further changes to the db, as django will not recognize them and this can cause errors. 
-
-> **Note**
-
-*If you are fetching/pulling from the repo, you must still perform the migrate commads before working on the project further. this will help ensure that the db structure is consistant at all times. **IF** we run into an issue with a db not working correctly due to these issues, we will switch over to the sqlite3 db that is included with the project, for the remainder of coding and testing. Deployment will still remain as MySQL, and the commands are basically the same for both.*
+During deployment we will switch over to the MySQL server. 
