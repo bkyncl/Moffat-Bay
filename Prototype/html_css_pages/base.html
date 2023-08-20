@@ -1,0 +1,39 @@
+<!--load static %}--><!--remove comment once put into project folder-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="lodge.css"> <!-- will change location once put into project folder-->
+        
+
+        <!-- Page Titles -->
+        <!--add if block for page title here-->
+        <title>Moffat Bay Marina & Lodge</title>
+
+        
+    </head>
+    <body>
+    <header class="site-header">
+        Moffat Bay Lodge & Marina Logo Here <!--Replace With Lodge Logo Here!!!-->
+        <nav class="navbar">
+            <a class="nav-item" href="#">Home</a>
+            <a class="nav-item" href="#">Attractions</a>
+            <a class="nav-item" href="#">Reservations</a>
+            <a class="nav-item" href="#">About Us</a>
+            <a class="nav-item" href="#">Contact</a>
+            <a class="nav-item" href="#">My Reservations</a>
+            <!--Insert if logged in code here-->
+            <a class="nav-item" href="#">Login</a>
+            <button onclick="window.location.href='#';">Book Now</button>
+        </nav>
+        <!--insert system message code here-->
+    </header>
+        {% block content %}{% endblock %} <!--this will be filled with the content other pages-->
+    </body>
+    <footer>
+    <!--setup footer here-->
+    </footer>
+</html>
