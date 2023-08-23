@@ -1,0 +1,9 @@
+{% extends "reservations/base.html" %}
+{% block content%}
+<!--insert actual page content here - may need to adjust top margins to allow for header -->
+</br></br></br></br></br></br></br></br></br><h1>Welcome to the Moffat-Bay homepage
+{% if user.is_authenticated %}
+{{ user.first_name }}
+{% endif %}
+!!!</h1>
+{% endblock %}
