@@ -70,4 +70,21 @@ VALUES (1, 5, 2, '2023-11-08', '2023-11-13'), -- 5 nights
        (2, 8, 2, '2023-12-10', '2023-12-13'), -- 3 nights
        (3, 14, 4, '2024-01-05', '2024-01-12'), -- 7 nights
        (4, 20, 5, '2023-10-07', '2023-10-11'), -- 4 nights
+       (4, 24, 2, '2024-05-03', '2024-05-06'), -- 3 nights
+       (3, 1, 1, '2023-09-06', '2023-09-11'), -- 5 nights
+       (3, 8, 3, '2023-10-07', '2023-10-11'), -- 4 nights
+       (2, 9, 1, '2023-12-10', '2023-12-11'), -- 1 night
+       (1, 6, 2, '2023-12-10', '2023-12-13'), -- 5 nights
        (5, 11, 3, '2023-10-28', '2023-11-03'); -- 6 nights 
+
+/* Optional select querry to display reservations by user_ID and pertinent information from their reservation
+
+SELECT Reservations.*, User.Email, Custom_user.Phone, Room_choices.room_size
+FROM Reservations
+JOIN User ON Reservations.user_ID = User.User_ID
+JOIN Custom_user ON User.User_ID = Custom_user.User
+JOIN rooms ON Reservations.room_ID = rooms.room_ID
+JOIN Room_choices ON rooms.size = Room_choices.choice_ID
+WHERE Reservations.user_ID = <user_id_here>;
+
+*/

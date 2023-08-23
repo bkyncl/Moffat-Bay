@@ -6,7 +6,7 @@ Mod 5.1 Assignment
 8.22.23
 */
 
--- create database if not exiists
+-- create database if not exists
 CREATE DATABASE IF NOT EXISTS moffat_bay;
 USE moffat_bay;
 
@@ -106,10 +106,11 @@ checkout_date
 */
 CREATE TABLE Reservations (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    confirmation_key VARCHAR(8) UNIQUE NOT NULL,
     user_ID INT,
     room_ID INT,
     guests INT DEFAULT 1 NOT NULL CHECK (guests <= 5),
-    total_price INT,
+    total_price INT NOT NULL,
     checkin_date DATE NOT NULL,
     checkout_date DATE NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES User (User_ID),
@@ -168,4 +169,22 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Room is already booked for the selected dates';
     END IF;
+END;
+
+/* 
+Creat before insert trigger on 'Reservations' to assign randomly generated unique 8 digit confrimation key
+*/
+CREATE TRIGGER generate_confirmation_key
+BEFORE INSERT ON Reservations
+FOR EACH ROW
+BEGIN
+    DECLARE confirmation VARCHAR(8);
+    SET confirmation = LPAD(FLOOR(RAND() * 100000000), 8, '0');
+    
+    -- Check if the generated confirmation number already exists
+    WHILE EXISTS (SELECT 1 FROM Reservations WHERE confirmation_key = confirmation) DO
+        SET confirmation = LPAD(FLOOR(RAND() * 100000000), 8, '0');
+    END WHILE;
+    
+    SET NEW.confirmation_key = confirmation;
 END;
