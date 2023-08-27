@@ -1,6 +1,6 @@
 /* 
 Moffat-Bay record population
-author: Brittany Kyncl
+author: Brittany Kyncl | Mark Witt
 CSD-480
 Mod 5.1 Assignment
 8.22.23
