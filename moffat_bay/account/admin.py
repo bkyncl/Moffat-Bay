@@ -9,8 +9,8 @@ def mark_inactive(selc, request, queryset):
 
 
 class AccountAdmin(UserAdmin):
-    list_display = ('email', 'username', 'first_name', 'last_name', 'phone')
-    search_fields = ('email', 'username', 'first_name', 'last_name', 'phone')
+    list_display = ('email', 'first_name', 'last_name', 'phone')
+    search_fields = ('email', 'first_name', 'last_name', 'phone')
     readonly_fields = ('id', 'date_joined', 'last_login')
     actions= [mark_inactive]
     ordering = ['email', 'is_active']
@@ -24,5 +24,5 @@ class AccountAdmin(UserAdmin):
 
 
 admin.site.register(Account, AccountAdmin)
-admin.site.unregister(Group)
+
 

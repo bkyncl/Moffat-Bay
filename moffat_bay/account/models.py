@@ -31,7 +31,6 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name="email", max_length=60, unique=True)
-    username = models.CharField(verbose_name="username", max_length=30, unique=True)
     first_name = models.CharField(max_length=50,verbose_name="First Name", null=True, blank=True)
     last_name = models.CharField(max_length=50,verbose_name="Last Name", null=True, blank=True)
     street = models.CharField(max_length=50,verbose_name="Address", null=True, blank=True)
@@ -52,7 +51,7 @@ class Account(AbstractBaseUser):
     objects = MyAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
         return self.email

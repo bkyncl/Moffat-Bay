@@ -3,14 +3,14 @@ from django.contrib.auth.backends import ModelBackend
 
 class CaseInsensitiveModelBackend(ModelBackend):
 
-    def authenticate(self, request, username=None, password=None, **kwargs):
+    def authenticate(self, request, email=None, password=None, **kwargs):
         UserModel = get_user_model()
-        if username is None:
-            username = kwargs.get(UserModel.USERNAME_FIELD)
+        if email is None:
+            email = kwargs.get(UserModel.EMAIL_FIELD)
 
         try:
-            case_insensitve_username_field = '{}__iexact'.format(UserModel.USERNAME_FIELD)
-            user = UserModel._default_manager.get(**{case_insensitve_username_field:username})
+            case_insensitve_email_field = '{}__iexact'.format(UserModel.EMAIL_FIELD)
+            user = UserModel._default_manager.get(**{case_insensitve_email_field:email})
         except UserModel.DoesNotExist:
             UserModel().set_password(password)
         else: 
