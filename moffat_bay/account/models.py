@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from phonenumber_field.modelfields import PhoneNumberField
+from PIL import Image
 
 #create new user
 class MyAccountManager(BaseUserManager):
@@ -45,6 +46,7 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     hide_email = models.BooleanField(default=True)
+    image = models.ImageField(default='profile_pics/default.jpg', upload_to='profile_pics')
 
     
 
@@ -61,5 +63,14 @@ class Account(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
-
     
+    def save(self, *args, **kwargs):
+        super(Account, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+

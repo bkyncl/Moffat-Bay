@@ -1,3 +1,4 @@
+/* Header stuff */
 .site-header {
     background-color: #82BB81;
     color: black;
@@ -43,3 +44,26 @@
     margin-top: 100px;
 }
 
+/*account % profile stuff*/
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.account-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.accounts-background {
+    width: 100%;
+    height: auto;
+    background-image: url('/moffat_bay/media/site/landing_header.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.content-rect {
+    margin: 10%;
+    background-color: rgb(255, 255, 255, 0.7);
+}

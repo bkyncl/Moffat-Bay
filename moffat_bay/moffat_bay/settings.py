@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +47,10 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_password_validators',
+    'django_password_validators.password_history',
+    
+
 
 ]
 
@@ -112,15 +117,38 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length':8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
+    #custom password validators:
+    #password history: keeps history of old passwords used, new passwords cannot match old ones. 
+    #set # of password history in options
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
+        'OPTIONS': {
+            'last_passwords': 3 #password history control: new password cannot be the same as last # of passwords
+        }
+    },
+    #password requirements validator: sets requirements for passwords, must contain # next to each option, 
+    #change requirements in these options
+    {
+        'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',
+        'OPTIONS': {
+            'min_length_digit': 1, #min number of digits
+            'min_length_alpha': 2, #min number of total letters
+            'min_length_special': 1, #min number of special characters
+            'min_length_lower': 1, #min number of lowercase letters
+            'min_length_upper': 1, #min number of uppercase letters
+            'special_characters': "~!@#$%^&*()_+{}\":;'[].,=-", #list of approved special characters
+        }
     },
 ]
 
+DPV_DEFAULT_HISTORY_HASHER = 'django_password_validators.password_history.hashers.HistoryHasher'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -155,3 +183,7 @@ AUTHENTICATION_BACKENDS = (
 
 #CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+#media root path settings - for linking media folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
