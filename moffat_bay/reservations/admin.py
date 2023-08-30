@@ -11,5 +11,9 @@ class CostAdmin(admin.ModelAdmin):
     list_filter = ()
     fieldsets = ()
 
-# Register your models here.
+# Register models for admin page here.
 admin.site.register(Stay_Costs, CostAdmin)
+
+#custom admin site title
+
+
