@@ -16,3 +16,14 @@ class AccountForm(UserCreationForm):
     class Meta:
         model = Account
         fields =['first_name', 'last_name', 'street', 'city', 'state', 'zip', 'phone', 'email']
+
+class AccountUpdateForm(forms.ModelForm):
+    email = forms.EmailField(label="Email Address", required=False)
+    phone = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial='US'), label="Phone Number", required=False)
+    first_name = forms.CharField(label="First Name", required=False)
+    last_name = forms.CharField(label="Last Name", required=False)
+    state = forms.ChoiceField(choices=STATE_CHOICES, required=False)
+
+    class Meta:
+        model = Account
+        fields =['first_name', 'last_name', 'street', 'city', 'state', 'zip', 'phone', 'email']

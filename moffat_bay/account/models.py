@@ -3,7 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from phonenumber_field.modelfields import PhoneNumberField
 from PIL import Image
 
-#create new user
+#custom user account manager - integrates django's user backend with our custom user account model
+#this integrates both so we can use out custom model, and use email to login instead of usernames
 class MyAccountManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         if not email:
@@ -30,6 +31,9 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
+#our custom user account model, storing all user account data in one table. 
+#includes the required fields for the Django user model, so all features will work correctly
 class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name="email", max_length=60, unique=True)
     first_name = models.CharField(max_length=50,verbose_name="First Name", null=True, blank=True)
@@ -64,6 +68,7 @@ class Account(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
     
+    #custom save method: will resize any profile pic user chooses to a managable thumbnail size before saving the image to the server.
     def save(self, *args, **kwargs):
         super(Account, self).save(*args, **kwargs)
 

@@ -1,3 +1,6 @@
+#this is the custom choice list for the states field in the user forms.
+#tuple of state choices, including all US terratories and DC. 
+#displays long name in form's choice field, but will store the abbreviated version in db 
 STATE_CHOICES = [
     ("  ", "Select State"),
     ("AL", "Alabama"),

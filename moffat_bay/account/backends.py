@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 
+#custom backend for handling logins. Uses case insensitive email with the user acount model password to authenticate out custom user account model
 class CaseInsensitiveModelBackend(ModelBackend):
 
     def authenticate(self, request, email=None, password=None, **kwargs):

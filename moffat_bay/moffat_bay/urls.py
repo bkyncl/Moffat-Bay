@@ -28,6 +28,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='account/logout.html'), name='logout'),
     path('profile/', account_views.profile, name='profile'),
+    path('profile/update_profile/', account_views.update_profie, name='update_profile'),
 ]
 
 if settings.DEBUG:

@@ -10,10 +10,10 @@
                 <h3 class="account-heading">{{ user.first_name }} {{ user.last_name }}'s Profile:  </h3>
                 <h3 class="text-secondary">Email: {{ user.email }}</h3>
                 <p class="text-secondary">Phone: {{ user.phone }}</p>
-                <p>Address: <br>{{ user.street }}<br>{{ user.city }}<br> {{ user.state }} {{ user.zip }}</p>
+                <p>Address: <br>{{ user.street }}<br>{{ user.city }}, {{ user.state }} {{ user.zip }}</p>
                 <p>Member since: {{ user.date_joined }}</p>
         </div>
-        <a class="text-muted" href="#">Update Profile</a><br>
+        <a class="text-muted" href="update_profile">Update Profile</a><br>
         <a class="text-muted" href="#">Change Password</a>
         </div>
         </center>
