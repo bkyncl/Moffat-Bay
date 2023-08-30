@@ -1,20 +1,29 @@
 {% extends "reservations/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/accounts.css' %}"/>
+{% endblock %}
 {% block content %}
-    <div class="content-section">
-
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group" style="border: none;">
-                <legend class="border-bottom mb-4" style="font-weight: bold; font-size: 20px;">New User Registration</legend>
-                {{ form|crispy }}
-                </br><button class="btn btn-outline-info" type="submit">Sign Up</button>
-                Already have an account? <a href="{% url 'login' %}">Login here</a>
-            </fieldset>
-            
-            <div class="form-group">
-                
+<div class="banner">
+    <img src="/media/site/landing_header.jpg" alt="Image">
+    <div class="overlay">
+        <img src="/media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content">
+                <h3>Create a New Account</h3></br>
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy}}
+                    </fieldset>
+                    <div class="menu-item">
+                        <button type="submit">Create Account</button></br></br>
+                    </div>
+                    <div class="menu-item">
+                            Already Have an Account?   <a href="{% url 'login' %}">Login Here</a>
+                    </div>
+                </form>
+                </div>
             </div>
-        </form>
-    </div>
+        </div>
 {% endblock content %}

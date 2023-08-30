@@ -1,26 +1,26 @@
 {% extends "reservations/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/accounts.css' %}"/>
+{% endblock %}
 {% block content %}
-    <div class="content-section"><center>
-      <div class="media">
-                   <img class="rounded-circle account-img" src="{{ user.image.url }}">
-            <div class="media-body">
-                <h3 class="account-heading">{{ user.first_name }} {{ user.last_name }}'s Profile:  </h3>
-                <h3 class="text-secondary">Email: {{ user.email }}</h3>
-                <p class="text-secondary">Phone: {{ user.phone }}</p>
+<div class="banner">
+    <img src="/media/site/landing_header.jpg" alt="Image">
+    <div class="overlay">
+        <img src="/media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content">
+                <h3>Update {{user.first_name}} {{user.last_name}}'s Profile:</h3></br>
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy}}
+                    </fieldset>
+                    <div class="menu-item">
+                        <button type="submit">Update</button></br></br>
+                    </div>
+                </form>
+                </div>
+            </div>
         </div>
-      </div>
-      <article class="media content-section">
-		  <form method="POST" enctype="multipart/form-data">
-			  {% csrf_token %}
-			  <fieldset class="form-group">
-				  <legend class="border-bottom mb-4">Update Profile</legend>
-				  {{ form|crispy }}
-			  </fieldset>
-			  <div class="form-group">
-				  <button class="btn btn-outline-info" type="submit">Update</button>
-			  </div>
-		  </form>
-      </article>
-    </div>
 {% endblock content %}

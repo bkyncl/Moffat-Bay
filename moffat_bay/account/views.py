@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from account.forms import AccountForm, AccountUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 #Register new user view: if request is POST, checks if form is valid. if valid, saves form, redirects to login.
 # if form is not valid, or request is not POST, renders register.html page with registration form. 
@@ -46,3 +48,19 @@ def update_profie(request):
     }
 
     return render(request, 'account/update_profile.html', context)
+
+#Change password view - this will be the user changing their own password - available from the user's profile page
+@login_required
+def change_passowrd(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'account/change_password.html', {'form': form})

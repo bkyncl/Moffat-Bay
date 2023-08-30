@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from account.models import Account
 from django.contrib.auth.models import Group
 
+
 #Custom user account actions for within the admin page: 
 #We can add others if we choose
 @admin.action(description='Mark as inactive')
@@ -26,8 +27,6 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
-    
-    
 
 #registers the account model and account admin options with the admin page
 admin.site.register(Account, AccountAdmin)

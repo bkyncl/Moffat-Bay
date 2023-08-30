@@ -1,9 +1,54 @@
 {% extends "reservations/base.html" %}
-{% block content%}
-<!--insert actual page content here - may need to adjust top margins to allow for header -->
-</br></br></br></br></br></br></br></br></br><h1>Welcome to the Moffat-Bay homepage
-{% if user.is_authenticated %}
-{{ user.first_name }}
-{% endif %}
-!!!</h1>
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/>
+{% endblock %}
+{% block content %}
+    <div class="banner">
+        <img src="media/site/landing_header.jpg" alt="Image">
+    {% if user.is_authenticated %}
+        <div class="overlay">
+            <img src="/media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content">
+                <h3>Welcome back {{user.first_name}}!</h3></br>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+    <div class="big-container">
+        <div class="centered-container">
+          <img src="media/site/marcus-lofvenberg-LyghSgFG8QQ-unsplash.jpg" alt="Image">
+          <div class="search">
+
+          </div>
+        </div>
+        <div class="overlay">
+            <img src="media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content">
+                <h3>Do it all. Here.</h3>
+                <p>Amet minim mollit non deserunt ullamco est
+                sit aliqua dolor do amet sint. Velit officia
+                dolor est enim.</p>
+            </div>
+            <div class="menu-item"><button>Learn More</button></div>
+            
+        </div>
+        
+      </div>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
 {% endblock %}

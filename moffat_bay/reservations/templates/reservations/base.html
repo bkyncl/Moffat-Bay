@@ -1,69 +1,93 @@
-<!--load static %}--><!--remove comment once put into project folder-->
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="{% static 'reservations/lodge.css' %}">
-        
-        <!--Favicon icon in title-->
-        <link rel="icon" type="image/x-icon" href="media/site/anchorwhite.png">
-        
-
-        <!-- Page Titles -->
-        <!--add if block for page title here-->
-        <title>Moffat Bay Marina & Lodge</title>
-
-        
-    </head>
-    <body>
-    <header class="site-header">
-        <img class="header-logo" src="/media/site/logo1_variant1.png">
-        <nav class="navbar">
-            <a class="nav-item" href="{% url 'reservations-home' %}">Home</a>
-            <a class="nav-item" href="#">Attractions</a>
-            <a class="nav-item" href="#">Reservations</a>
-            <a class="nav-item" href="#">About Us</a>
-            <a class="nav-item" href="#">Contact</a>
-            <a class="nav-item" href="#">My Reservations</a>
-            <button onclick="window.location.href='#';">Book Now</button>
-            <!--Insert if logged in code here-->
-              {% if user.is_authenticated %}
-                  <a class="nav-item" href="{% url 'profile' %}">Profile</a>
-                  {% if user.is_superuser %}
-                  <a class="nav-item" href="/admin/">Admin Page</a>
-                  {% endif %}
-                  <a class="nav-item" href="{% url 'logout' %}">Logout</a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> <!--add title codes here-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'reservations/base.css' %}"/>
+    <link rel="icon" type"/image/x-icon" href="media/site/anchorwhite.png">
+    {% block css%}
+    {% endblock %}
+</head>
+<body>
+    <header class="navheader">
+        <!--navigation bar-->
+        <div class="navcontainer">
+            <nav>
+                <!--logo-->
+                <a href="{% url 'reservations-home' %}" class="logo">
+                    <img src="/media/site/logo1_variant1.png" alt="Logo">
+                </a>
+                <!--media only hamburger-->
+                <input type="checkbox" name="menu_expand" id="menuBtn">
+                <label for="menuBtn" class="hamburger">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </label>
+                <!--menu-->
+                <div class="menu">
+                    <div class="menu-item"><a href="{% url 'reservations-home' %}">Home</a></div>
+                    <div class="menu-item"><a href="#">Attractions</a></div>
+                    <div class="menu-item"><a href="#">Reservations</a></div>
+                    <div class="menu-item"><a href="#"><img src="/media/site/search.png" alt="Logo">My Reservation</a></div>
+                    {% if user.is_authenticated %}
+                    <div class="menu-item"><a href="{% url 'profile' %}">Profile</a></div>
+                    {% if user.is_superuser %}
+                    <div class="menu-item"><a href="/admin/">Admin</a></div>
+                    {% endif %}
+                    <div class="menu-item"><a href="{% url 'logout' %}">Logout</a></div>
+                    {% else %}
+                    <div class="menu-item"><a href="{% url 'login' %}">Login</a></div>
+                    {% endif %}
+                    <div class="menu-item"><a href="#">About Us</a></div>
+                    <div class="menu-item"><button>Book Now</button></div>
                 </div>
-              </div>
-              {% else %}
-                <a class="nav-item" href="{% url 'login' %}">Login</a>
-              {% endif %}
-              </div>
-        </nav>
-        <!--insert system message code here-->
-    </header>
-    <br><br>
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
-
-            {% block content %}{% endblock %}
+            </nav>
         </div>
-       
-    </main>
-    </body>
-    <footer>
-    <!--setup footer here-->
-    </footer>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer class="footer">
+        <div class="footer-section main-section">
+            <div class="footer-left">
+                <h3>Useful</h3>
+                <div class="menu">
+                    <div class="menu-item"><a href="#">Home</a></div>
+                    <div class="menu-item"><a href="#">Reservations</a></div>
+                    <div class="menu-item"><a href="#">Login</a></div>
+                </div>
+            </div>
+            <div class="footer-column subscribe">
+                <h2>GET IN TOUCH</h2>
+                <p>Amet minim mollit non deserunt ullamco est
+                    sit aliqua dolor do amet sint.</p>
+                <form class="email-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Contact</button>
+                </form>
+            </div>
+            <div class="footer-right">
+                <h3>Learn More</h3>
+                <div class="menu">
+                    <div class="menu-item"><a href="#">About Us</a></div>
+                    <div class="menu-item"><a href="#">Attractions</a></div>
+                    <div class="menu-item"><a href="#">Contact</a></div>
+                </div> 
+            </div>
+        </div>
+        <div class="footer-section bottom-section">
+            <p></p>
+            <p>&copy; 2023 Moffat Bay Lodge</p>
+            <div class="socials">
+                <img src="/media/site/Facebook (logo).png" alt="Logo">
+                <a href="https://www.youtube.com/results?search_query=moffat-bay" target="_blank"><img src="/media/site/YouTube (logo).png" alt="Logo"></a>
+                <img src="/media/site/twitter.png" alt="Logo">             
+            </div>
+        </div> 
+      </footer>
+
+</body>
 </html>
