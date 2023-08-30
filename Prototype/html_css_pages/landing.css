@@ -1,0 +1,76 @@
+.banner {
+    height: auto; 
+    overflow: hidden;
+  }
+.banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 5vh; 
+    padding: 0; 
+}
+.big-container {
+    display: flex;
+    background-color: #1E1E1E;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* To contain positioned children */
+    height: 90vh; /* Set the desired height */
+}
+
+.centered-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    height: 90%;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #C3BBBB;
+    position: relative; /* To contain positioned children */
+}
+
+.centered-container img {
+    width: 95%; /* Set your desired width */
+    height: 80%; /* Set your desired height */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    display: block;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 30%;
+    height: 45%;
+    background-color: rgba(245, 243, 243, 0.801); /* Example overlay color */
+    border-radius: 20px;
+}
+.text-content {
+    text-align: center;
+}
+.text-content p {
+    font-size: 15px;
+    padding: 20px 50px 20px 50px;
+}
+.overlay img {
+    margin: 20px;
+    max-width: 20vw;
+    min-width: 18vh;
+}
+.overlay .menu-item button {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 40px;
+}
+.search {
+    background-color: #82BB81;
+    height: 10%;
+    width: 70%;
+    border-radius: 50px;
+}
