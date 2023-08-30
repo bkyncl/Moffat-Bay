@@ -58,11 +58,11 @@ VALUES (1), -- 1
 
 -- inserting data into  Stay_costs table
 INSERT INTO Stay_costs (guests, price)
-VALUES (1, 115),
-       (2, 115),
-       (3, 150),
-       (4, 150),
-       (5, 150);
+VALUES (1, 120.75),
+       (2, 120.75),
+       (3, 157.50),
+       (4, 157.50),
+       (5, 157.50);
 
 -- inserting data into Reservations table
 INSERT INTO Reservations (user_ID, room_ID, guests, checkin_date, checkout_date)
