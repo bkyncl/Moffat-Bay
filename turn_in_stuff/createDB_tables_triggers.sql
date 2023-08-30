@@ -90,7 +90,7 @@ price
 */
 CREATE TABLE Stay_costs (
     guests INT PRIMARY KEY CHECK (guests >= 1 AND guests <= 5),
-    price INT NOT NULL DEFAULT 115
+    price DECIMAL(10, 2) NOT NULL DEFAULT 120.75
 );
 
 /* 
@@ -110,7 +110,7 @@ CREATE TABLE Reservations (
     user_ID INT,
     room_ID INT,
     guests INT DEFAULT 1 NOT NULL CHECK (guests <= 5),
-    total_price INT NOT NULL,
+    total_price DECIMAL(10, 2) NOT NULL,
     checkin_date DATE NOT NULL,
     checkout_date DATE NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES User (User_ID),
@@ -130,7 +130,7 @@ FOR EACH ROW
 BEGIN
     DECLARE nights INT;
     DECLARE guest_count INT;
-    DECLARE nightly_price INT;
+    DECLARE nightly_price DECIMAL(10, 2);
     
     -- Calculate the number of nights between checkin_date and checkout_date
     SET nights = DATEDIFF(NEW.checkout_date, NEW.checkin_date);
