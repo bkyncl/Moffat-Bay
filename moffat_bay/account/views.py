@@ -22,13 +22,14 @@ def register(request):
         
     context = {
         'form': AccountForm,
+        'title': 'Register New Account',
     }
     return render(request, 'account/register.html', context)
 
 #View profile view - returns profile page, showing user account profile. Requires user to be logged in. 
 @login_required
 def profile(request):
-    return render(request, 'account/profile.html')
+    return render(request, 'account/profile.html', {'title':'Your Profile'})
 
 #Update profile view - provides a form for users to update their profile, including address, phone, email. 
 #if form is POST and valid, saves the new info to db. if not, renders the form on update_profile.html.
@@ -44,7 +45,8 @@ def update_profie(request):
         form = AccountUpdateForm(instance=request.user)
 
     context = {
-        'form' : form
+        'form' : form,
+        'title': 'Update Profile',
     }
 
     return render(request, 'account/update_profile.html', context)
@@ -63,4 +65,4 @@ def change_passowrd(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'account/change_password.html', {'form': form})
+    return render(request, 'account/change_password.html', {'form': form, 'title':'Change your password'})

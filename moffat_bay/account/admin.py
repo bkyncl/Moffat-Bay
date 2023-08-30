@@ -31,4 +31,3 @@ class AccountAdmin(UserAdmin):
 #registers the account model and account admin options with the admin page
 admin.site.register(Account, AccountAdmin)
 
-
