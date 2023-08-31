@@ -11,7 +11,7 @@
 }
 .big-container {
     display: flex;
-    background-color: #1E1E1E;
+    background-color: #121212;
     justify-content: center;
     align-items: center;
     position: relative; /* To contain positioned children */
@@ -30,7 +30,6 @@
     position: relative; /* To contain positioned children */
     padding: 1vw;
 }
-
 .centered-container img {
     width: 100%; /* Set your desired width */
     height: 85%; /* Set your desired height */
@@ -39,7 +38,6 @@
     border-radius: 20px;
     margin: 0 0 1vw 0;
 }
-
 .overlay {
     display: flex;
     flex-direction: column; 
@@ -62,6 +60,7 @@
 .text-content p {
     font-size: .8vw;
     padding: 1vw 4vw 1vw 4vw;
+    line-height: 1.7em;
 }
 .overlay img {
     margin: 1vw;
@@ -77,7 +76,6 @@
 .info button {
     margin: 1vw;
 }
-
 .info button:hover {
     background-color: rgba(245, 243, 243, 0.801);
     font-weight: 700;
@@ -88,10 +86,9 @@
     width: 75%;
     border-radius: 50px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
+    grid-template-columns: repeat(4, 1fr); 
     padding: .3vw;
 }
-
 .grid-item {
     display: flex;
     flex-direction: column;
@@ -102,7 +99,6 @@
 .grid-item:nth-child(-n+2) {
     position: relative;
 }
-
 .grid-item:nth-child(-n+2)::after {
     content: '';
     position: absolute;
@@ -122,7 +118,7 @@
     font-size: 1vw;
     font-weight: 400;
     background-color: #82BB81;
-    border: .2vw solid #ffff;
+    border: .3vw solid #ffff;
     margin: 0 .5vw 0 2vw;
     padding: 1vw 2vw;
     min-width: 12vw;
@@ -157,9 +153,10 @@
     border-radius: 5px;
     background-color: #fff;
 }
+/* styling of room search and feture container under 750px */
 @media (max-width: 750px) { 
     .search {
-        width: 93%; /* Full width */
+        width: 80%; /* Full width */
     }
     .grid-item label {
         padding-bottom: 2px;
@@ -179,9 +176,144 @@
     .overlay {
         border-radius: 10px;
     }
+    .centered-container {
+        width: 90%;
+    }
 
 
 
 }
+.our-rooms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.4vw;
+}
+.rooms-text {
+    text-align: center;
+}
+.rooms-text h1,
+.rooms-text h3,
+.rooms-text p {
+    margin: 2vw;
+    width: 31vw;
+}
+.rooms-text p {
+    color:#1e1e1ea6;
+    font-size: 1.1vw;
+    line-height: 1.7em;
+}
+.rooms-text h1 {
+    font-size: 2.3vw;
+}
+.rooms-text h3 {
+    font-size: 1.5vw;
+    margin-top: 3vw;
+}
+.menu-item #room-button {
+    font-size: 1.2vw;
+    font-weight: 500;
+    padding: 1vw 6vw;
+    background-color: #82BB81;
+    border: .3vw solid #82BB81;
+    border-radius: 1.5vw;
+    margin: 1vw 0 3vw 0;
+}
+.menu-item #room-button:hover {
+    background-color: #fff;
+    font-weight: 700;
+}
+.image-text-container p {
+    margin-bottom: .5vw;
+    margin-top: 1vw;
+    font-size: 1.1vw;
+    color:#1e1e1ea6;
+
+}
+.image-text-container h3 {
+    margin-bottom: 1.3vw;
+    font-size: 1.5vw;
+}
+.rooms-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 1vw; /* Add spacing between pictures */
+    margin: 2.5vw 4vw 2.5vw 4vw; /* Add spacing from the content above */
+    width: 95%;
+}
+
+.rooms-gallery img {
+    width: 27vw;
+    height: 21vw;
+    object-fit: cover;
+}
+.rooms-gallery #room_3 {
+    width: 27vw;
+    height: 100%;
+}
+.image-text-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+}
+.about-info {
+    display: flex;
+    justify-content: space-between; /* Place the items at opposite ends */
+    align-items: center; /* Vertically center the content */
+    background-color: #121212;
+    height: auto;
+}
+
+.about-text {
+    flex: 1; /* Take up 50% of container width */
+    padding: 3vw 0 3vw 13vw; /* Space between text and image */
+    text-align: left; /* Align text content to the left */
+}
+
+.aboutus-line {
+    display: block;
+    width: 9vw;
+    height: .2vw;
+    background-color: #82BB81; /* Green line color */
+    margin: .5vw 0 3vw 0; /* Adjust spacing */
+}
+
+.about-text h1 {
+    font-size: 2.3vw;
+    margin-bottom: 1.5vw;
+    color: #fff;
+}
+
+.about-text p {
+    font-size: 1vw;
+    font-weight: 300;
+    line-height: 1.8em;
+    margin-bottom: 1vw;
+    color: #ffffff8c;
+    width: 25vw;
+}
+
+#explore-button {
+    font-size: 1vw;
+    background-color: #82BB81;
+    border: .3vw solid #82BB81;
+    padding: 1vw 4vw;
+    float: left;
+    margin: 1.5vw 0 1.5vw 0;
+}
+#explore-button:hover {
+    background-color: #121212;
+    color: #fff;
+}
+.about-image {
+    flex: 1; /* Take up 50% of container width */
+    text-align: right; /* Align image to the right */
+}
+
+#about-image {
+    width: 43vw;
+    height: 43vw;
+}
+
 
   
