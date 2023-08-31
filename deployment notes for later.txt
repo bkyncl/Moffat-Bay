@@ -1,0 +1,5 @@
+For Django-password-validators/password-history:
+to remove password history from django admin page-
+go into python/lib/site-packages/django-password-validators/password-history/admin.py
+and remove the admin.site.register tags from the admin.py file. 
+---This 3rd party app self registers, and you must unregister it from itself to get rid of it in the moffat-bay admin page. 
