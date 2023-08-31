@@ -40,6 +40,7 @@
                     <div class="menu-item"><a href="#">Reservations</a></div>
                     <div class="menu-item"><a href="#"><img src="/media/site/search.png" alt="Logo">My Reservation</a></div>
                     <div class="menu-item"><a href="#">About Us</a></div>
+                    <!--drop down menu for authenticated user 'my account' -->
                     {% if user.is_authenticated %}
                     <div class="menu-item dropdown">
                         <div class="menu-item dropdown-item"><a href="#" class="dropdown-toggle">My Account</a></div>
@@ -52,6 +53,7 @@
                         </div>
                     </div>
                     {% else %}
+                    <!-- login menu item for logged out user -->
                     <div class="menu-item"><a href="{% url 'login' %}">Login</a></div>
                     {% endif %}
                     <div class="menu-item"><button>Book Now</button></div>
@@ -68,7 +70,12 @@
                 <div class="menu">
                     <div class="menu-item"><a href="{% url 'reservations-home' %}">Home</a></div>
                     <div class="menu-item"><a href="#">Reservations</a></div>
-                    <div class="menu-item"><a href="{% url 'login'%}">Login</a></div>
+                    <!-- added logic to switch login menu item based on user.is_authenticated -->
+                    {% if user.is_authenticated %}
+                        <div class="menu-item"><a href="{% url 'logout' %}">Logout</a></div> <!-- Display logout option for authenticated user -->
+                    {% else %}
+                        <div class="menu-item"><a href="{% url 'login'%}">Login</a></div> <!-- else logi option -->
+                    {% endif %}
                 </div>
             </div>
             <div class="footer-column subscribe">
