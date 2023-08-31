@@ -331,7 +331,7 @@ nav {
   }
   .email-form button {
     font-size: 1vw;
-    border-radius: 1px;
+    border-radius: 2px;
   }
   .email-form button:hover {
     background-color: #82BB81;
