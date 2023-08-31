@@ -10,11 +10,11 @@
     <div class="overlay">
         <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
-                <h3>Login Here</h3></br>
+                <h3>Login</h3></br>
                 <form method="POST">
                     {% csrf_token %}
-                    <fieldset class="form-group">
-                        {{ form|crispy}}
+                    <fieldset class="form-control">
+                        {{ form }}
                     </fieldset>
                     <div class="menu-item">
                         <button type="submit">Login</button></br></br>

@@ -6,13 +6,13 @@
 {% block content %}
     <div class="banner">
         <img src="media/site/landing_header.jpg" alt="Image">
-    {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    {% endif %}
     {% if user.is_authenticated %}
         <div class="overlay">
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
             <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Welcome back {{user.first_name}}!</h3></br>
@@ -61,9 +61,7 @@
             <img src="media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Do it all. Here.</h3>
-                <p>Amet minim mollit non deserunt ullamco est
-                sit aliqua dolor do amet sint. Velit officia
-                dolor est enim.</p>
+                <p>Whether you're an explorer craving hiking trails, or a family in search of quality time, Moffat Bay Marina & Lodge has something for everyone. Explore the beauty of Moffat Bay with our many attractions and guided tours, or simply relax on the sandy shores. The choice is yours.</p>
             </div>
             <div class="menu-item info"><button>Learn More</button></div> 
         </div>
@@ -71,10 +69,9 @@
     <div>
     <div class="our-rooms">
         <div class="rooms-text">
-            <h3>Our Rooms</h3>
+            <!--<h3>Our Rooms</h3>--><!--took this out, what do you think??? look at both ways to decide-->
             <h1>The Perfect Space</h1>
-            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat.</p>
+            <p>At Moffat Bay Marina & Lodge, our luxurious accommodation offers a welcoming retreat after a day on the water. Whether you are a single mom looking for a family getaway, a business executive looking for a company retreat, or a newlywed couple planning their honeymoon – we can provide the perfect space for your stay.  Wake up to breathtaking sunrises over the bay, unwind under a starlit sky, or prepare yourself for a new adventure. Our staff is ready to pamper and serve you today!</p>
         </div>
         <div class="rooms-gallery">
             <div class="image-text-container">
@@ -105,11 +102,8 @@
         <div class="about-text">
             <h1>ABOUT US</h1>
             <span class="aboutus-line"></span>
-            <p>Amet minim mollit non deserunt ullamco est
-                sit aliqua dolor do amet sint. Velit officia
-                consequatduis enim.</p>
-            <p>Amet minim mollit non deserunt ullamco est
-                sit aliqua dolor do</p>
+            <p>At Moffat Bay Marina & Lodge, we are more than just a destination; we are a sanctuary for those seeking a harmonious blend of aquatic adventure, relaxation, and natural beauty. Nestled along the tranquil shores of Moffat Bay, our marina and lodge offer an unparalleled escape from the ordinary.</p>
+            <p>Escape to Moffat Bay Marina & Lodge and discover the magic of the water. Your voyage begins here.</p>
                 <div class="menu-item"><button id="explore-button">Explore</button></div> 
         </div>
         <img id="about-image" src="media/site/sailing_cropped.png" alt="Sailing">
@@ -120,13 +114,6 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+
     </div>
 {% endblock %}

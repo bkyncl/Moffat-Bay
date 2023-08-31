@@ -71,7 +71,10 @@
     margin-top: 20px;
     font-size: 14px;
     font-weight: 400;
-    padding: 10px 40px;
+    
+    margin-left:10%;
+    margin-right: 10%;
+
 }
 .search {
     background-color: #82BB81;
@@ -99,4 +102,99 @@
     padding-bottom: 2%;
     background-color: rgba(245, 243, 243, 0.801); /* Example overlay color */
     border-radius: 20px;
+}
+
+.form-control {
+    text-align: center;
+    border: 0;
+    max-width: 40%;
+    margin-left:30%;
+    margin-right: 30%;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.form-control input{
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.form-control-forgot-password {
+    text-align: center;
+    border: 0;
+    padding-top: 5px;
+}
+
+.form-control-forgot-password input{
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.form-control-reset-password {
+    text-align: center;
+    border: 0;
+    max-width: 90%;
+    margin-left: 5%;
+    
+}
+
+.form-control-reset-password input{
+    padding: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.form-control input:invalid{
+    border: 1.5px solid red;
+}
+
+.overlay-register {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    height: auto;
+    padding-bottom: 2%;
+    background-color: rgba(245, 243, 243, 0.801); /* Example overlay color */
+    border-radius: 20px;
+}
+.overlay-register img {
+    margin: 20px;
+    max-width: 20vw;
+    min-width: 18vh;
+}
+
+.form-register {
+    text-align: center;
+    border: 0;
+    max-width: 100%;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.form-register input {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 20px;
+    width: 200px;
+}
+
+.register-table{
+    text-align: right;
+}
+
+.register-table-center{
+    text-align: center;
+}
+
+.register-table-center-password{
+    text-align: center;
+    font-weight: normal;
 }

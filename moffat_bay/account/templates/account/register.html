@@ -7,20 +7,49 @@
 {% block content %}
 <div class="banner">
     <img src="/media/site/landing_header.jpg" alt="Image">
-    <div class="overlay">
+    <div class="overlay-register">
         <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Create a New Account</h3></br>
+                <h5 style="font-weight:normal; ">* indicates required fields</h5><br>
                 <form method="POST">
                     {% csrf_token %}
-                    <fieldset class="form-group">
-                        {{ form|crispy}}
+                    <fieldset class="form-register">
+                        <table class="register-table">
+                            <tr>
+                                <td>*First Name: {{form.first_name}}</td>
+                                <td>*Last Name: {{form.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address:{{form.street}}</td>
+                                <td>City:{{form.city}}</td>
+                            </tr>
+                            <tr>
+                                <td>State:{{form.state}}</td>
+                                <td>Zipcode:{{form.zip}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan='2' class="register-table-center">*Phone Number: {{form.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan='2' class="register-table-center">*Email Address: {{form.email}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan='2' class="register-table-center-password"><b>Passowrds Requirements:</b><br>1 Uppercase, 1 Lowercase, 1 Number, 1 Special Characters and must be at least 8 characters long<br>Password cannot be entirely numeric, too similar to your personal information, and can't be commonly used passwords.</td>
+                            </tr>
+                            <tr>
+                                <td colspan='2' class="register-table-center">*Enter Password:{{form.password1}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan='2' class="register-table-center">*Confirm Passowrd:{{form.password2}}</td>
+                            </tr>
+                        </table>
                     </fieldset>
                     <div class="menu-item">
                         <button type="submit">Create Account</button></br></br>
                     </div>
                     <div class="menu-item">
-                            Already Have an Account?   <a href="{% url 'login' %}">Login Here</a>
+                            Already Have an Account?   <br><a href="{% url 'login' %}">Login Here</a>
                     </div>
                 </form>
                 </div>
