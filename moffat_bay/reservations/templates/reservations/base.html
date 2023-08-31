@@ -80,7 +80,13 @@
             </div>
             <div class="footer-column subscribe">
                 <h2>GET IN TOUCH</h2>
-                <p>Stay connected with us! Join out mailing list to receive updates and special discounts. </p>
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% else %}
+                    <p>Stay connected with us! Join out mailing list to receive updates and special discounts. </p>
+                {% endif %}
                 <form class="email-form" method='POST'>
                     {% csrf_token %}
                     {{mailform.email}}
