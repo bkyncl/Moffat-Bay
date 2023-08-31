@@ -198,3 +198,12 @@
     text-align: center;
     font-weight: normal;
 }
+
+.register-table-password1 input{
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    margin-right: 20px;
+    width: 200px;
+}
