@@ -15,27 +15,29 @@
     justify-content: center;
     align-items: center;
     position: relative; /* To contain positioned children */
-    height: 90vh; /* Set the desired height */
+    height: 45vw; /* Set the desired height */
+    padding: 40px
 }
 
 .centered-container {
     display: flex;
     flex-direction: column; 
     align-items: center; 
-    height: 90%;
+    height: 40vw;
     width: 80%;
     border-radius: 20px;
     background-color: #C3BBBB;
     position: relative; /* To contain positioned children */
+    padding: 1vw;
 }
 
 .centered-container img {
-    width: 95%; /* Set your desired width */
-    height: 80%; /* Set your desired height */
+    width: 100%; /* Set your desired width */
+    height: 85%; /* Set your desired height */
     object-fit: cover; /* Maintain aspect ratio and cover the container */
     display: block;
     border-radius: 20px;
-    margin: 20px;
+    margin: 0 0 1vw 0;
 }
 
 .overlay {
@@ -43,34 +45,142 @@
     flex-direction: column; 
     align-items: center;
     position: absolute;
-    top: 15%;
-    left: 35%;
-    width: 30%;
-    height: 45%;
-    background-color: rgba(245, 243, 243, 0.801); /* Example overlay color */
+    top: 12%;
+    left: 38%;
+    width: 23vw;
+    height: auto;
+    background-color:rgba(245, 243, 243, 0.637);; /* Example overlay color */
     border-radius: 20px;
+    padding-bottom: 1.5vw;
 }
 .text-content {
     text-align: center;
 }
+.text-content h3 {
+    font-size: 1.3vw;
+}
 .text-content p {
-    font-size: 15px;
-    padding: 20px 50px 20px 50px;
+    font-size: .8vw;
+    padding: 1vw 4vw 1vw 4vw;
 }
 .overlay img {
-    margin: 20px;
+    margin: 1vw;
     max-width: 20vw;
-    min-width: 18vh;
+    min-width: 18vw;
 }
-.overlay .menu-item button {
-    margin-top: 20px;
-    font-size: 14px;
+.overlay .info button {
+    margin-top: .8vw;
+    font-size: .8vw;
     font-weight: 400;
-    padding: 10px 40px;
+    padding: .6vw 3vw;
 }
+.info button {
+    margin: 1vw;
+}
+
+.info button:hover {
+    background-color: rgba(245, 243, 243, 0.801);
+    font-weight: 700;
+}  
 .search {
     background-color: #82BB81;
-    height: 10%;
-    width: 70%;
+    height: auto;
+    width: 75%;
     border-radius: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
+    padding: .3vw;
 }
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
+}
+.grid-item:nth-child(-n+2) {
+    position: relative;
+}
+
+.grid-item:nth-child(-n+2)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 68%; /* Adjust the height of the border */
+    width: 1px; /* Width of the border */
+    background-color: #e8e8e8b9; /* Color of the border */
+    transform: translateY(25%); /* Center the border vertically */
+}
+.search .menu-item.search {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.search button {
+    font-size: 1vw;
+    font-weight: 400;
+    background-color: #82BB81;
+    border: .2vw solid #ffff;
+    margin: 0 .5vw 0 2vw;
+    padding: 1vw 2vw;
+    min-width: 12vw;
+}
+.search button:hover {
+    color: #ffff;
+}
+.grid-item label {
+    display: flex; /* Add this line */
+    align-items: center; /* Add this line */
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 400;
+    padding-bottom: 5px;
+    gap: 10px;
+}
+.grid-item .label-icon{
+    width: 1.4vw; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    margin: 0; /* Adjust the spacing between icon and label */
+    vertical-align: middle;
+    border-radius: 0;
+    vertical-align: middle;
+
+}
+.grid-item input,
+.grid-item select {
+    font-size: .8vw;
+    width: 7vw;
+    height: auto;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #fff;
+}
+@media (max-width: 970px) { 
+    .search {
+        width: 93%; /* Full width */
+    }
+    .grid-item label {
+        padding-bottom: 2px;
+        gap: 2px;
+    }
+    .grid-item input,
+    .grid-item select {
+        font-size: .8vw;
+        width: 9vw;
+        height: 1.5vw;
+        border: none;
+        background-color: #fff;
+    }
+    .centered-container,
+    .centered-container img,
+    .overlay {
+        border-radius: 10px;
+    }
+
+
+
+}
+
+  

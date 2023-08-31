@@ -23,9 +23,40 @@
     <div class="big-container">
         <div class="centered-container">
           <img src="media/site/marcus-lofvenberg-LyghSgFG8QQ-unsplash.jpg" alt="Image">
-          <div class="search">
-
-          </div>
+            <form class="search" acton="#" method="POST">
+                <div class="grid-item">
+                    <label for="first-date">
+                        <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
+                        Check In:
+                    </label>
+                    <input type="date" id="first-date" name="first-date">
+                </div>
+                <div class="grid-item">
+                    <label for="second-date">
+                        <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
+                        Check Out:
+                    </label>
+                    <input type="date" id="second-date" name="second-date">
+                </div>
+                
+                <div class="grid-item">
+                    <label for="num-guests">
+                        <img src="media/site/guest_icon.png" alt="Logo" class="label-icon">
+                        Number of Guests
+                    </label>
+                    <select name="num-guests" id="num-guests">
+                        <option value="1">1 guest</option>
+                        <option value="2">2 guests</option>
+                        <option value="3">3 guests</option>
+                        <option value="4">4 guests</option>
+                        <option value="5">5 guests</option>
+                    </select>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="menu-item search"><button type="submit">Search Now</button></div> 
+                </div>
+            </form>
         </div>
         <div class="overlay">
             <img src="media/site/logo1_variant1.png" alt="Logo">
@@ -35,10 +66,8 @@
                 sit aliqua dolor do amet sint. Velit officia
                 dolor est enim.</p>
             </div>
-            <div class="menu-item"><button>Learn More</button></div>
-            
+            <div class="menu-item info"><button>Learn More</button></div> 
         </div>
-        
       </div>
     <div>
         <br>

@@ -292,7 +292,7 @@ nav {
   color: #fff;
   cursor: pointer;
   padding: .6vw 2vw; 
-  border: 3px solid #82BB81;
+  border: 2px solid #82BB81;
   border-radius: 4px;
   margin-left: 2vw;
   font-size: .8vw; 
@@ -307,15 +307,18 @@ nav {
     margin: 1.5vw;
   }
   .footer-column.subscribe p {
-    font-size: .8vw;
+    font-size: 1vw;
     margin-bottom: 1vw;
   }
   .footer h3 {
-    font-size: 1.5vw;
+    font-size: 2vw;
     margin-top: 3vw;
   } 
   .footer .menu-item {
     margin: 0 auto;
+  }
+  .footer .menu-item a {
+    font-size: 1vw;
   }
   .email-form input[type="email"] {
     padding: 1vw 2vw;
@@ -327,8 +330,11 @@ nav {
     height: 2px; 
   }
   .email-form button {
-    padding: .5vw 2vw;
     font-size: 1vw;
+    border-radius: 1px;
+  }
+  .email-form button:hover {
+    background-color: #82BB81;
   }
 }
 
