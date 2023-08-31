@@ -81,8 +81,9 @@
             <div class="footer-column subscribe">
                 <h2>GET IN TOUCH</h2>
                 <p>Stay connected with us! Join out mailing list to receive updates and special discounts. </p>
-                <form class="email-form">
-                    <input type="email" placeholder="Enter your email">
+                <form class="email-form" method='POST'>
+                    {% csrf_token %}
+                    {{mailform.email}}
                     <button type="submit">Contact</button>
                 </form>
             </div>
