@@ -71,7 +71,8 @@
     margin-top: .8vw;
     font-size: .8vw;
     font-weight: 400;
-    padding: .6vw 3vw;
+    padding: .4vw 2vw;
+    border: .2vw solid #121212;
 }
 .info button {
     margin: 1vw;
@@ -114,7 +115,7 @@
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
 }
-.search button {
+#search-button {
     font-size: 1vw;
     font-weight: 400;
     background-color: #82BB81;
@@ -123,8 +124,9 @@
     padding: 1vw 2vw;
     min-width: 12vw;
 }
-.search button:hover {
-    color: #ffff;
+#search-button:hover {
+    color: #fff;
+    background-color: #9fce9eb6;
 }
 .grid-item label {
     display: flex; /* Add this line */
@@ -179,9 +181,6 @@
     .centered-container {
         width: 90%;
     }
-
-
-
 }
 .our-rooms {
     display: flex;
@@ -196,11 +195,11 @@
 .rooms-text h3,
 .rooms-text p {
     margin: 2vw;
-    width: 31vw;
+    width: 40vw;
 }
 .rooms-text p {
     color:#1e1e1ea6;
-    font-size: 1.1vw;
+    font-size: .8vw;
     line-height: 1.7em;
 }
 .rooms-text h1 {
@@ -211,7 +210,7 @@
     margin-top: 3vw;
 }
 .menu-item #room-button {
-    font-size: 1.2vw;
+    font-size: 1vw;
     font-weight: 500;
     padding: 1vw 6vw;
     background-color: #82BB81;
@@ -223,35 +222,35 @@
     background-color: #fff;
     font-weight: 700;
 }
-.image-text-container p {
+.rooms-text-container p {
     margin-bottom: .5vw;
-    margin-top: 1vw;
-    font-size: 1.1vw;
+    margin-top: .8vw;
+    font-size: .8vw;
     color:#1e1e1ea6;
 
 }
-.image-text-container h3 {
+.rooms-text-container h3 {
     margin-bottom: 1.3vw;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 .rooms-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Three equal columns */
     gap: 1vw; /* Add spacing between pictures */
-    margin: 2.5vw 4vw 2.5vw 4vw; /* Add spacing from the content above */
-    width: 95%;
+    margin: 1.5vw 6vw 3vw 6vw; /* Add spacing from the content above */
+    width: 85%;
 }
 
 .rooms-gallery img {
-    width: 27vw;
-    height: 21vw;
+    width: 24vw;
+    height: 19vw;
     object-fit: cover;
 }
 .rooms-gallery #room_3 {
-    width: 27vw;
+    width: 24vw;
     height: 100%;
 }
-.image-text-container {
+.rooms-text-container {
     display: flex;
     flex-direction: column;
     margin: 1vw;
@@ -272,14 +271,14 @@
 
 .aboutus-line {
     display: block;
-    width: 9vw;
+    width: 12vw;
     height: .2vw;
     background-color: #82BB81; /* Green line color */
     margin: .5vw 0 3vw 0; /* Adjust spacing */
 }
 
 .about-text h1 {
-    font-size: 2.3vw;
+    font-size: 3vw;
     margin-bottom: 1.5vw;
     color: #fff;
 }
@@ -288,7 +287,7 @@
     font-size: 1vw;
     font-weight: 300;
     line-height: 1.8em;
-    margin-bottom: 1vw;
+    margin-bottom: 1.2vw;
     color: #ffffff8c;
     width: 25vw;
 }
@@ -297,7 +296,7 @@
     font-size: 1vw;
     background-color: #82BB81;
     border: .3vw solid #82BB81;
-    padding: 1vw 4vw;
+    padding: .8vw 4vw;
     float: left;
     margin: 1.5vw 0 1.5vw 0;
 }
@@ -313,6 +312,70 @@
 #about-image {
     width: 43vw;
     height: 43vw;
+}
+.amenities-preview {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1/3 for text, 2/3 for gallery */
+    gap: 20px; /* Adjust the gap between the text and gallery */
+    padding: 5vw 5vw 5vw 5vw;
+}
+
+.amenities-text {
+    padding: 10vw 5vw 2vw 3vw;
+}
+.amenities-text h1 {
+    font-size: 2.4vw;
+}
+.amenities-text p {
+    color: #1e1e1ea6;
+    font-size: .9vw;
+    line-height: 1.5em;
+}
+.amenities-text h1,
+.amenities-text p {
+    margin-bottom: 4vw;
+}
+.amenities-text #five-stars {
+    width: 8vw;
+    height: auto;
+}
+
+.amenities-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows */
+    gap: 4vw; /* Adjust the gap between grid cells */
+    width: fit-content;
+    position: relative;
+    top: -8vw; /* Adjust the value to control the overlap */
+    z-index: 1; /* Lower z-index to place it behind the about-info container */
+    justify-items: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+.amenities-img-container {
+    background-color: #c3bbbb;
+    padding: 1vw;
+    width: 27vw;
+    height: 24.5vw
+}
+.amenities-img-container img {
+    width: 25vw;
+    height: 17vw;
+}
+.amenities-img-container h3 {
+    font-size: 1.3vw;
+    font-weight: 600;
+} 
+.amenities-img-container p {
+    color: #1e1e1ea6;
+    font-size: .9vw;
+    line-height: 1.5em;
+}
+.amenities-img-container p,
+.amenities-img-container h3 {
+    margin: .3vw 0vw 0vw .4vw;
+    width: 21vw;
 }
 
 

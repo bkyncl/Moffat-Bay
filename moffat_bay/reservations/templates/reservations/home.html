@@ -53,7 +53,7 @@
                     </select>
                 </div>
                 <div class="grid-item">
-                    <div class="menu-item search"><button type="submit">Search Now</button></div> 
+                    <div class="menu-item search"><button id="search-button" type="submit">Search Now</button></div> 
                 </div>
             </form>
         </div>
@@ -61,7 +61,9 @@
             <img src="media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Do it all. Here.</h3>
-                <p>Whether you're an explorer craving hiking trails, or a family in search of quality time, Moffat Bay Marina & Lodge has something for everyone. Explore the beauty of Moffat Bay with our many attractions and guided tours, or simply relax on the sandy shores. The choice is yours.</p>
+                <!--I had to take out some of this text. It would not fit into mobile sizes for display and caused overlapping
+                "hether you're an explorer craving hiking trails, or a family in search of quality time, Moffat Bay Marina & Lodge"-->
+                <p>We have has something for everyone. Explore the beauty of Moffat Bay with our many attractions and guided tours, or simply relax on the sandy shores. The choice is yours.</p>
             </div>
             <div class="menu-item info"><button>Learn More</button></div> 
         </div>
@@ -72,10 +74,12 @@
             <h3>Our Rooms</h3><!--took this out, what do you think??? look at both ways to decide-->
             <!--I think it looks better in, I want it to look as close tot he prototype as possible, she is nitpicky-->
             <h1>The Perfect Space</h1>
-            <p>At Moffat Bay Marina & Lodge, our luxurious accommodation offers a welcoming retreat after a day on the water. Whether you are a single mom looking for a family getaway, a business executive looking for a company retreat, or a newlywed couple planning their honeymoon – we can provide the perfect space for your stay.  Wake up to breathtaking sunrises over the bay, unwind under a starlit sky, or prepare yourself for a new adventure. Our staff is ready to pamper and serve you today!</p>
+            <p>At Moffat Bay Marina & Lodge, our luxurious accommodation offers a welcoming retreat after a day on the water. We can provide the perfect space for your stay.  Wake up to breathtaking sunrises over the bay, unwind under a starlit sky, or prepare yourself for a new adventure. Our staff is ready to pamper and serve you today!</p>
+            <!-- I took this bit out, to decrease the amount of text and to keep things more genreal. What do yo think??
+                "Whether you are a single mom looking for a family getaway, a business executive looking for a company retreat, or a newlywed couple planning their honeymoon –"-->
         </div>
         <div class="rooms-gallery">
-            <div class="image-text-container">
+            <div class="rooms-text-container">
                 <img id="room_1" src="media/site/queen_bed.png" alt="Room 1">
                 <p>1 GUEST</p>
                 <h3>Queen Bed</h3>
@@ -83,12 +87,12 @@
                 <p>1-2 GUEST</p>
                 <h3>King Bed</h3>
             </div>
-            <div class="image-text-container">
+            <div class="rooms-text-container">
                 <img id="room_3" src="media/site/double_queen_cropped.png" alt="Room 1">
                 <p>2-5 GUEST</p>
                 <h3>Double Queen Beds</h3>
             </div>
-            <div class="image-text-container">
+            <div class="rooms-text-container">
                 <img id="room_4" src="media/site/double_full.png" alt="Room 2">
                 <p>2-4 GUESTS</p>
                 <h3>Double Full Beds</h3>
@@ -109,12 +113,39 @@
         </div>
         <img id="about-image" src="media/site/sailing_cropped.png" alt="Sailing">
     </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
+    <div class="amenities-preview">
+        <div class="amenities-text">
+            <h1>CLASSIC ROOMS & AMENITIES</h1>
+            <p>Amet minim mollit non deserunt ullamco est
+                sit aliqua dolor do amet sint. Velit officia
+                consequatduis enim.</p>
+            <p><img id="five-stars" src="media/site/5_stars.png" alt="Stars"><br>500+ Reviews</p>
+        </div>
+        <div class="amenities-gallery">
+            <div class="amenities-img-container">
+                <img id="best-rooms" src="media/site/sky_room.png" alt="Bed">
+                <h3>THE BEST ROOMS</h3>
+                <p>Amet minim mollit non deserunt ullamco est
+                    sit aliqua dolor do</p>
+            </div>
+            <div class="amenities-img-container">
+                <img id="lounge-bar" src="media/site/mixed_drink.jpg" alt="Bar">
+                <h3>LOUNGE BAR</h3>
+                <p>Amet minim mollit non deserunt ullamco est
+                    sit aliqua dolor doT</p>
+            </div>
+            <div class="amenities-img-container">
+                <img id="restaurant" src="media/site/restaurant.jpg" alt="Restaurant">
+                <h3>RESTAURANT</h3>
+                <p>Amet minim mollit non deserunt ullamco est
+                    sit aliqua dolor do</p>
+            </div>  
+            <div class="amenities-img-container">
+                <img id="island-marina" src="media/site/colorfull_dock.jpg" alt="Marina">
+                <h3>ISLAND MARINA</h3>
+                <p>Amet minim mollit non deserunt ullamco est
+                    sit aliqua dolor do</p>
+            </div>  
+        </div>
     </div>
 {% endblock %}
