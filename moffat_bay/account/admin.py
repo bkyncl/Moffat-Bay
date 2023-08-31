@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from account.models import Account, MailingList
+from django.contrib.auth.models import Group
 
 
 #Custom user account actions for within the admin page: 
@@ -30,6 +31,10 @@ class AccountAdmin(UserAdmin):
 admin.site.register(Account, AccountAdmin)
 admin.site.register(MailingList)
 
+#change admin site titles/headers
 admin.site.site_header = "Moffat-Bay Administration"
 admin.site.site_title = "Moffat-Bay Administration"
-admin.site.index_title = "Moffat-Bay Administration"
+admin.site.index_title = "Database Administration"
+
+#remove groups from admin site (groups are defaulted with built in users, we are using custom user models)
+admin.site.unregister(Group)
