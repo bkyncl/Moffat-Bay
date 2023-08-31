@@ -39,16 +39,21 @@
                     <div class="menu-item"><a href="#">Attractions</a></div>
                     <div class="menu-item"><a href="#">Reservations</a></div>
                     <div class="menu-item"><a href="#"><img src="/media/site/search.png" alt="Logo">My Reservation</a></div>
+                    <div class="menu-item"><a href="#">About Us</a></div>
                     {% if user.is_authenticated %}
-                    <div class="menu-item"><a href="{% url 'profile' %}">Profile</a></div>
-                    {% if user.is_superuser %}
-                    <div class="menu-item"><a href="/admin/">Admin</a></div>
-                    {% endif %}
-                    <div class="menu-item"><a href="{% url 'logout' %}">Logout</a></div>
+                    <div class="menu-item dropdown">
+                        <div class="menu-item dropdown-item"><a href="#" class="dropdown-toggle">My Account</a></div>
+                        <div class="dropdown-content">
+                            <div class="menu-item dropdown-item"><a href="{% url 'profile' %}">My Profile</a></div>
+                            {% if user.is_superuser %}
+                            <div class="menu-item dropdown-item"><a href="/admin/">Admin</a></div>
+                            {% endif %}
+                            <div class="menu-item dropdown-item"><a href="{% url 'logout' %}">Logout</a></div>
+                        </div>
+                    </div>
                     {% else %}
                     <div class="menu-item"><a href="{% url 'login' %}">Login</a></div>
                     {% endif %}
-                    <div class="menu-item"><a href="#">About Us</a></div>
                     <div class="menu-item"><button>Book Now</button></div>
                 </div>
             </nav>
