@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from account.models import Account
-from django.contrib.auth.models import Group
+from account.models import Account, MailingList
 
 
 #Custom user account actions for within the admin page: 
@@ -9,7 +8,6 @@ from django.contrib.auth.models import Group
 @admin.action(description='Mark as inactive')
 def mark_inactive(selc, request, queryset):
     queryset.update(is_active=False)
-
 
 #Custom Account Display for the Admin page. Records table will display
 #email, first and last name, phone. can search by same fields
@@ -30,4 +28,8 @@ class AccountAdmin(UserAdmin):
 
 #registers the account model and account admin options with the admin page
 admin.site.register(Account, AccountAdmin)
+admin.site.register(MailingList)
 
+admin.site.site_header = "Moffat-Bay Administration"
+admin.site.site_title = "Moffat-Bay Administration"
+admin.site.index_title = "Moffat-Bay Administration"

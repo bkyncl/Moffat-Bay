@@ -8,6 +8,12 @@
 <div class="banner">
     <img src="/media/site/landing_header.jpg" alt="Image">
     <div class="overlay-register">
+        {% if messages %}
+            <br>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
         <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Create a New Account</h3></br>

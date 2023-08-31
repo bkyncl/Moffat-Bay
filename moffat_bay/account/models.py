@@ -52,7 +52,8 @@ class Account(AbstractBaseUser):
     hide_email = models.BooleanField(default=True)
     image = models.ImageField(default='profile_pics/default.jpg', upload_to='profile_pics')
 
-    
+    class Meta:
+        verbose_name_plural = "Accounts"
 
     objects = MyAccountManager()
 
@@ -79,3 +80,14 @@ class Account(AbstractBaseUser):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
+class MailingList(models.Model):
+    email = models.EmailField(verbose_name="email", max_length=60, unique=True)
+
+    class Meta:
+        verbose_name_plural = "Mailing List"
+
+    def __str__(self) -> str:
+        return self.email
+    
+    def __str__(name) -> str:
+        return name.email

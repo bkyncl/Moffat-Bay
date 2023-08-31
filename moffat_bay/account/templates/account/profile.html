@@ -25,10 +25,10 @@
             <p>Member since: {{ user.date_joined }}</p>
         </div>
         <div class="menu-item">
-            <button onclick=window.location.href="{% url 'update_profile' %}">Update Profile</button>
+            <a href="{% url 'update_profile' %}">Update Profile</a><br><br>
         </div>
         <div class="menu-item">
-            <button onclick=window.location.href="{% url 'change_password' %}">Change Password</button>
+            <a href="{% url 'change_password' %}">Change Password</a>
         </div>
     </div>
 </div>

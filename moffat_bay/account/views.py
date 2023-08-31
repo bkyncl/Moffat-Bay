@@ -17,6 +17,8 @@ def register(request):
             name = form.cleaned_data.get('first_name') + " " + form.cleaned_data.get('last_name')
             messages.success(request, f'User account has been created for {name}!')
             return redirect('login')
+        else:
+            messages.error(request, form.errors)
     else:
         form = AccountForm()
         
@@ -41,6 +43,8 @@ def update_profie(request):
             form.save()
             messages.success(request, f'Your account information has been updated!')
             return redirect('profile')
+        else:
+            messages.error(request, form.errors)
     else:
         form = AccountUpdateForm(instance=request.user)
 
@@ -62,7 +66,7 @@ def change_passowrd(request):
             messages.success(request, 'Your password was successfully updated!')
             return redirect('profile')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, form.errors)
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'account/change_password.html', {'form': form, 'title':'Change your password'})
