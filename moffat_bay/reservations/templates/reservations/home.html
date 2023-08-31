@@ -8,11 +8,6 @@
         <img src="media/site/landing_header.jpg" alt="Image">
     {% if user.is_authenticated %}
         <div class="overlay">
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        {% endif %}
             <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Welcome back {{user.first_name}}!</h3></br>
