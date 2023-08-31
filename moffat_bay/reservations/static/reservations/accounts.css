@@ -177,7 +177,7 @@
     font-weight: bold;
 }
 
-.form-register input {
+.form-register input{
     padding: 5px;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -204,6 +204,15 @@
     margin-top: 5px;
     margin-bottom: 15px;
     margin-left: 30px;
+    margin-right: 20px;
+    width: 200px;
+}
+
+.form-register select {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 10px;
     margin-right: 20px;
     width: 200px;
 }
