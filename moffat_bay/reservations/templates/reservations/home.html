@@ -6,6 +6,11 @@
 {% block content %}
     <div class="banner">
         <img src="media/site/landing_header.jpg" alt="Image">
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
     {% if user.is_authenticated %}
         <div class="overlay">
             <img src="/media/site/logo1_variant1.png" alt="Logo">
