@@ -70,11 +70,10 @@
                 <div class="menu">
                     <div class="menu-item"><a href="{% url 'reservations-home' %}">Home</a></div>
                     <div class="menu-item"><a href="#">Reservations</a></div>
-                    <!-- added logic to switch login menu item based on user.is_authenticated -->
                     {% if user.is_authenticated %}
-                        <div class="menu-item"><a href="{% url 'logout' %}">Logout</a></div> <!-- Display logout option for authenticated user -->
+                        <div class="menu-item"><a href="{% url 'logout' %}">Logout</a></div> 
                     {% else %}
-                        <div class="menu-item"><a href="{% url 'login'%}">Login</a></div> <!-- else logi option -->
+                        <div class="menu-item"><a href="{% url 'login'%}">Login</a></div> 
                     {% endif %}
                 </div>
             </div>
