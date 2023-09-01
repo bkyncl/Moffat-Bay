@@ -16,20 +16,19 @@
         {% endif %}
         <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
-                <h3>Login</h3></br>
+                <h3>Login</h3>
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-control">
                         {{ form }}
                     </fieldset>
-                    <div class="menu-item">
-                        <button type="submit">Login</button></br></br>
-                    </div>
-                    <div class="menu-item">
-                            <a href="{% url 'password_reset' %}">Forgot Password?</a></br></br>
-                    </div>
-                    <div class="menu-item">
-                            New User? <br> <a href="{% url 'register' %}">Register Here</a>
+                    <div class="option-container">
+                        <button class="login-button" type="submit">Login</button>
+                        <div class="menu-item" id="forgot-password">
+                            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                        </div>
+                        <div class="new-user">New User?</div>
+                        <button class="login-button register-button"><a href="{% url 'register' %}">Register Here</a></button>
                     </div>
                 </form>
                 </div>

@@ -3,7 +3,7 @@
 {% load static %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'reservations/accounts.css' %}"/>
-<link rel="icon" type"/image/x-icon" href="media/site/anchorwhite.png">
+<link rel="icon" type="/image/x-icon" href="media/site/anchorwhite.png">
 {% endblock %}
 {% block content %}
 <div class="banner">
@@ -18,7 +18,7 @@
         <img src="/media/site/logo1_variant1.png" alt="Logo">
         <div class="text-content">
             <img class="account-img" src="{{ user.image.url }}">
-            <h3>{{user.first_name}} {{user.last_name}}'s Profile:</h3></br>
+            <h3>{{user.first_name}} {{user.last_name}}'s Profile:</h3>
             <h4>Email: {{ user.email }}</h4>
             <p class="text-secondary">Phone: {{ user.phone }}</p>
             <p>Address: <br>{{ user.street }}<br>{{ user.city }}, {{ user.state }} {{ user.zip }}</p>

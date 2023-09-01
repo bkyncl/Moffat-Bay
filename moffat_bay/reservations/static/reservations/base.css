@@ -30,24 +30,25 @@ nav {
   min-height: 5vh;
   
 }
-.menu-item button {
+.menu-button-item a{
   color: #fff;
-  background-color: #1E1E1E;
+  text-decoration: none;
+  background-color: #121212;
   padding: .5vw 2.8vw; 
-  margin: 0 5.5vw 0 3vw;
-  border: 3px solid #1E1E1E;
+  margin: 0 5.5vw 0 2vw;
+  border: 3px solid #121212;
   border-radius: 40px;
   cursor: pointer;
   font-weight: 600;
   font-size: .8vw;
 }
-.menu-item button:hover {
+.menu-button-item a:hover {
   background-color: #82BB81;
-  color: #1E1E1E;
+  color: #121212;
 }
 .menu-item a {
   text-decoration: none;
-  color: #1E1E1E;
+  color: #121212;
   font-weight: 600;
   font-size: .9vw; 
   position: relative;
@@ -73,7 +74,7 @@ nav {
 }
 .hamburger {
   font-size: 30px;
-  color: #1E1E1E;
+  color: #121212;
   cursor: pointer;
   position: relative;
   display: block;
@@ -84,7 +85,7 @@ nav {
   display: block;
   width: 20px;
   height: 2px;
-  background-color: #1E1E1E;
+  background-color: #121212;
   margin: 5px 0;
   transition: 0.3s;
 }
@@ -92,8 +93,8 @@ nav {
 .hamburger{
   display: none;
 }
-/*media screen styling for navigation effective below 730px*/
-@media only screen and (max-width: 730px){
+/*media screen styling for navigation effective below 720px*/
+@media only screen and (max-width: 720px){
   nav label.hamburger{
     display: block;
     padding-right: 30px;
@@ -131,12 +132,12 @@ nav {
     margin-right: 0.2vw; 
     width: 15px; 
   }
-  .menu-item button {
+  .menu-button-item a {
     padding: 5px 30px; 
     font-size: 10px;
     margin: 5px;
   }
-  .menu-item button:hover {
+  .menu-button-item a:hover {
     background-color: #c1dfe2;
   }
   .menu-item a {
@@ -163,7 +164,7 @@ nav {
   right: -0.4vw; 
   bottom: -.4vh; 
   height: 2px; 
-  background: #1E1E1E;
+  background: #121212;
   transform: scaleX(0);
   transition: 0.3s;
 }
@@ -335,6 +336,54 @@ nav {
   }
   .email-form button:hover {
     background-color: #82BB81;
+  }
+}
+
+/* External Shared component styling here for page extension */
+.overlay {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  position: absolute;
+  top: 12%;
+  left: 38%;
+  width: 23vw;
+  height: auto;
+  background-color:rgba(245, 243, 243, 0.637); 
+  border-radius: 20px;
+  padding-bottom: 1.5vw;
+}
+.text-content {
+  text-align: center;
+}
+.text-content h3 {
+  font-size: 1.3vw;
+}
+.text-content p {
+  font-size: .8vw;
+  padding: 1vw 4vw 1vw 4vw;
+  line-height: 1.7em;
+}
+.overlay img {
+  margin: 1vw;
+  max-width: 20vw;
+  min-width: 18vw;
+}
+
+.banner {
+  height: auto; 
+  overflow: hidden;
+}
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 5vh; 
+  padding: 0; 
+}
+@media (max-width: 750px) { 
+  .overlay {
+      border-radius: 10px;
   }
 }
 

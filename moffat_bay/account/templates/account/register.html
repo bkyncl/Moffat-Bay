@@ -14,51 +14,35 @@
                 {{ message }}
             {% endfor %}
         {% endif %}
-        <img src="/media/site/logo1_variant1.png" alt="Logo">
-            <div class="text-content">
-                <h3>Create a New Account</h3></br>
-                <h5 style="font-weight:normal; ">* indicates required fields</h5><br>
+        <!-- <img src="/media/site/logo1_variant1.png" alt="Logo"> Took out the logo to make room for the form to fit page. It was to large otherwise-->
+            <div class="text-content form-register">
+                <h3>Create a New Account</h3>
+                <p style="font-weight:normal; ">* indicates required fields</p>
+                <p>*Passwords Requirements: 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Characters and must be at least 8 characters long</p>
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-register">
-                        <table class="register-table">
-                            <tr>
-                                <td>*First Name: {{form.first_name}}</td>
-                                <td>*Last Name: {{form.last_name}}</td>
-                            </tr>
-                            <tr>
-                                <td>Address:{{form.street}}</td>
-                                <td>City:{{form.city}}</td>
-                            </tr>
-                            <tr>
-                                <td>State:{{form.state}}</td>
-                                <td>Zipcode:{{form.zip}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' class="register-table-center">*Phone Number: {{form.phone}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' class="register-table-center">*Email Address: {{form.email}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' class="register-table-center-password"><b>Passowrds Requirements:</b><br>1 Uppercase, 1 Lowercase, 1 Number, 1 Special Characters and must be at least 8 characters long<br>Password cannot be entirely numeric, too similar to your personal information, and can't be commonly used passwords.</td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' class="register-table-password1 register-table-center">*Enter Password:{{form.password1}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' class="register-table-center">*Confirm Password:{{form.password2}}</td>
-                            </tr>
-                        </table>
+                        <div class="register-grid-container">
+                            <div class="register-section"><div class="register-label">*First Name:&nbsp; </div><div class="register-input">{{form.first_name}}</div></div>
+                            <div class="register-section"><div class="register-label">*Last Name:&nbsp;</div><div class="register-input">{{form.last_name}}</div> </div>
+                            <div class="register-section"><div class="register-label">*Email Address:&nbsp;</div><div class="register-input">{{form.email}}</div> </div>
+                            <div class="register-section"><div class="register-label">Address:&nbsp;</div><div class="register-input">{{form.street}}</div></div>
+                            <div class="register-section"><div class="register-label">*Phone:&nbsp;</div><div class="register-input">{{form.phone}}</div> </div>
+                            <div class="register-section"><div class="register-label">City:&nbsp;</div><div class="register-input">{{form.city}}</div> </div>
+                            <div class="register-section"><div class="register-label">*Enter Password:&nbsp;</div><div class="register-input" >{{form.password1}}</div></div>
+                            <div class="register-section"><div class="register-label">State:&nbsp;</div><div class="register-input">{{form.state}}</div> </div>
+                            <div class="register-section"><div class="register-label">*Confirm Password:&nbsp;</div><div class="register-input" >{{form.password2}}</div></div>
+                            <div class="register-section"><div class="register-label">Zipcode:&nbsp;</div><div class="register-input">{{form.zip}}</div> </div>
+                        </div>
                     </fieldset>
                     <div class="menu-item">
-                        <button type="submit">Create Account</button></br></br>
+                        <button class="login-button" type="submit">Create Account</button>
                     </div>
-                    <div class="menu-item">
-                            Already Have an Account?   <a href="{% url 'login' %}">Login Here</a>
+                    <div class="menu-item bottom-links">
+                        <h5>Already Have an Account?</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'login' %}">Login Here</a>
                     </div>
                 </form>
-                </div>
             </div>
         </div>
+    </div>
 {% endblock content %}
