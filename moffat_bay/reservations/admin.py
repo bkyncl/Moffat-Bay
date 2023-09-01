@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Stay_Costs
 
+#admin classes to handle how they appear on admin page
 class CostAdmin(admin.ModelAdmin):
 
     list_display = ('guests', 'price')
@@ -8,10 +9,10 @@ class CostAdmin(admin.ModelAdmin):
     ordering = ['guests']
 
     def has_add_permission(self, request):
-        return False
+        return True
     
     def has_delete_permission(self, request, obj=None):
-        return False
+        return True
     
     def has_change_permission(self, request, obj=None):
         return True
@@ -19,3 +20,4 @@ class CostAdmin(admin.ModelAdmin):
 
 # Register models for admin page here.
 admin.site.register(Stay_Costs, CostAdmin)
+

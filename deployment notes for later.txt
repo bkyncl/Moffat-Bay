@@ -3,3 +3,9 @@ to remove password history from django admin page-
 go into python/lib/site-packages/django-password-validators/password-history/admin.py
 and remove the admin.site.register tags from the admin.py file. 
 ---This 3rd party app self registers, and you must unregister it from itself to get rid of it in the moffat-bay admin page. 
+
+admin for reservations - 
+will need to limit permissions for only admin/superuser that can make changes to 
+the lodge rooms, room choices, and nightly costs. dont want just anyone being able to login and 
+change costs or what rooms the lodge has. 
+*this is in the reservations/admin.py. permissions are in, just need to change all to false for theses models

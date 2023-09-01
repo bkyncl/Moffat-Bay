@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #web-app project apps:
     'account',
     'reservations',
+    'rooms',
 
     #3rd party apps:
     'phonenumber_field',

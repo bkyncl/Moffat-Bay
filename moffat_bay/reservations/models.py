@@ -11,3 +11,7 @@ class Stay_Costs(models.Model):
 
     def __str__(self):
         return f"{self.guests} guests per night: ${self.price}"
+
+
+
+#reservations model - saving the actual reservations
