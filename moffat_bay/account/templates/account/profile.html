@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 <div class="banner">
-    <img src="/media/site/landing_header.jpg" alt="Image">
+    <img src="/media/site/user_banner2.jpg" alt="Image">
     <div class="overlay">
         {% if messages %}
         <br>
@@ -16,7 +16,7 @@
             {% endfor %}
         {% endif %}
         <img src="/media/site/logo1_variant1.png" alt="Logo">
-        <div class="text-content">
+        <div class="text-content login">
             <img class="account-img" src="{{ user.image.url }}">
             <h3>{{user.first_name}} {{user.last_name}}'s Profile:</h3>
             <h4>Email: {{ user.email }}</h4>

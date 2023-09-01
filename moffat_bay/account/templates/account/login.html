@@ -6,8 +6,8 @@
 {% endblock %}
 {% block content %}
 <div class="banner">
-    <img src="/media/site/landing_header.jpg" alt="Image">
-    <div class="overlay">
+    <img src="/media/site/user_banner2.jpg" alt="Image">
+    <div class="overlay accounts-overlay">
         {% if messages %}
             <br>
             {% for message in messages %}
@@ -24,9 +24,9 @@
                     </fieldset>
                     <div class="option-container">
                         <button class="login-button" type="submit">Login</button>
-                        <div class="menu-item" id="forgot-password">
-                            <a href="{% url 'password_reset' %}">Forgot Password?</a>
-                        </div>
+
+                        <a class="menu-item" id="forgot-password" href="{% url 'password_reset' %}">Forgot Password?</a>
+
                         <div class="new-user">New User?</div>
                         <button class="login-button register-button"><a href="{% url 'register' %}">Register Here</a></button>
                     </div>
