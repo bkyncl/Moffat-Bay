@@ -33,11 +33,15 @@
   margin: 0;
   font-size: .9vw;
   font-weight: 400;
-  padding: .4vw 2vw;
+  padding: .5vw 2vw;
   border: .2vw solid #121212;
 }
-.menu-button-item {
-  margin: 2vw;
+#info-button {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 1vw;
 }
 #info-button a:hover {
     background-color: rgba(245, 243, 243, 0.651);
@@ -307,9 +311,9 @@
     font-size: .9vw;
     line-height: 1.5em;
     width: 20vw;
+    margin-bottom: 2vw;
 }
-.amenities-text h1,
-.amenities-text p {
+.amenities-text h1 {
     margin-bottom: 4vw;
 }
 .amenities-text #five-stars {
