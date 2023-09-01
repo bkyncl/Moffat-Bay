@@ -1,19 +1,26 @@
 from django.contrib import admin
-from .models import Stay_Costs
+from .models import Stay_Costs#, Reservations
 
+#admin classes to handle how they appear on admin page
 class CostAdmin(admin.ModelAdmin):
+
     list_display = ('guests', 'price')
-    search_fields = ('guests', 'price')
     readonly_fields = ('guests',)
     ordering = ['guests']
 
-    filter_horizontal = ()
-    list_filter = ()
-    fieldsets = ()
+    def has_add_permission(self, request):
+        return True
+    
+    def has_delete_permission(self, request, obj=None):
+        return True
+    
+    def has_change_permission(self, request, obj=None):
+        return True
+    
+#add admin class for reservations model
+
 
 # Register models for admin page here.
 admin.site.register(Stay_Costs, CostAdmin)
-
-#custom admin site title
-
+#register reservations model and admin here
 

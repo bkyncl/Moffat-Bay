@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class AccountConfig(AppConfig):
+class RoomsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'account'
-    verbose_name ="Account Manager"
+    name = 'rooms'
+    verbose_name ="Lodge Room Manager"

@@ -6,23 +6,19 @@ from PIL import Image
 #custom user account manager - integrates django's user backend with our custom user account model
 #this integrates both so we can use out custom model, and use email to login instead of usernames
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, password=None):
         if not email:
             raise ValueError("Users must have an email address.")
-        if not username:
-            raise ValueError("Users must have a username.")
         user = self.model(
             email=self.normalize_email(email),
-            username=username,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, email, username, password):
+    def create_superuser(self, email, password):
         user = self.create_user(
             email=self.normalize_email(email),
-            username=username,
             password=password,
         )
         user.is_admin=True

@@ -8,11 +8,6 @@
         <img src="media/site/landing_header.jpg" alt="Image">
     {% if user.is_authenticated %}
         <div class="overlay">
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        {% endif %}
             <img src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content">
                 <h3>Welcome back {{user.first_name}}!</h3></br>
@@ -109,7 +104,7 @@
             <span class="aboutus-line"></span>
             <p>At Moffat Bay Marina & Lodge, we are more than just a destination; we are a sanctuary for those seeking a harmonious blend of aquatic adventure, relaxation, and natural beauty. Nestled along the tranquil shores of Moffat Bay, our marina and lodge offer an unparalleled escape from the ordinary.</p>
             <p>Escape to Moffat Bay Marina & Lodge and discover the magic of the water. Your voyage begins here.</p>
-                <div class="menu-item"><button id="explore-button">Explore</button></div> 
+            <div class="menu-item"><button id="explore-button">Explore</button></div> 
         </div>
         <img id="about-image" src="media/site/sailing_cropped.png" alt="Sailing">
     </div>
