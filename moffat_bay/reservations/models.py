@@ -1,4 +1,6 @@
 from django.db import models
+from account.models import Account
+from rooms.models import RoomChoices, Rooms
 
 #stay costs model
 class Stay_Costs(models.Model):
@@ -15,3 +17,14 @@ class Stay_Costs(models.Model):
 
 
 #reservations model - saving the actual reservations
+#class Reservations(models.Model):
+#    reservationID = models.IntegerField(primary_key=True, auto_created=True)
+#    confirmationKey =models.CharField(max_length=8,  null=False)
+#    userID = models.ForeignKey(Account, to_field='id', on_delete=models.PROTECT)
+#    roomID = models.ForeignKey(Rooms, to_field='roomID', on_delete=models.PROTECT)
+#    guests = models.IntegerField(default=1, max=5, null=False)
+#    totalPrice = models.IntegerField(null=False)
+#    checkInDate = models.DateField(null=False)
+#    checkOutDate = models.DateField(null=False)
+
+#add class meta, and return strings. 
