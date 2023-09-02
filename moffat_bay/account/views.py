@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from account.forms import AccountForm, AccountUpdateForm
+from account.forms import AccountForm, AccountUpdateForm, MailListForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
@@ -24,6 +24,7 @@ def register(request):
         
     context = {
         'form': AccountForm,
+        'mailform': MailListForm,
         'title': 'Register New Account',
     }
     return render(request, 'account/register.html', context)
@@ -31,7 +32,11 @@ def register(request):
 #View profile view - returns profile page, showing user account profile. Requires user to be logged in. 
 @login_required
 def profile(request):
-    return render(request, 'account/profile.html', {'title':'Your Profile'})
+    context = {
+        'title':'Your Profile',
+        'mailform': MailListForm,
+    }
+    return render(request, 'account/profile.html', context)
 
 #Update profile view - provides a form for users to update their profile, including address, phone, email. 
 #if form is POST and valid, saves the new info to db. if not, renders the form on update_profile.html.
@@ -50,6 +55,7 @@ def update_profie(request):
 
     context = {
         'form' : form,
+        'mailform': MailListForm,
         'title': 'Update Profile',
     }
 
@@ -69,4 +75,9 @@ def change_passowrd(request):
             messages.error(request, form.errors)
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'account/change_password.html', {'form': form, 'title':'Change your password'})
+        context = {
+            'mailform': MailListForm,
+            'form': form,
+            'title':'Change your password'
+        }
+    return render(request, 'account/change_password.html', context)
