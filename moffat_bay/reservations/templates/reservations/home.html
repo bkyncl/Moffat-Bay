@@ -7,9 +7,9 @@
     <div class="banner">
         <img src="media/site/landing_header.jpg" alt="Image">
     {% if user.is_authenticated %}
-        <div class="overlay">
-            <img src="/media/site/logo1_variant1.png" alt="Logo">
-            <div class="text-content">
+        <div style="height: 15vw;" class="overlay accounts-overlay">
+            <img style="margin: 1vw;"src="/media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content form-register">
                 <h3>Welcome back {{user.first_name}}!</h3></br>
             </div>
         </div>

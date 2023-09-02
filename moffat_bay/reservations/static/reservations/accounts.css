@@ -23,7 +23,6 @@
 .accounts-overlay img {
     margin: 2vw 0 .5vw 0;
     max-width: 26vw;
-    min-width: 15vh;
 } 
 .option-container {
     display: flex;
@@ -81,30 +80,6 @@
     width: 20vw;
     height: 2vw;
 }
-.form-control-forgot-password {
-    text-align: center;
-    border: 0;
-    padding-top: .3vw;
-}
-.form-control-forgot-password input{
-    padding: 5px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-
-}
-.form-control-reset-password {
-    text-align: center;
-    border: 0;
-    max-width: 90%;
-    margin-left: 5%;
-    
-}
-.form-control-reset-password input{
-    padding: 5px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
 .form-control input:invalid{
     border: 1.5px solid red;
 }
@@ -150,9 +125,8 @@
     width: 70%;
 }
 .overlay-register img {
-    margin: 20px;
-    max-width: 20vw;
-    min-width: 18vh;
+    margin: 2vw 0 .5vw 0;
+    max-width: 26vw;
 }
 .register-grid-container {
     display: grid;
@@ -169,13 +143,20 @@
     justify-content: flex-end;
     align-items: center; /* Center vertically */
 }
+.register-grid-container .profile {
+    justify-content: flex-start;
+    border-bottom: .2vw solid #121212;
+}
 .register-input {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .register-input input,
-#id_state {
+#id_state,
+#id_old_passowrd,
+#id_new_passowrd1,
+#id_new_passowrd2 {
     width: 20vw;
     height: 1.8vw;
 }
@@ -199,6 +180,13 @@
     justify-content: center;
     align-items: center;
 }
+#account-img {
+    border: .2vw solid #121212;
+    border-radius: 50%;
+    height: auto;
+    width: 10vw;
+    margin: 0;
+}
 
 /* Default font sizes */
 
@@ -215,7 +203,10 @@
     font-size: 1.3vw;
 }
 .register-input input,
-#id_state {
+#id_state,
+#id_old_passowrd,
+#id_new_passowrd1,
+#id_new_passowrd2 {
     font-size: 1vw;
 }
 #id_phone_0 {
@@ -246,6 +237,52 @@
     font-weight: 500;
 }
 
+.register-section.profile .register-label {
+    font-size: 1.5vw;
+}
+
+.register-section.profile .register-input {
+    font-size: 1.5vw;
+}
+#div_id_new_password1 .form-group .form-control,
+#div_id_new_password2 .form-group .form-control {
+    text-align: center; /* Center-align the text content */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center-align child elements horizontally */
+    justify-content: center;
+    font-size: 1.3vw; 
+    font-weight: 500;/* Center-align child elements vertically */
+}
+ #div_id_new_password1 .passwordinput {
+    margin-left: 23.7vw;
+}
+/* #div_id_new_password2 .passwordinput {
+    margin-left: 5.9vw;
+} */
+.text-muted {
+    text-align: center; /* Center-align the text content */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center-align child elements horizontally */
+    justify-content: center;
+}
+.text-muted ul {
+    padding: 1vw;
+    width: 60%;
+}
+.text-muted ul li {
+    padding: .1vw;
+    list-style: none;
+}
+#error_1_id_new_password2,
+.errorlist,
+.invalid-feedback {
+    font-size: 1.3vw;
+}
+.errorlist ul li{
+    list-style: disc;
+}
 /* Media query for smaller screens */
 @media screen and (max-width: 750px) {
     .text-content .new-user,
@@ -262,7 +299,10 @@
         font-size: 1.8vw;
     }
     .register-input input,
-    #id_state {
+    #id_state,
+    #id_old_passowrd,
+    #id_new_passowrd1,
+    #id_new_passowrd2 {
         font-size: 1.5vw;
     }
     #id_phone_0 {
@@ -284,14 +324,6 @@
         font-size: 1.5vw;
     }
 
-    .form-control input {
-        font-size: 1vw;
-    }
-
-    .form-control label {
-        font-size: 1.8vw;
-        font-weight: 500;
-    }
     .login-button  {
         cursor: pointer;
         color: #fff;
@@ -317,7 +349,10 @@
         height: 2.7vw;
     }
     .register-input input,
-    #id_state {
+    #id_state,
+    #id_old_passowrd,
+    #id_new_passowrd1,
+    #id_new_passowrd2 {
         width: 20vw;
         height: 2.6vw;
     }
@@ -331,5 +366,10 @@
     }
     .register-button a {
         padding: 1.1vw 0;
+    }
+    #account-img {
+        height: auto;
+        width: 12vw;
+        margin: 0;
     }
 }

@@ -8,28 +8,34 @@
 {% block content %}
 <div class="banner">
     <img src="/media/site/user_banner2.jpg" alt="Image">
-    <div class="overlay">
+    <div class="overlay-register" style="padding-bottom: 4vw;">
         {% if messages %}
         <br>
             {% for message in messages %}
                 {{ message }}
             {% endfor %}
         {% endif %}
-        <img src="/media/site/logo1_variant1.png" alt="Logo">
-        <div class="text-content login">
-            <img class="account-img" src="{{ user.image.url }}">
-            <h3>{{user.first_name}} {{user.last_name}}'s Profile:</h3>
-            <h4>Email: {{ user.email }}</h4>
-            <p class="text-secondary">Phone: {{ user.phone }}</p>
-            <p>Address: <br>{{ user.street }}<br>{{ user.city }}, {{ user.state }} {{ user.zip }}</p>
-            <p>Member since: {{ user.date_joined }}</p>
+        <img src="/media/site/logo1_variant1.png" alt="Logo" >
+        <div class="text-content form-register">
+            <img id="account-img" src="{{ user.image.url }}">
+            <h3 style="padding: 1.5vw;">{{user.first_name}} {{user.last_name}}'s Profile:</h3>
+            <fieldset class="form-register">
+                <div class="register-grid-container">
+                    <div class="register-section profile"><label class="register-label">First Name:&nbsp;</label><div class="register-input">{{user.first_name}}</div></div>
+                    <div class="register-section profile"><div class="register-label">Last Name:&nbsp;</div><div class="register-input">{{user.last_name}}</div> </div>
+                    <div class="register-section profile"><div class="register-label">Email Address:&nbsp;</div><div class="register-input">{{ user.email }}</div> </div>       
+                    <div class="register-section profile"><div class="register-label">Phone:&nbsp;</div><div class="register-input">{{ user.phone }}</div> </div>
+                    <div class="register-section profile"><div class="register-label">Address:&nbsp;</div><div class="register-input">{{ user.street }}</div></div>
+                    <div class="register-section profile"><div class="register-label">City:&nbsp;</div><div class="register-input">{{ user.city }}</div> </div>
+                    <div class="register-section profile"><div class="register-label">State:&nbsp;</div><div class="register-input">{{ user.state }}</div> </div>
+                    <div class="register-section profile"><div class="register-label">Zipcode:&nbsp;</div><div class="register-input">{{ user.zip }}</div> </div>
+                    <div class="register-section profile"><div class="register-label">Member since:&nbsp;</div><div class="register-input">{{ user.date_joined }}</div> </div>
+                </div>
+            </fieldset>
         </div>
-        <div class="menu-item">
-            <a href="{% url 'update_profile' %}">Update Profile</a><br><br>
-        </div>
-        <div class="menu-item">
-            <a href="{% url 'change_password' %}">Change Password</a>
-        </div>
+        <button class="login-button register-button"><a href="{% url 'update_profile' %}">Update Profile</a></button>
+        <br>
+        <button class="login-button register-button"><a href="{% url 'change_password' %}">Change Password</a></button>
     </div>
 </div>
 {% endblock content %}
