@@ -16,30 +16,28 @@
         {% endif %}
         <!-- <img src="/media/site/logo1_variant1.png" alt="Logo"> Took out the logo to make room for the form to fit page. It was to large otherwise-->
             <div class="text-content form-register">
-                <h3>Create a New Account</h3>
-                <p style="font-weight:normal; ">* indicates required fields</p>
+                <h2>Create a New Account</h2>
+                <p>* indicates required fields</p>
                 <p>*Passwords Requirements: 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Characters and must be at least 8 characters long</p>
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-register">
                         <div class="register-grid-container">
-                            <div class="register-section"><div class="register-label">*First Name:&nbsp; </div><div class="register-input">{{form.first_name}}</div></div>
+                            <div class="register-section"><label class="register-label">*First Name:&nbsp;</label><div class="register-input">{{form.first_name}}</div></div>
                             <div class="register-section"><div class="register-label">*Last Name:&nbsp;</div><div class="register-input">{{form.last_name}}</div> </div>
-                            <div class="register-section"><div class="register-label">*Email Address:&nbsp;</div><div class="register-input">{{form.email}}</div> </div>
-                            <div class="register-section"><div class="register-label">Address:&nbsp;</div><div class="register-input">{{form.street}}</div></div>
+                            <div class="register-section"><div class="register-label">*Email Address:&nbsp;</div><div class="register-input">{{form.email}}</div> </div>       
                             <div class="register-section"><div class="register-label">*Phone:&nbsp;</div><div class="register-input">{{form.phone}}</div> </div>
-                            <div class="register-section"><div class="register-label">City:&nbsp;</div><div class="register-input">{{form.city}}</div> </div>
-                            <div class="register-section"><div class="register-label">*Enter Password:&nbsp;</div><div class="register-input" >{{form.password1}}</div></div>
+                            <div class="register-section"><div class="register-label">Address:&nbsp;</div><div class="register-input">{{form.street}}</div></div>
                             <div class="register-section"><div class="register-label">State:&nbsp;</div><div class="register-input">{{form.state}}</div> </div>
-                            <div class="register-section"><div class="register-label">*Confirm Password:&nbsp;</div><div class="register-input" >{{form.password2}}</div></div>
+                            <div class="register-section"><div class="register-label">City:&nbsp;</div><div class="register-input">{{form.city}}</div> </div>
                             <div class="register-section"><div class="register-label">Zipcode:&nbsp;</div><div class="register-input">{{form.zip}}</div> </div>
+                            <div class="register-section"><div class="register-label">*Confirm Password:&nbsp;</div><div class="register-input" >{{form.password2}}</div></div>
+                            <div class="register-section"><div class="register-label">*Enter Password:&nbsp;</div><div class="register-input" >{{form.password1}}</div></div>
                         </div>
                     </fieldset>
-                    <div class="menu-item">
-                        <button class="login-button" type="submit">Create Account</button>
-                    </div>
+                    <button class="login-button" type="submit">Create Account</button>
                     <div class="menu-item bottom-links">
-                        <h5>Already Have an Account?</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'login' %}">Login Here</a>
+                        <h5>Already Have an Account?</h5>&nbsp;&nbsp;<a href="{% url 'login' %}">Login Here</a>
                     </div>
                 </form>
             </div>
