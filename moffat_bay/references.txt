@@ -1,0 +1,24 @@
+Code References:
+
+Django Documentation: https://docs.djangoproject.com/en/4.2/
+
+Additional Resources:
+W3Schools: https://www.w3schools.com/django/index.php
+TutorialsPoint: https://www.tutorialspoint.com/django/index.htm
+Django-Password-Validators: https://github.com/fizista/django-password-validators
+Django-Crispy-Forms: https://github.com/django-crispy-forms/django-crispy-forms
+Django-phonenumber_field: https://github.com/stefanfoulis/django-phonenumber-field
+Python-Pillow: https://python-pillow.org/
+
+
+Code taken/adapted from external sources: (location within project, References)
+
+/reservations/views/NightlyCostPriceUpdateView(FormView) & NightlyCostPriceChangeView(FormView)
+/reservations/admin/update_prices() & change_prices()
+Above code based on Article from DEV.to:
+Title: Creating Custom Admin Actions with Extra Data in Django: A Step-by-Step Guide
+Author: Ahmed Elboshi
+Date: 12-29-2022
+URL: https://dev.to/ahmed__elboshi/creating-custom-actions-with-extra-data-in-django-a-step-by-step-guide-oka
+Example from article adapted for Moffat-Bay project 
+

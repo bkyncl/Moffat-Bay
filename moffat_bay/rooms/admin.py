@@ -7,10 +7,10 @@ class RoomChoiceAdmin(admin.ModelAdmin):
     readonly_fields = ('choiceID',)
 
     def has_add_permission(self, request):
-        return True
+        return False
     
     def has_delete_permission(self, request, obj=None):
-        return True
+        return False
     
     def has_change_permission(self, request, obj=None):
         return True
@@ -20,13 +20,13 @@ class RoomsAdmin(admin.ModelAdmin):
     readonly_fields = ('roomID',)
 
     def has_add_permission(self, request):
-        return True
+        return False
     
     def has_delete_permission(self, request, obj=None):
-        return True
+        return False
     
     def has_change_permission(self, request, obj=None):
-        return True
+        return False
     
 admin.site.register(RoomChoices, RoomChoiceAdmin)
 admin.site.register(Rooms, RoomsAdmin)

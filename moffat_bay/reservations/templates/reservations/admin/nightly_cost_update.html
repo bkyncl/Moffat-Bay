@@ -1,0 +1,20 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    Current Prices:<br>
+        {% for cost in stay_costs %}
+            {{cost.guests}} Guests:   ${{cost.price}}<br>
+        {% endfor %}
+        <br><br>
+        {{ label }}<br><br>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form }}
+        </div>
+        <button type="submit" class="btn btn-primary">{% trans 'Update Prices' %}</button>
+    </form>
+{% endblock %}

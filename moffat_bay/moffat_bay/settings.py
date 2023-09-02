@@ -160,7 +160,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -173,6 +173,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Login settings
 LOGIN_REDIRECT_URL = 'reservations-home'
 LOGIN_URL = 'login'
 
@@ -189,5 +191,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# Email backend settings
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"

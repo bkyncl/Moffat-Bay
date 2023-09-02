@@ -4,4 +4,9 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='reservations-home'),
+    #add remaining site pages urls here
+
+    #additional admin page urls
+    path("update-pricing/", views.NightlyCostPriceUpdateView.as_view(), name="price_update"),
+    path("change-pricing/", views.NightlyCostPriceChangeView.as_view(), name="price_change"),
 ]
