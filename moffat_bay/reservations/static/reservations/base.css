@@ -247,6 +247,9 @@ nav {
   text-align: center;
   margin: 0 auto;
 }
+#text {
+  font-size: .7vw;
+}
 .footer-column h2 {
   font-size: 1.8vw;
   margin: 20px;
@@ -310,6 +313,9 @@ nav {
   .footer-column.subscribe p {
     font-size: 1vw;
     margin-bottom: 1vw;
+  }
+  .footer-column.subscribe #text {
+    font-size: 1vw;
   }
   .footer h3 {
     font-size: 2vw;

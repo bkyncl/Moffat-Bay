@@ -291,6 +291,9 @@
 .errorlist ul li{
     list-style: disc;
 }
+#text {
+    font-size: 1vw;
+}
 /* Media query for smaller screens */
 @media screen and (max-width: 750px) {
     .text-content .new-user,
