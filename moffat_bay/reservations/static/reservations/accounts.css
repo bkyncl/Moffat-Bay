@@ -244,8 +244,7 @@
 .register-section.profile .register-input {
     font-size: 1.5vw;
 }
-#div_id_new_password1 .form-group .form-control,
-#div_id_new_password2 .form-group .form-control {
+.change-password {
     text-align: center; /* Center-align the text content */
     display: flex;
     flex-direction: column; /* Stack child elements vertically */
@@ -254,22 +253,31 @@
     font-size: 1.3vw; 
     font-weight: 500;/* Center-align child elements vertically */
 }
- #div_id_new_password1 .passwordinput {
-    margin-left: 23.7vw;
+
+.form-group{
+    width: 20vw;
+    position: relative; 
 }
-/* #div_id_new_password2 .passwordinput {
-    margin-left: 5.9vw;
-} */
-.text-muted {
+.invalid-feedback {
+    padding: 0;
+
+}
+.text-muted,
+.invalid-feedback  {
     text-align: center; /* Center-align the text content */
     display: flex;
     flex-direction: column; /* Stack child elements vertically */
     align-items: center; /* Center-align child elements horizontally */
     justify-content: center;
+    overflow: visible;
+    width: 50vw;
+    transform: translateX(-30%);
 }
 .text-muted ul {
     padding: 1vw;
-    width: 60%;
+    width: 65%;
+    font-size: 1.2vw; 
+    font-weight: 500;
 }
 .text-muted ul li {
     padding: .1vw;
