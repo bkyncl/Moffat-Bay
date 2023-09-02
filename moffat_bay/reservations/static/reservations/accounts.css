@@ -32,49 +32,32 @@
     align-items: center; 
     gap: 1.5vw;
 }
-.text-content h3 {
-    font-size: 2vw;
-}
-.text-content h2 {
-    font-size: 3vw;
-}
-.text-content .new-user {
-    font-weight: 500;
-    font-size: 1.8vw;
-}
+
 #forgot-password{
-    font-weight: 500;
-    font-size: 1.8vw;
     color:#121212;
     text-decoration: none;
 }
 #forgot-password:hover{
     text-decoration: underline;
 }
-
 .login-button  {
     cursor: pointer;
-    font-weight: 600;
-    font-size: 1.5vw;
     color: #fff;
     text-decoration: none;
-    padding: 1vw 0vw; 
+    padding: .7vw 0vw; 
     border-radius: 40px;
     background-color: #121212;
     border: .3vw solid #121212;
 }
-
 .register-button a {
     text-decoration: none;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 1.5vw;
     color: #fff;
-    padding: 1.1vw 0;
+    padding: .7vw 0;
 }
 .register-button,
 .login-button {
-    width: 18vw; /* Adjust as needed */
+    width: 13vw; /* Adjust as needed */
     margin: 0;
 }
 .login-button:hover {
@@ -91,17 +74,12 @@
     align-items: center;
     justify-content: center;
 }
-.form-control label {
-    font-size: 1.8vw;
-    font-weight: 500;
-}
 .form-control input{
     padding: .3vw;
     margin-top: .4vw;
     margin-bottom: .4vw;
     width: 20vw;
-    height: 2.6vw;
-    font-size: 1vw;
+    height: 2vw;
 }
 .form-control-forgot-password {
     text-align: center;
@@ -143,8 +121,6 @@
     background-color: rgba(245, 243, 243, 0.801); /* Example overlay color */
     border-radius: 20px;
 }
-
-
 .overlay-register {
     display: flex;
     flex-direction: column; 
@@ -171,8 +147,6 @@
 .form-register P {
     padding: 0;
     margin-bottom: 1vw;
-    font-size: 1.5vw;
-    font-weight: 500;
     width: 70%;
 }
 .overlay-register img {
@@ -203,36 +177,159 @@
 .register-input input,
 #id_state {
     width: 20vw;
-    height: 2.6vw;
-    font-size: 1.5vw;
+    height: 1.8vw;
 }
 #id_phone_0 {
     width: 8vw;
-    height: 2.6vw;
-    font-size: 1vw;
+    height: 1.8vw;
 }
 .register-section p {
     margin:0;
     padding: 0;
 }
-.register-label {
-    font-size: 1.5vw;
-    font-weight: 500;
-}
+
 .login-button {
     grid-column: span 2; /* Span two columns for the button */
 }
-.bottom-links h5 {
-    font-size: 1.8vw;
-    font-weight: 600;
-}
-.bottom-links a {
-    font-size: 1.8vw;
-}
+
 .bottom-links {
     padding-top: 1.5vw;
     padding-bottom: 1.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Default font sizes */
+
+.text-content .new-user,
+#forgot-password,
+#forgot-password:hover,
+.login-button,
+.register-button a,
+.form-control label,
+.bottom-links h5,
+.bottom-links a,
+.register-label {
+    font-weight: 500;
+    font-size: 1.3vw;
+}
+.register-input input,
+#id_state {
+    font-size: 1vw;
+}
+#id_phone_0 {
+    font-size: 1vw;
+}
+.form-register p {
+    font-size: 1vw;
+    font-weight: 500;
+}
+.text-content h3 {
+    font-size: 2vw;
+}
+.text-content h2 {
+    font-size: 2.5vw;
+}
+
+.login-button,
+.register-button a {
+    font-size: 1vw;
+}
+
+.form-control input {
+    font-size: 1vw;
+}
+
+.form-control label {
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 750px) {
+    .text-content .new-user,
+    #forgot-password,
+    #forgot-password:hover,
+    .login-button,
+    .register-button a,
+    .form-control label,
+    .form-control input,
+    .bottom-links h5,
+    .bottom-links a,
+    .register-label {
+        font-weight: 500;
+        font-size: 1.8vw;
+    }
+    .register-input input,
+    #id_state {
+        font-size: 1.5vw;
+    }
+    #id_phone_0 {
+        font-size: 1.5vw;
+    }
+    .form-register p {
+        font-size: 1.5vw;
+        font-weight: 500;
+    }
+    .text-content h3 {
+        font-size: 2vw;
+    }
+    .text-content h2 {
+        font-size: 3vw;
+    }
+
+    .login-button,
+    .register-button a {
+        font-size: 1.5vw;
+    }
+
+    .form-control input {
+        font-size: 1vw;
+    }
+
+    .form-control label {
+        font-size: 1.8vw;
+        font-weight: 500;
+    }
+    .login-button  {
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        padding: 1vw 0vw; 
+        border-radius: 40px;
+        background-color: #121212;
+        border: .3vw solid #121212;
+    }
+    
+    .register-button a {
+        text-decoration: none;
+        cursor: pointer;
+        color: #fff;
+        padding: 1.1vw 0;
+    }
+    .register-button,
+    .login-button {
+        width: 18vw; /* Adjust as needed */
+        margin: 0;
+    }
+    .form-control input{
+        height: 2.7vw;
+    }
+    .register-input input,
+    #id_state {
+        width: 20vw;
+        height: 2.6vw;
+    }
+    #id_phone_0 {
+        width: 8vw;
+        height: 2.6vw;
+    }
+    .login-button  {
+        padding: 1vw 0vw; 
+
+    }
+    .register-button a {
+        padding: 1.1vw 0;
+    }
 }
