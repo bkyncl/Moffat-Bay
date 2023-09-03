@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import Account
+from users.models import CustomUser
 from rooms.models import RoomChoices, Rooms
 
 #stay costs model

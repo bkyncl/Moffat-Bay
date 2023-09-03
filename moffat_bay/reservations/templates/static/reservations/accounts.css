@@ -1,0 +1,386 @@
+.form-group{
+    border: none;
+}
+.banner {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.banner img {
+    max-width: 100%; 
+    height: auto;
+}
+.accounts-overlay {
+    margin-top: 3vw;
+    width: 40%;
+    left: 30%;
+    padding-bottom: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.accounts-overlay img {
+    margin: 2vw 0 .5vw 0;
+    max-width: 26vw;
+} 
+.option-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center; 
+    gap: 1.5vw;
+}
+
+#forgot-password{
+    color:#121212;
+    text-decoration: none;
+}
+#forgot-password:hover{
+    text-decoration: underline;
+}
+.login-button  {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    padding: .7vw 0vw; 
+    border-radius: 40px;
+    background-color: #121212;
+    border: .3vw solid #121212;
+}
+.register-button a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    padding: .7vw 0;
+}
+.register-button,
+.login-button {
+    width: 13vw; /* Adjust as needed */
+    margin: 0;
+}
+.login-button:hover {
+    color: #fff;
+    background-color: #1e1e1ea6;
+}
+.form-control {
+    text-align: center;
+    border: 0;
+    margin: 1vw 0 2vw 0;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form-control input{
+    padding: .3vw;
+    margin-top: .4vw;
+    margin-bottom: .4vw;
+    width: 20vw;
+    height: 2vw;
+}
+.form-control input:invalid{
+    border: 1.5px solid red;
+}
+.alert-overlay {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 75%;
+    height: auto;
+    padding-bottom: 2%;
+    background-color: rgba(245, 243, 243, 0.801); /* Example overlay color */
+    border-radius: 20px;
+}
+.overlay-register {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    position: absolute;
+    top: 12vw;
+    width: 70%;
+    height: auto;
+    padding: 1vw;
+    background-color: rgba(245, 243, 243, 0.801);
+    border-radius: 20px;
+} 
+.form-register {
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; 
+    text-align: center;
+    border: 0;
+    max-width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+.form-register P {
+    padding: 0;
+    margin-bottom: 1vw;
+    width: 70%;
+}
+.overlay-register img {
+    margin: 2vw 0 .5vw 0;
+    max-width: 26vw;
+}
+.register-grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1vw;
+    margin-bottom: 2vw; /* Adjust spacing between rows */
+    text-align: right;
+}
+
+.register-section {
+    grid-column: span 1; /* Span one column */
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Center vertically */
+}
+.register-grid-container .profile {
+    justify-content: flex-start;
+    border-bottom: .2vw solid #121212;
+}
+.register-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-input input,
+#id_state,
+#id_old_passowrd,
+#id_new_passowrd1,
+#id_new_passowrd2 {
+    width: 20vw;
+    height: 1.8vw;
+}
+#id_phone_0 {
+    width: 8vw;
+    height: 1.8vw;
+}
+.register-section p {
+    margin:0;
+    padding: 0;
+}
+
+.login-button {
+    grid-column: span 2; /* Span two columns for the button */
+}
+
+.bottom-links {
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#account-img {
+    border: .2vw solid #121212;
+    border-radius: 50%;
+    height: auto;
+    width: 10vw;
+    margin: 0;
+}
+
+/* Default font sizes */
+
+.text-content .new-user,
+#forgot-password,
+#forgot-password:hover,
+.login-button,
+.register-button a,
+.form-control label,
+.bottom-links h5,
+.bottom-links a,
+.register-label {
+    font-weight: 500;
+    font-size: 1.3vw;
+}
+.register-input input,
+#id_state,
+#id_old_passowrd,
+#id_new_passowrd1,
+#id_new_passowrd2 {
+    font-size: 1vw;
+}
+#id_phone_0 {
+    font-size: 1vw;
+}
+.form-register p {
+    font-size: 1vw;
+    font-weight: 500;
+}
+.text-content h3 {
+    font-size: 2vw;
+}
+.text-content h2 {
+    font-size: 2.5vw;
+}
+
+.login-button,
+.register-button a {
+    font-size: 1vw;
+}
+
+.form-control input {
+    font-size: 1vw;
+}
+
+.form-control label {
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+.register-section.profile .register-label {
+    font-size: 1.5vw;
+}
+
+.register-section.profile .register-input {
+    font-size: 1.5vw;
+}
+.change-password {
+    text-align: center; /* Center-align the text content */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center-align child elements horizontally */
+    justify-content: center;
+    font-size: 1.3vw; 
+    font-weight: 500;/* Center-align child elements vertically */
+}
+
+.form-group{
+    width: 20vw;
+    position: relative; 
+}
+.invalid-feedback {
+    padding: 0;
+
+}
+.text-muted,
+.invalid-feedback  {
+    text-align: center; /* Center-align the text content */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center-align child elements horizontally */
+    justify-content: center;
+    overflow: visible;
+    width: 50vw;
+    transform: translateX(-30%);
+}
+.text-muted ul {
+    padding: 1vw;
+    width: 65%;
+    font-size: 1.2vw; 
+    font-weight: 500;
+}
+.text-muted ul li {
+    padding: .1vw;
+    list-style: none;
+}
+#error_1_id_new_password2,
+.errorlist,
+.invalid-feedback {
+    font-size: 1.3vw;
+}
+.errorlist ul li{
+    list-style: disc;
+}
+#text {
+    font-size: 1vw;
+}
+/* Media query for smaller screens */
+@media screen and (max-width: 750px) {
+    .text-content .new-user,
+    #forgot-password,
+    #forgot-password:hover,
+    .login-button,
+    .register-button a,
+    .form-control label,
+    .form-control input,
+    .bottom-links h5,
+    .bottom-links a,
+    .register-label {
+        font-weight: 500;
+        font-size: 1.8vw;
+    }
+    .register-input input,
+    #id_state,
+    #id_old_passowrd,
+    #id_new_passowrd1,
+    #id_new_passowrd2 {
+        font-size: 1.5vw;
+    }
+    #id_phone_0 {
+        font-size: 1.5vw;
+    }
+    .form-register p {
+        font-size: 1.5vw;
+        font-weight: 500;
+    }
+    .text-content h3 {
+        font-size: 2vw;
+    }
+    .text-content h2 {
+        font-size: 3vw;
+    }
+
+    .login-button,
+    .register-button a {
+        font-size: 1.5vw;
+    }
+
+    .login-button  {
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        padding: 1vw 0vw; 
+        border-radius: 40px;
+        background-color: #121212;
+        border: .3vw solid #121212;
+    }
+    
+    .register-button a {
+        text-decoration: none;
+        cursor: pointer;
+        color: #fff;
+        padding: 1.1vw 0;
+    }
+    .register-button,
+    .login-button {
+        width: 18vw; /* Adjust as needed */
+        margin: 0;
+    }
+    .form-control input{
+        height: 2.7vw;
+    }
+    .register-input input,
+    #id_state,
+    #id_old_passowrd,
+    #id_new_passowrd1,
+    #id_new_passowrd2 {
+        width: 20vw;
+        height: 2.6vw;
+    }
+    #id_phone_0 {
+        width: 8vw;
+        height: 2.6vw;
+    }
+    .login-button  {
+        padding: 1vw 0vw; 
+
+    }
+    .register-button a {
+        padding: 1.1vw 0;
+    }
+    #account-img {
+        height: auto;
+        width: 12vw;
+        margin: 0;
+    }
+}

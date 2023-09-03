@@ -1,0 +1,396 @@
+/* Use vw and vh unit for responsiveness whenever possible*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+/* Header and navigation styles */
+.navheader {
+  position: fixed;
+  width: 100%;
+  min-height: 5vh; 
+  background: #82BB81;
+  z-index: 2;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo img {
+  max-width: 15vw;
+  min-width: 14vh;
+  margin-left: 3.5vw; 
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 3vw; 
+  min-height: 5vh;
+  
+}
+.menu-button-item a{
+  color: #fff;
+  text-decoration: none;
+  background-color: #121212;
+  padding: .5vw 2.8vw; 
+  margin: 0 5.5vw 0 2vw;
+  border: 3px solid #121212;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .8vw;
+}
+.menu-button-item a:hover {
+  background-color: #82BB81;
+  color: #121212;
+}
+.menu-item a {
+  text-decoration: none;
+  color: #121212;
+  font-weight: 600;
+  font-size: .9vw; 
+  position: relative;
+}
+.menu-item img {
+  vertical-align: middle;
+  margin-right: 0.2vw; 
+  width: 1vw; 
+}
+.menu-item a::before {
+  content: '';
+  position: absolute;
+  left: -0.8vw; 
+  right: -0.8vw; 
+  bottom: -.8vh; 
+  height: 3px; 
+  background: #1E1E1E;
+  transform: scaleX(0);
+  transition: 0.3s;
+}
+.menu-item:hover a:before {
+  transform: scaleX(1);
+}
+.hamburger {
+  font-size: 30px;
+  color: #121212;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  z-index: 4;
+  transition: 0.3s;
+}
+.line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #121212;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+#menuBtn, 
+.hamburger{
+  display: none;
+}
+/*media screen styling for navigation effective below 720px*/
+@media only screen and (max-width: 720px){
+  nav label.hamburger{
+    display: block;
+    padding-right: 30px;
+  }
+  #menuBtn:checked + .hamburger .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+  }
+  #menuBtn:checked + .hamburger .line:nth-child(2) {
+    opacity: 0;
+  }
+  #menuBtn:checked + .hamburger .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+  }
+  #menuBtn:checked ~ .menu {
+    transform: translateX(0);
+  }
+  nav .menu {
+    position: fixed;
+    top: 5vh;
+    left: 0;
+    width: 100vw;
+    height: auto; /* Adjust the height value */
+    background: #c1dfe2;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    z-index: 3;
+    gap: 2.5vw;
+    padding: 20px;
+  }
+  .menu-item img {
+    margin-right: 0.2vw; 
+    width: 15px; 
+  }
+  .menu-button-item a {
+    padding: 5px 30px; 
+    font-size: 10px;
+    margin: 5px;
+  }
+  .menu-button-item a:hover {
+    background-color: #c1dfe2;
+  }
+  .menu-item a {
+    font-size: 10px;
+    padding: .3vw;
+  }
+  .menu-item .dropdown-content {
+    background-color: #c1dfe2;
+    padding-bottom: 2vw;
+  }
+}
+/* Drop down menu styling */
+.dropdown-item a::before {
+  background: transparent; /* Set the background to transparent to remove the underline */
+  transform: scaleX(1); /* Set scaleX to 1 to prevent any scaling */
+}
+.dropdown-item:hover a::before {
+  transform: scaleX(0); /* Set the scaleX to 0 to effectively remove the underline on hover */
+}
+.dropdown-content .dropdown-item a::before {
+  content: '';
+  position: absolute;
+  left: -0.4vw; 
+  right: -0.4vw; 
+  bottom: -.4vh; 
+  height: 2px; 
+  background: #121212;
+  transform: scaleX(0);
+  transition: 0.3s;
+}
+.dropdown-content .dropdown-item:hover a:before {
+  transform: scaleX(1);
+}
+.dropdown-content .menu-item {
+  padding: .5vw 2vw;
+}
+.dropdown-content {
+  opacity: 0; /* Start with opacity 0 */
+  position: absolute;
+  background-color: #82BB81;
+  width: auto;
+  padding-bottom: .5vw;
+  transform: translateY(-10px); /* Slight initial translation */
+  transition: opacity 0.3s, transform 0.3s; /* Apply transition to opacity and transform */
+  z-index: 1;
+  pointer-events: none; /* Prevent mouse interaction before hover */
+  border-bottom-left-radius: 10px; /* Set border radius for the bottom left corner */
+  border-bottom-right-radius: 10px;
+}
+.menu-item:hover .dropdown-content {
+  opacity: 1; /* Change opacity on hover */
+  transform: translateY(0); /* Move to original position on hover */
+  pointer-events: auto; /* Enable mouse interaction on hover */
+}
+
+/* Footer styling */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  background-color: #121212;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 1vw;
+}
+.footer-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  padding: 1.5vw 5vw;
+  text-align: center;
+}
+.bottom-section {
+  grid-column: 1 / 3;
+}
+.bottom-section {
+  border-top: 2px solid rgba(128, 128, 128, 0.192);
+  width: 90vw;
+  margin: 0 auto;
+  font-size: .9vw;
+  font-weight: 300;
+}
+.footer-left,
+.footer-left {
+  text-align: left;
+  padding-left: 3vw;
+}
+.footer-right,
+.footer-right {
+  text-align: right;
+  padding-right: 3vw;
+}
+.footer .menu{
+  display: block;
+}
+.footer .menu-item {
+  margin-top: 1.5vw;
+}
+.footer-column.subscribe p {
+  font-size: .7vw;
+  font-weight: 300;
+  line-height: 2em;
+  color:#ffffffbb;
+  max-width: 16vw;
+  text-align: center;
+  margin: 0 auto;
+}
+#text {
+  font-size: .7vw;
+}
+.footer-column h2 {
+  font-size: 1.8vw;
+  margin: 20px;
+  font-weight: 500;
+}
+.footer h3 {
+  margin-top: 3vw;
+  font-size: 1vw;
+  font-weight: 400;
+}
+.footer .menu-item a {
+  font-size: .8vw; 
+  font-weight: 300;
+  text-decoration: none;
+  color:#fff;
+  padding: 0;
+}
+.footer .menu-item a::before {
+  background: #82BB81;
+}
+.socials img {
+  padding-left: 2vw;
+  float: right;
+  height: 1.5em;
+}
+.email-form {
+  display: flex;
+  align-items: center;
+  padding: 1vw 3vw; 
+}
+.email-form input[type="email"] {
+  padding: 0.5vw 1vw;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  outline: none;
+  background-color: #1E1E1E;
+  height: 2.5vw;
+  width: 15vw;
+  font-size: .8vw; 
+  color: #ffff;
+}
+.email-form button {
+  background-color: #82BB81;
+  color: #fff;
+  cursor: pointer;
+  padding: .6vw 2vw; 
+  border: 2px solid #82BB81;
+  border-radius: 4px;
+  margin-left: 2vw;
+  font-size: .8vw; 
+}
+.email-form button:hover {
+  background-color: #121212;
+}
+/*media screen styling for footer effective below 1000px*/
+@media only screen and (max-width: 750px) {
+  .footer-column h2 {
+    font-size: 2.5vw;
+    margin: 1.5vw;
+  }
+  .footer-column.subscribe p {
+    font-size: 1vw;
+    margin-bottom: 1vw;
+  }
+  .footer-column.subscribe #text {
+    font-size: 1vw;
+  }
+  .footer h3 {
+    font-size: 2vw;
+    margin-top: 3vw;
+  } 
+  .footer .menu-item {
+    margin: 0 auto;
+  }
+  .footer .menu-item a {
+    font-size: 1vw;
+  }
+  .email-form input[type="email"] {
+    padding: 1vw 2vw;
+    height: 3vw;
+    width: 16vw;
+    font-size: 1vw;
+  }
+  .footer .menu-item a::before {
+    height: 2px; 
+  }
+  .email-form button {
+    font-size: 1vw;
+    border-radius: 2px;
+  }
+  .email-form button:hover {
+    background-color: #82BB81;
+  }
+}
+
+/* External Shared component styling here for page extension */
+.overlay {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  position: absolute;
+  top: 12%;
+  left: 38%;
+  width: 23vw;
+  height: auto;
+  background-color:rgba(245, 243, 243, 0.637); 
+  border-radius: 20px;
+  padding-bottom: 1.5vw;
+}
+.text-content {
+  text-align: center;
+}
+.text-content h3 {
+  font-size: 1.3vw;
+}
+.text-content p {
+  font-size: .8vw;
+  padding: 1vw 4vw 1vw 4vw;
+  line-height: 1.7em;
+}
+.overlay img {
+  margin: 1vw;
+  max-width: 20vw;
+}
+
+.banner {
+  height: auto; 
+  overflow: hidden;
+}
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 5vh; 
+  padding: 0; 
+}
+@media (max-width: 750px) { 
+  .overlay {
+      border-radius: 10px;
+  }
+}
+
+
+

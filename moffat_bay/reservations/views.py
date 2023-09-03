@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from account.forms import MailListForm
+from users.forms import MailListForm
 from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import FormView

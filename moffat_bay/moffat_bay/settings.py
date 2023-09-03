@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ec)2b-s5a#4ha^gsn_j$1*v)b73z#s)i46=+i-zq5vv&3ke!8$'
+SECRET_KEY = 'django-insecure-f@y7(bv4vu1%28-3)gbb*y_38)$&2hbr#6ul7m09o87xf@@cxy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,20 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #web-app project apps:
-    'account',
+    #moffat-bay apps:
+    'users',
     'reservations',
     'rooms',
 
-    #3rd party apps:
+    #3rd Party apps:
     'phonenumber_field',
     'crispy_forms',
     'crispy_bootstrap4',
     'django_password_validators',
-    'django_password_validators.password_history',
-    
-
-
 ]
 
 MIDDLEWARE = [
@@ -95,6 +91,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 #use this to switch to MySQL server:
 #DATABASES = {
 #    'default': {
@@ -106,7 +103,6 @@ DATABASES = {
 #        'PORT': '3306',
 #    }
 #}
-
 
 
 # Password validation
@@ -125,14 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-    #custom password validators:
-    #password history: keeps history of old passwords used, new passwords cannot match old ones. 
-    #set # of password history in options
     {
-        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
-        'OPTIONS': {
-            'last_passwords': 3 #password history control: new password cannot be the same as last # of passwords
-        }
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
     #password requirements validator: sets requirements for passwords, must contain # next to each option, 
     #change requirements in these options
@@ -149,7 +139,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-DPV_DEFAULT_HISTORY_HASHER = 'django_password_validators.password_history.hashers.HistoryHasher'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -173,16 +162,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
-# Login settings
 LOGIN_REDIRECT_URL = 'reservations-home'
 LOGIN_URL = 'login'
-
-AUTH_USER_MODEL = "account.Account"
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.AllowAllUsersModelBackend',
-    'account.backends.CaseInsensitiveModelBackend',
-)
 
 #CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"

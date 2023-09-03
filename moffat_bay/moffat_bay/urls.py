@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from account import views as account_views
+from users import views as account_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,18 +25,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('reservations.urls')),
     path('register/', account_views.register, name='register'),
-    path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='account/logout.html'), name='logout'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', account_views.profile, name='profile'),
     path('profile/update_profile/', account_views.update_profie, name='update_profile'),
     path('change_password/', account_views.change_passowrd, name='change_password'),
-    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='account/password_reset.html'), 
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), 
          name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='account/password_reset_done.html'), 
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), 
         name='password_reset_done'),
-    path('password_reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='account/password_reset_confirm.html'), 
+    path('password_reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), 
         name='password_reset_confirm'),
-    path('password_change_done/', auth_views.PasswordChangeDoneView.as_view(template_name='account/password_reset_complete.html'), 
+    path('password_change_done/', auth_views.PasswordChangeDoneView.as_view(template_name='users/password_reset_complete.html'), 
          name='password_change_done'),
 
 ]

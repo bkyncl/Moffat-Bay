@@ -5,21 +5,23 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    initial = True
-
     dependencies = [
+        ('users', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Stay_Costs',
+            name='MailingList',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('guests', models.IntegerField(unique=True)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=5)),
+                ('email', models.EmailField(max_length=60, unique=True, verbose_name='email')),
             ],
             options={
-                'verbose_name_plural': 'Nightly Costs',
+                'verbose_name_plural': 'Mailing List',
             },
+        ),
+        migrations.AlterModelOptions(
+            name='customuser',
+            options={'verbose_name_plural': 'User Accounts'},
         ),
     ]

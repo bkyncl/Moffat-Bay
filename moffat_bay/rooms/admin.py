@@ -13,7 +13,7 @@ class RoomChoiceAdmin(admin.ModelAdmin):
         return False
     
     def has_change_permission(self, request, obj=None):
-        return True
+        return False
 
 class RoomsAdmin(admin.ModelAdmin):
     ordering = ['roomID']
