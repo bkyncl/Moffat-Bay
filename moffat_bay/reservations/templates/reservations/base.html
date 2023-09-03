@@ -79,13 +79,15 @@
             </div>
             <div class="footer-column subscribe">
                 <h2>GET IN TOUCH</h2>
-                {% if messages %}
+                <!-- took out message stream for later configuration -->
+                <!-- {% if messages %}
                     {% for message in messages %}
-                        {{ message }}
+                        <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
                     {% endfor %}
                 {% else %}
-                    <p>Stay connected with us! Join out mailing list to receive updates and special discounts. </p>
-                {% endif %}
+                    
+                {% endif %} -->
+                <p>Stay connected with us! Join out mailing list to receive updates and special discounts. </p>
                 <form class="email-form" method='POST'>
                     {% csrf_token %}
                     {{mailform.email}}

@@ -6,11 +6,21 @@
 {% block content %}
     <div class="banner">
         <img src="media/site/landing_header.jpg" alt="Image">
-    {% if user.is_authenticated %}
+    <!-- tyring out messages stream here???????? :o-->
+    {% if messages %}
         <div style="height: 15vw;" class="overlay accounts-overlay">
-            <img style="margin: 1vw;"src="/media/site/logo1_variant1.png" alt="Logo">
+            <img style="margin: 1vw;" src="/media/site/logo1_variant1.png" alt="Logo">
             <div class="text-content form-register">
-                <h3>Welcome back {{user.first_name}}!</h3></br>
+                {% for message in messages %}
+                    <h3 class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+    {% elif user.is_authenticated %}
+        <div style="height: 15vw;" class="overlay accounts-overlay">
+            <img style="margin: 1vw;" src="/media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content form-register">
+                <h3>Welcome back {{ user.first_name }}!</h3></br>
             </div>
         </div>
     {% endif %}

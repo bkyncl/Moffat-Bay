@@ -11,7 +11,7 @@
         {% if messages %}
             <br>
             {% for message in messages %}
-                {{ message }}
+                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
             {% endfor %}
         {% endif %}
         <img src="/media/site/logo1_variant1.png" alt="Logo">
@@ -31,7 +31,7 @@
                         <button class="login-button register-button"><a href="{% url 'register' %}">Register Here</a></button>
                     </div>
                 </form>
-                </div>
             </div>
-        </div>
+    </div>
+</div>
 {% endblock content %}
