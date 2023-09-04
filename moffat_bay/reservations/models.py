@@ -31,7 +31,7 @@ class Reservations(models.Model):
         verbose_name_plural = "Guest Reservations"
 
     def __str__(self):
-        return f"Reservation-ID: " + str(self.reservationID) + " / Confirmation #: " + str(
+        return f"Reservation-ID: " + str(self.reservationID) + " / Confirmation # : " + str(
             self.confirmationKey) + " --- Guest: " + self.userID.first_name + " " + self.userID.last_name + " -- " + str(
                 self.guests) + " guests for " + str(
                 get_nights(self.checkInDate, self.checkOutDate)) + " nights -- " + str(

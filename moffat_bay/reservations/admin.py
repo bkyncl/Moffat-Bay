@@ -35,13 +35,14 @@ class CostAdmin(admin.ModelAdmin):
 #add admin class for reservations model
 class ReservationsAdmin(admin.ModelAdmin):
     model = Reservations
-    readonly_fields = ('reservationID', 'confirmationKey', 'userID', 'totalPrice')
+    readonly_fields = ('reservationID',)
+#    readonly_fields = ('reservationID', 'confirmationKey', 'userID', 'totalPrice')
     ordering = ('checkInDate', 'checkOutDate')
     search_fields = ('reservationID', 'confirmationKey')
     fieldsets = (
         ('Reservation', {'fields': ('reservationID', 'confirmationKey')}),
         ('Reservation Details', {'fields' : ('checkInDate', 'checkOutDate', 'roomID', 'guests', 'totalPrice')}),
-        ('User Details', {'fields': ('userID',)}),
+        ('User Details - click to see user account', {'fields': ('userID',)}),
     )
     
 
