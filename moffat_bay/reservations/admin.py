@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Stay_Costs#, Reservations
+from .models import Stay_Costs, Reservations
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -18,7 +18,6 @@ change_prices.short_description = "Update Prices: Direct $ Entry"
 
 #admin classes to handle how they appear on admin page
 class CostAdmin(admin.ModelAdmin):
-
     list_display = ('guests', 'price')
     readonly_fields = ('guests',)
     ordering = ['guests']
@@ -34,9 +33,30 @@ class CostAdmin(admin.ModelAdmin):
         return False
     
 #add admin class for reservations model
+class ReservationsAdmin(admin.ModelAdmin):
+    model = Reservations
+    readonly_fields = ('reservationID', 'confirmationKey', 'userID', 'totalPrice')
+    ordering = ('checkInDate', 'checkOutDate')
+    search_fields = ('reservationID', 'confirmationKey')
+    fieldsets = (
+        ('Reservation', {'fields': ('reservationID', 'confirmationKey')}),
+        ('Reservation Details', {'fields' : ('checkInDate', 'checkOutDate', 'roomID', 'guests', 'totalPrice')}),
+        ('User Details', {'fields': ('userID',)}),
+    )
+    
+
+    def has_add_permission(self, request):
+        return True
+    
+    def has_delete_permission(self, request, obj=None):
+        return True
+    
+    def has_change_permission(self, request, obj=None):
+        return True
 
 
 # Register models for admin page here.
 admin.site.register(Stay_Costs, CostAdmin)
+admin.site.register(Reservations, ReservationsAdmin)
 #register reservations model and admin here
 

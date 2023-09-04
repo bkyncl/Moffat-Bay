@@ -8,6 +8,7 @@ from .forms import NightlyCostPriceUpdateForm, NightlyCostPriceChangeForm
 from .models import Stay_Costs
 from .utilities import *
 
+
 #main landing page view:
 def home(request):
     mailform = MailListForm(request.POST or None)
@@ -19,21 +20,34 @@ def home(request):
     context = {
         'title':'Landing Page',
         'mailform': mailform,
-    }
+        #add search availablity form here
+        }
     return render(request, 'reservations/home.html', context)
 
 #about us page view:
 def about(request):
     mailform = MailListForm(request.POST or None)
     #add any extra logic needed here
-    context = {
+    context = {     #everything in context dictionary gets passed to the html page and used as variables
         'title':'About The Lodge',
         'mailform': mailform,
         #add anything else we want returned and displayed on about page here
-    }
+        }
     return render(request, 'reservations/about_us.html', context)
 
+#rooms view:
+def rooms(request):
+    mailform = MailListForm(request.POST or None)
+    #add any extra logic/code needed here
+    context = {
+        'title':'Our Rooms',
+        'mailform': mailform,
+        #add search availability form here
+        #add anything else we want returned and displayed on about page here
+        }
+    return render(request, 'reservations/about_us.html', context)
 
+    
 #add additional site views here (about, reservations, etc)
 
 

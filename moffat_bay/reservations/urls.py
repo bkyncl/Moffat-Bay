@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='reservations-home'),
     path('about-moffat-bay-lodge/', views.about, name='about_us'),
+    path('our-rooms/', views.rooms, name='rooms'),
     #add remaining site pages urls here
 
     #additional admin page urls

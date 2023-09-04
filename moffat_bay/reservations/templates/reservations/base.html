@@ -39,7 +39,7 @@
                     <div class="menu-item"><a href="#">Attractions</a></div>
                     <div class="menu-item"><a href="#">Reservations</a></div>
                     <div class="menu-item"><a href="#"><img src="/media/site/search.png" alt="Logo">My Reservation</a></div>
-                    <div class="menu-item"><a href="#">About Us</a></div>
+                    <div class="menu-item"><a href="{% url 'about_us' %}">About Us</a></div>
                     <!--drop down menu for authenticated user 'my account' -->
                     {% if user.is_authenticated %}
                     <div class="menu-item dropdown">
@@ -56,7 +56,7 @@
                     <!-- login menu item for logged out user -->
                     <div class="menu-item "><a href="{% url 'login' %}">Login</a></div>
                     {% endif %}
-                    <div class="menu-button-item"><a href="#">Book Now</a></div>
+                    <div class="menu-button-item"><a href="{% url 'rooms' %}">Book Now</a></div>
                 </div>
             </nav>
         </div>

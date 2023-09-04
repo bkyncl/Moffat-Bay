@@ -13,8 +13,8 @@ def mark_inactive(selc, request, queryset):
 #Custom Account Display for the Admin page. 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'is_staff', 'is_active',)
-    list_filter = ('email', 'is_staff', 'is_active',)
+    list_display = ('email', 'first_name', 'last_name', 'is_active',)
+    list_filter = ('first_name', 'last_name', 'email', 'is_active')
     fieldsets = (
         ('User Account Information', {'fields': ('email', 'password')}),
         ('Personal Information', {'fields': ('first_name', 'last_name', 'street', 'city', 'state', 'zip', 'phone')}),
@@ -27,8 +27,9 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2', 'first_name', 'last_name', 'street', 'city', 'state', 'zip', 'phone','is_staff', 'is_superuser', 'is_active')}
         ),
     )
-    search_fields = ('email',)
-    ordering = ('email',)
+    search_fields = ('email', 'phone', 'first_name', 'last_name')
+    ordering = ('first_name', 'last_name', 'email', 'is_active')
+    actions=[mark_inactive,]
 
     def has_add_permission(self, request):
        return True

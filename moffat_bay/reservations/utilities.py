@@ -1,4 +1,25 @@
+#this utilities file will hold useful methods for the reservation portion of the system
+
 import hashlib
+from datetime import datetime
+
+#choice list for booking/availability search
+guestChoices ={
+    (" ", "Select"),
+    (1, "1"),
+    (2, "2"),
+    (3, "3"),
+    (4, "4"),
+    (5, "5"),
+}
+
+
+#price calculator:
+def get_final_price(costs, checkInDate, CheckOutDate, guests):
+    start_date_obj = datetime.strptime(str(checkInDate), '%Y-%m-%d')
+    end_date_obj = datetime.strptime(str(CheckOutDate), '%Y-%m-%d')
+    nights = end_date_obj - start_date_obj
+    return (nights.days * costs)
 
 #confirmation code generator:
 #----Generates a hashed confirmation code using checkIn, checkOut, Guests and RoomId, 
@@ -6,19 +27,10 @@ import hashlib
 #    Note: resulting confirmation code is a 7 digit hexadecimal number. 
 #       ***may amend to include users id# later on, to also verify authenticity***
 def generate_confirmation_code(check_in_date, check_out_date, guests, roomID):
-    # Concatenate input parameters into a single string
     data_to_hash = f"{check_in_date}{check_out_date}{guests}{roomID}"
-
-    # Calculate a hash of the concatenated string
     sha256_hash = hashlib.sha256(data_to_hash.encode()).hexdigest()
-
-    # Use the first 6 characters of the hash as the confirmation code
     confirmation_code = sha256_hash[:6]
-
-    # Calculate a check digit based on the confirmation code
     check_digit = sum(int(digit, 16) for digit in confirmation_code) % 10
-
-    # Append the check digit to the confirmation code
     confirmation_code += str(check_digit)
     confirmation_code = ''.join(char.upper() for char in confirmation_code)
 
