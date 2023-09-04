@@ -6,8 +6,9 @@ from django.views.generic import FormView
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from .forms import NightlyCostPriceUpdateForm, NightlyCostPriceChangeForm
 from .models import Stay_Costs
+from .utilities import *
 
-#main landing page view
+#main landing page view:
 def home(request):
     mailform = MailListForm(request.POST or None)
     if request.method == "POST":
@@ -20,6 +21,18 @@ def home(request):
         'mailform': mailform,
     }
     return render(request, 'reservations/home.html', context)
+
+#about us page view:
+def about(request):
+    mailform = MailListForm(request.POST or None)
+    #add any extra logic needed here
+    context = {
+        'title':'About The Lodge',
+        'mailform': mailform,
+        #add anything else we want returned and displayed on about page here
+    }
+    return render(request, 'reservations/about_us.html', context)
+
 
 #add additional site views here (about, reservations, etc)
 
