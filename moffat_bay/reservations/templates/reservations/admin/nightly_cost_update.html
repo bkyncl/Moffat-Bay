@@ -1,7 +1,10 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
+{% load static %}
 
-{% block title %}{{ title }}{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static 'reservations/admin.css' %}"/>{% endblock %}
+{% block nav-sidebar %}{% endblock %}
 
 {% block content %}
     Current Prices:<br>
@@ -15,6 +18,11 @@
         <div class="form-group">
             {{ form }}
         </div>
-        <button type="submit" class="btn btn-primary">{% trans 'Update Prices' %}</button>
+        <div class="submit-row">
+            <input type="submit" value="Update Prices" class="default" name="_save">
+            <!--insert cancel changes button here-->
+            <a href="/admin/reservations/stay_costs" class="deletelink">Cancel Changes</a>
+            
+        </div>
     </form>
 {% endblock %}

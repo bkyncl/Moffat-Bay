@@ -7,6 +7,6 @@ urlpatterns = [
     #add remaining site pages urls here
 
     #additional admin page urls
-    path("update-pricing/", views.NightlyCostPriceUpdateView.as_view(), name="price_update"),
-    path("change-pricing/", views.NightlyCostPriceChangeView.as_view(), name="price_change"),
+    path("lodge-admin/update-pricing/", views.NightlyCostPriceUpdateView.as_view(), name="price_update"),
+    path("lodge-admin/change-pricing/", views.NightlyCostPriceChangeView.as_view(), name="price_change"),
 ]
