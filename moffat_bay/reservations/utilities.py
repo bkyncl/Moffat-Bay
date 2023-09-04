@@ -21,6 +21,12 @@ def get_final_price(costs, checkInDate, CheckOutDate, guests):
     nights = end_date_obj - start_date_obj
     return (nights.days * costs)
 
+#nights calculator:
+def get_nights(checkInDate, CheckOutDate):
+    start_date_obj = datetime.strptime(str(checkInDate), '%Y-%m-%d')
+    end_date_obj = datetime.strptime(str(CheckOutDate), '%Y-%m-%d')
+    return (end_date_obj - start_date_obj).days
+
 #confirmation code generator:
 #----Generates a hashed confirmation code using checkIn, checkOut, Guests and RoomId, 
 #    then also creates a check digit for verifying validity of the confirmation code.
