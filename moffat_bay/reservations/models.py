@@ -1,7 +1,7 @@
 from django.db import models
 from users.models import CustomUser
 from rooms.models import RoomChoices, Rooms
-from .utilities import *
+from moffat_bay.utilities import *
 
 #stay costs model
 class Stay_Costs(models.Model):

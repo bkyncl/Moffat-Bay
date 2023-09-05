@@ -1,18 +1,8 @@
 #this utilities file will hold useful methods for the reservation portion of the system
-
+from django.db.models import Q
 import hashlib
-from datetime import datetime
-
-#choice list for booking/availability search
-guestChoices ={
-    (" ", "Select"),
-    (1, "1"),
-    (2, "2"),
-    (3, "3"),
-    (4, "4"),
-    (5, "5"),
-}
-
+from datetime import datetime, date
+from rooms.models import Rooms
 
 #price calculator:
 def get_final_price(costs, checkInDate, CheckOutDate, guests):
@@ -75,3 +65,11 @@ if is_valid_confirmation_code(confirmation_code):
 else:
     print("Result: Invalid Confirmation Code.")
 """
+
+#Room availability search:
+def find_available_rooms(checkInDate, checkOutDate, overlapping_reservations):
+    checkInDate = date.fromisoformat(str(checkInDate))
+    checkOutDate = date.fromisoformat(str(checkOutDate))
+    reserved_room_ids = overlapping_reservations.values_list('roomID', flat=True)
+    available_rooms = Rooms.objects.exclude(roomID__in=reserved_room_ids)
+    return available_rooms

@@ -36,9 +36,9 @@
                 <!--menu-->
                 <div class="menu">
                     <div class="menu-item"><a href="{% url 'reservations-home' %}">Home</a></div>
-                    <div class="menu-item"><a href="#">Attractions</a></div>
-                    <div class="menu-item"><a href="#">Reservations</a></div>
-                    <div class="menu-item"><a href="#"><img src="/media/site/search.png" alt="Logo">My Reservation</a></div>
+                    <div class="menu-item"><a href="{% url 'attractions' %}">Attractions</a></div>
+                    <div class="menu-item"><a href="{% url 'rooms' %}">Reservations</a></div>
+                    <div class="menu-item"><a href="{% url 'reservation_lookup' %}"><img src="/media/site/search.png" alt="Logo">My Reservation</a></div>
                     <div class="menu-item"><a href="{% url 'about_us' %}">About Us</a></div>
                     <!--drop down menu for authenticated user 'my account' -->
                     {% if user.is_authenticated %}
@@ -69,7 +69,7 @@
                 <h3>Useful</h3>
                 <div class="menu">
                     <div class="menu-item"><a href="{% url 'reservations-home' %}">Home</a></div>
-                    <div class="menu-item"><a href="#">Reservations</a></div>
+                    <div class="menu-item"><a href="{% url 'rooms' %}">Reservations</a></div>
                     {% if user.is_authenticated %}
                         <div class="menu-item"><a href="{% url 'logout' %}">Logout</a></div> 
                     {% else %}
@@ -97,9 +97,9 @@
             <div class="footer-right">
                 <h3>Learn More</h3>
                 <div class="menu">
-                    <div class="menu-item"><a href="#">About Us</a></div>
-                    <div class="menu-item"><a href="#">Attractions</a></div>
-                    <div class="menu-item"><a href="#">Accommodations</a></div>
+                    <div class="menu-item"><a href="{% url 'about_us' %}">About Us</a></div>
+                    <div class="menu-item"><a href="{% url 'attractions' %}">Attractions</a></div>
+                    <div class="menu-item"><a href="{% url 'rooms' %}">Accommodations</a></div>
                 </div> 
             </div>
         </div>

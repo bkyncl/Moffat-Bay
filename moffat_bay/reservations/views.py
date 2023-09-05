@@ -4,22 +4,40 @@ from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import FormView
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from .forms import NightlyCostPriceUpdateForm, NightlyCostPriceChangeForm
-from .models import Stay_Costs
-from .utilities import *
+from .forms import *
+from .models import Stay_Costs, Reservations
+from moffat_bay.utilities import *
 
+#reusable method to get all available rooms
+def get_available_rooms(checkInDate, checkOutDate):
+    overlapping_reservations = Reservations.objects.filter(
+                Q(checkInDate__lte=checkInDate, checkOutDate__gt=checkInDate) |
+                Q(checkInDate__lt=checkOutDate, checkOutDate__gte=checkOutDate))
+    available_rooms = find_available_rooms(checkInDate,checkOutDate, overlapping_reservations)
+    return available_rooms
 
 #main landing page view:
 def home(request):
     mailform = MailListForm(request.POST or None)
+    searchForm = AvailabilityForm(request.POST or None)
     if request.method == "POST":
         if mailform.is_valid():
             mailform.save()
             messages.success(request, "Thank you for signing up for our mailing list!")
             return redirect('reservations-home')
+        if searchForm.is_valid():
+            checkInDate = searchForm.cleaned_data['checkInDate']
+            checkOutDate = searchForm.cleaned_data['checkOutDate']
+            context = {
+                'title': 'Available Rooms',
+                'mailform': mailform,
+                'available_rooms': get_available_rooms(checkInDate, checkOutDate),
+            }
+            return render(request, 'reservations/book_reservation.html', context)
     context = {
         'title':'Landing Page',
         'mailform': mailform,
+        'searchForm': searchForm,
         #add search availablity form here
         }
     return render(request, 'reservations/home.html', context)
@@ -36,6 +54,7 @@ def about(request):
     return render(request, 'reservations/about_us.html', context)
 
 #rooms view:
+#use for start of booking, reservations, and room overviews
 def rooms(request):
     mailform = MailListForm(request.POST or None)
     #add any extra logic/code needed here
@@ -45,9 +64,35 @@ def rooms(request):
         #add search availability form here
         #add anything else we want returned and displayed on about page here
         }
-    return render(request, 'reservations/about_us.html', context)
+    return render(request, 'reservations/rooms.html', context)
 
-    
+#attractions page view:
+def attractions(request):
+    mailform = MailListForm(request.POST or None)
+    #add any extra logic/code needed here
+    context = {
+        'title':'Local Attractions',
+        'mailform': mailform,
+        #add search availability form here
+        #add anything else we want returned and displayed on about page here
+        }
+    return render(request, 'reservations/attractions.html', context)
+
+#reservation lookup view:
+def reservation_lookup(request):
+    mailform = MailListForm(request.POST or None)
+    #add any extra logic/code needed here
+    context = {
+        'title':'My Reservations',
+        'mailform': mailform,
+        #add search availability form here
+        #add anything else we want returned and displayed on about page here
+        }
+    return render(request, 'reservations/reservation_lookup.html', context)
+
+#book reservations page view"
+def book_reservation(request, *args, **kwargs):
+    return render(request, 'reservations/book_reservation.html', *args, **kwargs)
 #add additional site views here (about, reservations, etc)
 
 
