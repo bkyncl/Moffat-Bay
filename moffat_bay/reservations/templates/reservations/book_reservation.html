@@ -24,10 +24,12 @@
 <p>Check Out: {{checkOutDate}}</p>
 <p># of Nights: {{nights}}</p>
 <p>Room Size: {{room.size}}</p>
+<p>Room # {{room.roomID}}</p>
 <p># of Guests: {{guests}}</p>
 <p>Price per Night: ${{nightlyCost.price}}</p>
 <p>Total Stay Cost: ${{totalCost}}</p></br>
-<p><a href="#">Looks good, Book it!</a></p></br>
+<p> user account: {{user}}</p>
+<p><a href="{% url 'reservation_confirmation' checkInDate checkOutDate guests room.roomID totalCost %}">Looks good, Book it!</a></p></br>
 <p><a href="{% url 'book_now' %}">NO! Start Over</a></p></br>
 
 

@@ -9,6 +9,7 @@ from django.db.models import Q
 import hashlib
 from datetime import datetime, date
 from rooms.models import RoomChoices, Rooms
+from django.core.mail import send_mail
 
 #nights calculator:
 def get_nights(checkInDate, CheckOutDate):
@@ -20,8 +21,6 @@ def get_nights(checkInDate, CheckOutDate):
 def get_final_price(costs, checkInDate, CheckOutDate, guests):
     nights = get_nights(checkInDate, CheckOutDate)
     return (nights * costs)
-
-
 
 #confirmation code generator:
 #----Generates a hashed confirmation code using checkIn, checkOut, Guests and RoomId, 
@@ -86,3 +85,22 @@ def find_available_rooms(checkInDate, checkOutDate, overlapping_reservations):
         if available_room:
             available_rooms.append(available_room)
     return available_rooms
+
+def send_email_confirmation(reservation):
+    sender = "confirmations@Moffay-Bay-Lodge.com"
+    subject = f"Your Reservation Confirmation for " + str(reservation.checkInDate) + " to " + str(reservation.checkOutDate)
+    message = (f"Greetings " + reservation.userID.first_name + "!\n\n" + 
+               "Your reservation for Moffat-Bay Lodge is confirmed!\n\n"  +
+               "Reservation Details:\n" + 
+                "Reservation Number: " + str(reservation.reservationID) + "\n" +
+                "Confirmation Number: " + reservation.confirmationKey + "\n" + 
+                "Check-in date: " + str(reservation.checkInDate) + "\n" +
+                "Check-out date: " + str(reservation.checkOutDate) + "\n" + 
+                "# of Guests: " + str(reservation.guests) + "\n" + 
+                "Total Price: $" + str(reservation.totalPrice) + "\n\n" + 
+                "We look forward to seeing you soon!\n\n\n" + 
+                "Sincerely,\n" + 
+                "Moffat-Bay Marina & Lodge"
+                )
+    recipient = [reservation.userID.email, ]
+    send_mail(subject, message, sender, recipient, fail_silently=False)

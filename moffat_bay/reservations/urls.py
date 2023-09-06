@@ -2,9 +2,20 @@
 # CSD-440: Capstone Project
 # Moffat-Bay Lodge - Bravo Team
 
-from django.urls import path
+from django.urls import path, register_converter
 from . import views
+from decimal import *
 
+class DecimalConverter:
+    regex = r'[-+]?\d*\.\d+|\d+'
+
+    def to_python(self, value):
+        return Decimal(value)
+
+    def to_url(self, value):
+        return str(value)
+
+register_converter(DecimalConverter, 'decimal')
 
 urlpatterns = [
     path('', views.home, name='reservations-home'),
@@ -15,6 +26,8 @@ urlpatterns = [
     path('start-booking/', views.book_now, name='book_now'),
     path('available-rooms/<str:checkInDate>/<str:checkOutDate>/<int:guests>/', views.available_rooms, name='available_rooms'),
     path('book-reservation/<str:checkInDate>/<str:checkOutDate>/<int:guests>/<int:roomID>/', views.book_reservation, name='book-reservation'),
+    path('reservation-confirmation/<str:checkInDate>/<str:checkOutDate>/<int:guests>/<int:roomID>/<decimal:totalCost>/', 
+                views.booking_confirmed, name='reservation_confirmation'),
     
     
     #add remaining site pages urls here

@@ -5,3 +5,34 @@
  Moffat-Bay Lodge - Bravo Team
 
 -->
+
+{% extends "reservations/base.html" %}{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+{% endblock %}
+{% block content %}
+<!--book reservation  page HTML here
+    this page gets a single room object passed to it as available_rooms, and working on getting in/out dates and guests passed as well.
+    once done it will also recieve registration_form passed into it. 
+    this page will be login-required, so the user of the session will be available to use for the registration booking backend
+    
+    Sample: (for back end functionality testing)
+-->
+</br></br></br></br></br></br></br></br>
+<h2>Please Confirm your reservation details:</h2>
+<p>Check In: {{reservation.checkInDate}}</p>
+<p>Check Out: {{reservation.checkOutDate}}</p>
+<p>Room Size: {{reservation.roomID.size}}</p>
+<p># of Guests: {{reservation.guests}}</p>
+<p>Total Stay Cost: ${{reservation.totalPrice}}</p></br>
+<p> user account: {{reservation.userID}}</p><hr>
+<p> Reservation Number: {{reservation.reservationID}}</p>
+<p> Confirmation #:  {{reservation.confirmationKey}}</p><hr></br></br>
+<p>Please check your email! A confirmation email has been sent to the email address on your account.</p>
+<p>We look forward to seeing you soon!</p>
+<p></p><p></p>
+<a href="{% url 'reservations-home' %}">Back Home</a>
+
+
+
+{% endblock %}

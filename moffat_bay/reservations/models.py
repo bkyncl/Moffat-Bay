@@ -22,8 +22,8 @@ class Stay_Costs(models.Model):
 
 #reservations model - saving the actual reservations
 class Reservations(models.Model):
-    reservationID = models.IntegerField(primary_key=True, auto_created=True)
-    confirmationKey =models.CharField(max_length=7, null=False)
+    reservationID = models.IntegerField(primary_key=True, auto_created=True, unique=True)
+    confirmationKey =models.CharField(max_length=7, null=False, unique=True)
     userID = models.ForeignKey(CustomUser, to_field='id', on_delete=models.PROTECT)
     roomID = models.ForeignKey(Rooms, to_field='roomID', on_delete=models.PROTECT)
     guests = models.IntegerField(default=1, null=False)

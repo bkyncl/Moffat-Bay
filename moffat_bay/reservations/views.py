@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import Stay_Costs, Reservations
 from moffat_bay.utilities import *
+from users.decorators import login_required_message
 
 #reusable method to get all available rooms
 def get_available_rooms(checkInDate, checkOutDate):
@@ -92,12 +93,13 @@ def reservation_lookup(request):
     return render(request, 'reservations/reservation_lookup.html', context)
 
 #book reservations page view"
-@login_required(login_url='login')
+@login_required
 def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
     nightlyCost = Stay_Costs.objects.filter(guests=guests).get()
     totalCost = get_final_price(nightlyCost.price, checkInDate, checkOutDate, guests)
     nights = get_nights(checkInDate, checkOutDate)
     room = Rooms.objects.filter(roomID=roomID).get()
+    userid = request.user.id
     context = {
         'title' : f'Reservation summary',
         'nightlyCost': nightlyCost,
@@ -107,9 +109,10 @@ def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
         'checkOutDate': checkOutDate,
         'room': room,
         'nights': nights,
+        'user':userid,
     }
-
     return render(request, 'reservations/book_reservation.html', context)
+
 
 def book_now(request):
     if request.method == "POST":
@@ -143,6 +146,21 @@ def available_rooms(request, checkInDate, checkOutDate, guests):
         }
     return render(request, 'reservations/available_rooms.html', context)
 
+@login_required
+def booking_confirmed(request, checkInDate, checkOutDate, guests, roomID, totalCost):
+    confirmationKey = generate_confirmation_code(checkInDate, checkOutDate, guests, roomID)
+    userId = request.user
+    room = Rooms.objects.filter(roomID=roomID).get()
+    newReservation = Reservations(confirmationKey=confirmationKey, userID=userId, roomID=room, guests=guests, 
+                                  totalPrice=totalCost, checkInDate=checkInDate, checkOutDate=checkOutDate)
+    newReservation.save()
+    confirm = Reservations.objects.filter(userID=userId, checkInDate=checkInDate, checkOutDate=checkOutDate).get()
+    context = {
+        'title': 'Reservation Confirmation',
+        'reservation': confirm
+    }
+    send_email_confirmation(confirm)
+    return render(request, 'reservations/book_reservation_confirmation.html',context)
 
 #add additional site views here (about, reservations, etc)
 
