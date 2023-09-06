@@ -22,23 +22,6 @@ def get_available_rooms(checkInDate, checkOutDate):
     return available_rooms
 
 
-def available_rooms(request, checkInDate, checkOutDate, guests):
-    mailform = MailListForm(request.POST or None)
-    if request.method == "POST":
-        if mailform.is_valid():
-            mailform.save()
-            messages.success(request, "Thank you for signing up for our mailing list!")
-            return redirect('reservations-home')
-    context = {
-        'title':'Available Rooms',
-        'available_rooms': get_available_rooms(checkInDate, checkOutDate),
-        'guests': guests,
-        'checkInDate': checkInDate,
-        'checkOutDate': checkOutDate,
-        }
-    return render(request, 'reservations/available_rooms.html', context)
-
-
 #main landing page view:
 def home(request):
     mailform = MailListForm(request.POST or None)
@@ -111,10 +94,56 @@ def reservation_lookup(request):
 #book reservations page view"
 @login_required(login_url='login')
 def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
-#    if request.method == "POST":
-                #add logic to calculate everything, then provide a save method - how???
+    nightlyCost = Stay_Costs.objects.filter(guests=guests).get()
+    totalCost = get_final_price(nightlyCost.price, checkInDate, checkOutDate, guests)
+    nights = get_nights(checkInDate, checkOutDate)
+    room = Rooms.objects.filter(roomID=roomID).get()
+    context = {
+        'title' : f'Reservation summary',
+        'nightlyCost': nightlyCost,
+        'totalCost': totalCost,
+        'guests': guests,
+        'checkInDate': checkInDate,
+        'checkOutDate': checkOutDate,
+        'room': room,
+        'nights': nights,
+    }
 
-    return render(request, 'reservations/book_reservation.html')
+    return render(request, 'reservations/book_reservation.html', context)
+
+def book_now(request):
+    if request.method == "POST":
+        searchForm = AvailabilityForm(request.POST)
+        if searchForm.is_valid(): #add this code to any view with room availability search 
+            checkInDate = (searchForm.cleaned_data['checkInDate']).strftime('%Y-%m-%d')
+            checkOutDate = (searchForm.cleaned_data['checkOutDate']).strftime('%Y-%m-%d')
+            guests = searchForm.cleaned_data['guests']
+            return redirect('available_rooms', checkInDate, checkOutDate, guests) 
+    else:
+        searchForm = AvailabilityForm()
+    context = {
+        'title':'Start your Reservation',
+        'searchForm': searchForm,
+        }
+    return render(request, 'reservations/start_booking.html', context)
+
+def available_rooms(request, checkInDate, checkOutDate, guests):
+    mailform = MailListForm(request.POST or None)
+    if request.method == "POST":
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('reservations-home')
+    context = {
+        'title':'Available Rooms',
+        'available_rooms': get_available_rooms(checkInDate, checkOutDate),
+        'guests': guests,
+        'checkInDate': checkInDate,
+        'checkOutDate': checkOutDate,
+        }
+    return render(request, 'reservations/available_rooms.html', context)
+
+
 #add additional site views here (about, reservations, etc)
 
 
@@ -192,3 +221,4 @@ class NightlyCostPriceChangeView(FormView):
         product_ids = self.request.GET.get('id').split(',')
         context['stay_costs'] = Stay_Costs.objects.filter(id__in=product_ids)
         return context
+    

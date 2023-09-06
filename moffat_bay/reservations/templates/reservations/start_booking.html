@@ -1,0 +1,67 @@
+<!--
+
+ Mark Witt / Brittany Kyncl
+ CSD-440: Capstone Project
+ Moffat-Bay Lodge - Bravo Team
+
+-->
+
+{% extends "reservations/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+{% endblock %}
+{% block content %}
+<!--
+    This page will be a get started with booking - search availability form, that will then open the available_rooms.html. 
+
+    This page will be loaded from the book now header button, reservations link on header/footer, and a search again link on the available rooms page
+-->
+</br></br></br></br></br></br></br></br>
+
+<div>
+<h2>Start Booking now!</h2>
+<div class="big-container">
+        <div class="centered-container">
+          <img src="media/site/marcus-lofvenberg-LyghSgFG8QQ-unsplash.jpg" alt="Image">
+            <form class="search" acton="#" method="POST"> {% csrf_token %}
+<!--This form will be replaced/updated with a form from the backend, similar to the registration page, once we get to the registration back end stuff in mod 7-->
+                <div class="grid-item">
+                    <label for="first-date">
+                        <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
+                        Check In:
+                    </label>
+                    {{ searchForm.checkInDate }}
+                    
+                </div>
+                <div class="grid-item">
+                    <label for="second-date">
+                        <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
+                        Check Out:
+                    </label><!--
+                    <input type="date" id="second-date" name="second-date">-->
+                    {{ searchForm.checkOutDate }}
+                </div>
+                
+                <div class="grid-item">
+                    <label for="num-guests">
+                        <img src="media/site/guest_icon.png" alt="Logo" class="label-icon">
+                        Number of Guests
+                    </label><!--
+                    <select name="num-guests" id="num-guests">
+                        <option value="1">1 guest</option>
+                        <option value="2">2 guests</option>
+                        <option value="3">3 guests</option>
+                        <option value="4">4 guests</option>
+                        <option value="5">5 guests</option> 
+                    </select>-->
+                    {{ searchForm.guests }}
+                </div>
+                <div class="grid-item">
+                    <div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div> 
+                </div>
+            </form>
+        </div>
+<hr></br></br></br>
+</div>
+{% endblock %}

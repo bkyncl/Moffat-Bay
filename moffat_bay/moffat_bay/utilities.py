@@ -10,18 +10,18 @@ import hashlib
 from datetime import datetime, date
 from rooms.models import RoomChoices, Rooms
 
-#price calculator:
-def get_final_price(costs, checkInDate, CheckOutDate, guests):
-    start_date_obj = datetime.strptime(str(checkInDate), '%Y-%m-%d')
-    end_date_obj = datetime.strptime(str(CheckOutDate), '%Y-%m-%d')
-    nights = end_date_obj - start_date_obj
-    return (nights.days * costs)
-
 #nights calculator:
 def get_nights(checkInDate, CheckOutDate):
     start_date_obj = datetime.strptime(str(checkInDate), '%Y-%m-%d')
     end_date_obj = datetime.strptime(str(CheckOutDate), '%Y-%m-%d')
     return (end_date_obj - start_date_obj).days
+
+#price calculator:
+def get_final_price(costs, checkInDate, CheckOutDate, guests):
+    nights = get_nights(checkInDate, CheckOutDate)
+    return (nights * costs)
+
+
 
 #confirmation code generator:
 #----Generates a hashed confirmation code using checkIn, checkOut, Guests and RoomId, 
