@@ -1,3 +1,9 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
+
+
 #this utilities file will hold useful methods for the reservation portion of the system
 from django.db.models import Q
 import hashlib

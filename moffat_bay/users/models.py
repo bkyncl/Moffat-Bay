@@ -1,5 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
 
-# src/users/model.py
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.db import models

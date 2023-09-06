@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 from django.shortcuts import render, redirect
 from users.forms import MailListForm
 from django.contrib import messages

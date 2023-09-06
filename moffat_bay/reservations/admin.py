@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 from django.contrib import admin
 from .models import Stay_Costs, Reservations
 from django.http import HttpResponseRedirect

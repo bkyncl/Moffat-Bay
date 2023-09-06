@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 """
 Django settings for moffat_bay project.
 

@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os

@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 guestChoices =[
     (1, "1 Guest"),
     (2, "2 Guests"),

@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 from django import forms
 from .models import CustomUser, MailingList
 from phonenumber_field.formfields import PhoneNumberField
