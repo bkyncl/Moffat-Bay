@@ -1,0 +1,37 @@
+{% extends "reservations/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+{% endblock %}
+{% block content %}
+<!--available rooms html in here. the code below shows what the page recieves when loaded 
+    (this page will only get loaded by doing an availability search)
+    page recieves parameters "available_rooms", which is a list of room objects containing:
+    one room of each size, that is available during selected dates. can loop through them on the page and each have a link 
+    to book the room. that link will pass in roomID, checkInDate, checkOutDate, and guests to the booking view. 
+
+    this page will also get another searchForm, which is the availability search, if the user wants to change the search
+
+    Booking view be login_required, will take in those parameters, will use the pricing methods and the confirmation key generator to fill in the rest 
+    of the reservation details and link to the logged in user. that would then serve as the booking/reservation confirmation, where the user can accept
+    and it would be saved, or can go back to the rooms.html to search again.
+
+    I think that about covers the reservation flow. if you think of anything i missed, please let me know. 
+    
+-->
+</br></br></br></br></br></br></br></br>
+
+<div>
+<h2>check in date: {{checkInDate}}</h2>
+<h2>check out date: {{checkOutDate}}</h2>
+<h2># of guests: {{guests}}</h2></br>
+<h2>Available Rooms:</h2>
+{% for room in available_rooms %}
+    Room #: {{room.roomID}}</br>
+    Size: {{room.size}}</br>
+    id: {{room.size_id}}<br>
+    <a href={% url 'book-reservation' checkInDate checkOutDate guests room.roomID %}>Book Now!</a>
+    <hr>
+{% endfor %}
+</div>
+{% endblock %}

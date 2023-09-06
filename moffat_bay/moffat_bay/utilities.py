@@ -2,7 +2,7 @@
 from django.db.models import Q
 import hashlib
 from datetime import datetime, date
-from rooms.models import Rooms
+from rooms.models import RoomChoices, Rooms
 
 #price calculator:
 def get_final_price(costs, checkInDate, CheckOutDate, guests):
@@ -68,8 +68,15 @@ else:
 
 #Room availability search:
 def find_available_rooms(checkInDate, checkOutDate, overlapping_reservations):
+    #stripping date format into string
     checkInDate = date.fromisoformat(str(checkInDate))
     checkOutDate = date.fromisoformat(str(checkOutDate))
     reserved_room_ids = overlapping_reservations.values_list('roomID', flat=True)
-    available_rooms = Rooms.objects.exclude(roomID__in=reserved_room_ids)
+    #create list of available room object, filter by room size (get one of each), an exclude rooms already booked.
+    available_rooms =[]
+    room_options = RoomChoices.objects.all()
+    for room_size in room_options:
+        available_room = Rooms.objects.filter(size_id=room_size.roomSize).exclude(roomID__in=reserved_room_ids).first()
+        if available_room:
+            available_rooms.append(available_room)
     return available_rooms

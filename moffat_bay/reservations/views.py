@@ -3,7 +3,8 @@ from users.forms import MailListForm
 from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import FormView
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import Stay_Costs, Reservations
 from moffat_bay.utilities import *
@@ -16,6 +17,24 @@ def get_available_rooms(checkInDate, checkOutDate):
     available_rooms = find_available_rooms(checkInDate,checkOutDate, overlapping_reservations)
     return available_rooms
 
+
+def available_rooms(request, checkInDate, checkOutDate, guests):
+    mailform = MailListForm(request.POST or None)
+    if request.method == "POST":
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('reservations-home')
+    context = {
+        'title':'Available Rooms',
+        'available_rooms': get_available_rooms(checkInDate, checkOutDate),
+        'guests': guests,
+        'checkInDate': checkInDate,
+        'checkOutDate': checkOutDate,
+        }
+    return render(request, 'reservations/available_rooms.html', context)
+
+
 #main landing page view:
 def home(request):
     mailform = MailListForm(request.POST or None)
@@ -25,20 +44,15 @@ def home(request):
             mailform.save()
             messages.success(request, "Thank you for signing up for our mailing list!")
             return redirect('reservations-home')
-        if searchForm.is_valid():
-            checkInDate = searchForm.cleaned_data['checkInDate']
-            checkOutDate = searchForm.cleaned_data['checkOutDate']
-            context = {
-                'title': 'Available Rooms',
-                'mailform': mailform,
-                'available_rooms': get_available_rooms(checkInDate, checkOutDate),
-            }
-            return render(request, 'reservations/book_reservation.html', context)
+        if searchForm.is_valid(): #add this code to any view with room availability search 
+            checkInDate = (searchForm.cleaned_data['checkInDate']).strftime('%Y-%m-%d')
+            checkOutDate = (searchForm.cleaned_data['checkOutDate']).strftime('%Y-%m-%d')
+            guests = searchForm.cleaned_data['guests']
+            return redirect('available_rooms', checkInDate, checkOutDate, guests) 
     context = {
         'title':'Landing Page',
         'mailform': mailform,
         'searchForm': searchForm,
-        #add search availablity form here
         }
     return render(request, 'reservations/home.html', context)
 
@@ -91,8 +105,12 @@ def reservation_lookup(request):
     return render(request, 'reservations/reservation_lookup.html', context)
 
 #book reservations page view"
-def book_reservation(request, *args, **kwargs):
-    return render(request, 'reservations/book_reservation.html', *args, **kwargs)
+@login_required(login_url='login')
+def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
+#    if request.method == "POST":
+                #add logic to calculate everything, then provide a save method - how???
+
+    return render(request, 'reservations/book_reservation.html')
 #add additional site views here (about, reservations, etc)
 
 
