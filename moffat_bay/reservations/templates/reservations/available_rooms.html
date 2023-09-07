@@ -9,7 +9,7 @@
 {% extends "reservations/base.html" %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/> <!-- change to about us page css/ whatever css needed-->
 {% endblock %}
 {% block content %}
 <!--available rooms html in here. the code below shows what the page recieves when loaded 
@@ -27,10 +27,49 @@
     I think that about covers the reservation flow. if you think of anything i missed, please let me know. 
     
 -->
-</br></br></br></br></br></br></br></br>
+<div class="banner-rooms">
+    <div class="banner-rooms-container">
+        <div class="banner-info-container">
+            <div class="info-banner-text">
+                <h1>Find your<br> perfect place to<br> stay</h1>
+                <p>Moffat Bay Marina & Lodge beckons as more than a mere location; it stands as a haven, where you'll discover a seamless fusion of aquatic adventures, serene relaxation, and untouched natural beauty.</p>
+            </div>
+        </div>
+        <img src="/media/site/lounge_room.jpg" alt="Image">
+    </div>
+    <form class="search" acton="#" method="POST"> {% csrf_token %}
+        <!--This form will be replaced/updated with a form from the backend, similar to the registration page, once we get to the registration back end stuff in mod 7-->
+        <div class="grid-item">
+            <label for="first-date">
+                <img src="/media/site/calendar_green.png" alt="Logo" class="label-icon">
+                Your Check In:
+            </label>
+            <label>{{checkInDate}}</label>
+            
+        </div>
+        <div class="grid-item">
+            <label for="second-date">
+                <img src="/media/site/calendar_green.png" alt="Logo" class="label-icon">
+                Your Check Out:
+            </label>
+            <label>{{checkOutDate}}</label>
+        </div>
+        
+        <div class="grid-item">
+            <label for="num-guests">
+                <img src="/media/site/guest_green.png" alt="Logo" class="label-icon">
+                Number of Guests:
+            </label>
+            <label>{{guests}}</label>
+        </div>
+        <div class="grid-item">
+            <div class="search-button-item"><a id="search-button" href="{% url 'book_now' %}">New Search</a></div> 
+        </div>
+    </form>
+</div>
 
-<div>
-<div class="menu-button-item"><a href="{% url 'book_now' %}">New Search</a></div> <!--change name -->
+<!-- <div>
+<div class="menu-button-item"><a href="{% url 'book_now' %}">New Search</a></div>
 <br><h2>check in date: {{checkInDate}}</h2>
 <h2>check out date: {{checkOutDate}}</h2>
 <h2># of guests: {{guests}}</h2></br>
@@ -39,8 +78,35 @@
     Room #: {{room.roomID}}</br>
     Size: {{room.size}}</br>
     id: {{room.size_id}}<br>
-    <a href={% url 'book-reservation' checkInDate checkOutDate guests room.roomID %}>Book Now!</a>
+    <div class="room-button"><a href={% url 'book-reservation' checkInDate checkOutDate guests room.roomID %}>Book Now</a></div>
     <hr>
 {% endfor %}
+</div> -->
+
+<div class="our-rooms">
+    <div class="rooms-text">
+        <h1>Available Rooms</h1>
+        <p>It looks like we found just what you were looking for! We can provide the perfect space for your stay. Wake up to breathtaking sunrises over the bay, unwind under a starlit sky, or prepare yourself for a new adventure. Our staff is ready to pamper and serve you today!</p>
+    </div>
+    <div class="rooms-gallery">
+        {% for room in available_rooms %}
+        <div class="rooms-container">
+            <img id="room_{{ room.size }}" src="/media/site/{{ room.size }}.png" alt="Room {{ room.roomID }}">
+            <div class="rooms-text-container">
+                <div>
+                    <p>Room #: {{ room.roomID }}</p>
+                    <h3>{{ room.size }}</h3>
+                </div>
+                <div class="middle-info">
+                    <!-- So here we can maybe do dates instead of guests for example, 'is available from [checkin] to [checkout]' since the search doesn't filter out for #of guests -->
+                    <p>Our luxurious {{ room.size }} option in room {{ room.roomID }} will comfortably sleep the {{guests}} guest(s) which you reqiure.</p>
+                </div>
+                <div>
+                    <div class="room-button"><a href="{% url 'book-reservation' checkInDate checkOutDate guests room.roomID %}">Book Now</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

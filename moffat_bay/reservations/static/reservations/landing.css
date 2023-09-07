@@ -69,19 +69,16 @@
     align-items: center; 
     position: relative;
 }
-.grid-item:nth-child(-n+2) {
+.grid-item:nth-child(2),
+.grid-item:nth-child(3) {
+    border-right: 1px solid #e8e8e8b9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
     position: relative;
-    border-right: 1px solid #e8e8e8b9; /* Add a right border */
 }
-.grid-item:nth-child(-n+2)::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 60%; 
-    background-color: #e8e8e8b9; 
-    transform: translateY(25%); 
-}
+
 .search .search-button-item {
     display: flex;
     justify-content: center; 

@@ -43,30 +43,20 @@
                         <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
                         Check In:
                     </label>
-                    {{ searchForm.checkInDate }}
-                    
+                    {{ searchForm.checkInDate }}                   
                 </div>
                 <div class="grid-item">
                     <label for="second-date">
                         <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
                         Check Out:
-                    </label><!--
-                    <input type="date" id="second-date" name="second-date">-->
+                    </label>
                     {{ searchForm.checkOutDate }}
-                </div>
-                
+                </div>            
                 <div class="grid-item">
                     <label for="num-guests">
                         <img src="media/site/guest_icon.png" alt="Logo" class="label-icon">
                         Number of Guests
-                    </label><!--
-                    <select name="num-guests" id="num-guests">
-                        <option value="1">1 guest</option>
-                        <option value="2">2 guests</option>
-                        <option value="3">3 guests</option>
-                        <option value="4">4 guests</option>
-                        <option value="5">5 guests</option> 
-                    </select>-->
+                    </label>
                     {{ searchForm.guests }}
                 </div>
                 <div class="grid-item">
@@ -92,10 +82,10 @@
         </div>
         <div class="rooms-gallery">
             <div class="rooms-text-container">
-                <img id="room_1" src="media/site/queen_bed.png" alt="Room 1">
-                <p>1 GUEST</p>
+                <img id="room_1" src="media/site/Queen.png" alt="Room 1">
+                <p>1-2 GUESTS</p>
                 <h3>Queen Bed</h3>
-                <img id="room_2" src="media/site/king_bed.jpg" alt="Room 1">
+                <img id="room_2" src="media/site/King.png" alt="Room 1">
                 <p>1-2 GUEST</p>
                 <h3>King Bed</h3>
             </div>
@@ -105,15 +95,15 @@
                 <h3>Double Queen Beds</h3>
             </div>
             <div class="rooms-text-container">
-                <img id="room_4" src="media/site/double_full.png" alt="Room 2">
+                <img id="room_4" src="media/site/Double Full.png" alt="Room 2">
                 <p>2-4 GUESTS</p>
                 <h3>Double Full Beds</h3>
                 <img id="room_5" src="media/site/queen_bed2.jpg" alt="Room 1">
-                <p>1 GUESTS</p>
+                <p>1-2 GUESTS</p>
                 <h3>Queen Bed</h3>
             </div>  
         </div>
-        <div class="room-button-item" id="room-button"><a href="#">View Our Spaces</a></div> 
+        <div class="room-button-item" id="room-button"><a href="{% url 'book_now' %}">View Our Spaces</a></div> 
     </div>
     <div class="about-info">
         <div class="about-text">

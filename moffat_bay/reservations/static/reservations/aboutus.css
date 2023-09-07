@@ -9,12 +9,11 @@
     left: 65%; 
     transform: translate(-50%, -50%);
     background-color: #121212a4; 
-    padding: 20px; 
     display: flex;
     align-items: center;
     justify-content: center;
     width: 50%;
-    height: 60%;
+    height: 65%;
 }
 .info-banner-text {
     text-align: center;
@@ -22,7 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3vw 1vw 1vw 1vw;
+    padding: 4vw 1vw 1vw 1vw;
 }
 
 .info-banner-line {
