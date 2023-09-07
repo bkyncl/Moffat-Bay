@@ -52,7 +52,7 @@
             <p>{{ guests }} Guest(s)</p>
             <div class="amenities-container">
                 <h2>{{ room.size }} Suite Amenities</h2>
-                <p class="room-details-text">This spacious and tastefully designed room offers everything you need for a relaxing stay. Enjoy a fully-equipped kitchenette, air conditioning, and your private balcony or patio with stunning views.</p>
+                <p class="room-details-text">This spacious and tastefully designed {{room.size}} room offers everything you need for a relaxing stay. Enjoy a fully-equipped kitchenette, air conditioning, and your private balcony or patio with stunning views.</p>
                 <p class="room-details-text"> Relax with Netflix on the Smart TV and stay connected with free Wi-Fi. Benefit from daily housekeeping and a leisurely 11 AM checkout time, making your stay carefree and enjoyable. Book now for an unforgettable retreat.</p>
                 <div class="amenities">
                     <div class="amenity">
@@ -88,7 +88,6 @@
             <p><strong>Room Size:</strong> {{ room.size }}</p>
             <p><strong>Room #:</strong> {{ room.roomID }}</p>
             <p><strong># of Guests:</strong> {{ guests }}</p>
-            <p><strong>User Account:</strong> {{ user }}</p>
             <div class="button-container">
                 <div id="confirm-booking" class="room-button"><a href="{% url 'reservation_confirmation' checkInDate checkOutDate guests room.roomID totalCost %}">Confirm Reservation</a></div>
                 <div id="cancel-booking" class="room-button"><a href="{% url 'book_now' %}">Cancel, Go Back!</a></div>

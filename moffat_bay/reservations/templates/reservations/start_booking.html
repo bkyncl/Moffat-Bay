@@ -24,12 +24,17 @@
             <div class="info-banner-text">
                 <h1>Find your<br> perfect place to<br> stay</h1>
                 <p>Moffat Bay Marina & Lodge beckons as more than a mere location; it stands as a haven, where you'll discover a seamless fusion of aquatic adventures, serene relaxation, and untouched natural beauty.</p>
+                {% if messages %}
+                    <br><br>
+                    {% for message in messages %}
+                        <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
         <img src="../media/site/lounge_room.jpg" alt="Image">
     </div>
     <form class="search" acton="#" method="POST"> {% csrf_token %}
-        <!--This form will be replaced/updated with a form from the backend, similar to the registration page, once we get to the registration back end stuff in mod 7-->
         <div class="grid-item">
             <label for="first-date">
                 <img src="../media/site/calendar_green.png" alt="Logo" class="label-icon">
@@ -69,14 +74,14 @@
             <img id="room_3" src="../media/site/Double Queen.png" alt="Room 1">
             <div class="rooms-text-container">
                 <div>
-                    <p>2-5 GUESTS</p>
+                    <p>1-5 GUESTS</p>
                     <h3>Double Queen Beds</h3>
                 </div>
                 <div class="middle-info">
-                    <p>The Double Queen Beds room accommodates 2-5 guests and offers a spacious stay with two queen-size beds</p>
+                    <p>The Double Queen Beds room accommodates 1-5 guests and offers a spacious stay with two queen-size beds, and optional foldouts if needed.</p>
                 </div>
                 <div>
-                    <div class="room-button"><a href="#">Book Now</a></div>
+                    <div class="room-button"><a href="#top">Book Now</a></div>
                 </div>
             </div>
         </div>
@@ -84,14 +89,14 @@
             <img src="../media/site/Double Full.png" alt="Room 1">
             <div class="rooms-text-container">
                 <div>
-                    <p>2-4 GUESTS</p>
+                    <p>1-5 GUESTS</p>
                     <h3>Double Full Beds</h3>
                 </div>
                 <div class="middle-info">
-                    <p>The Double Full Beds room is perfect for 2-4 guests, featuring two full-size beds for a comfortable night's rest.</p>
+                    <p>The Double Full Beds room is a perfect for retreat, featuring two full-size beds (additional foldouts available if needed) for a comfortable night's rest.</p>
                 </div>
                 <div>
-                    <div class="room-button"><a href="#">Book Now</a></div>
+                    <div class="room-button"><a href="#top">Book Now</a></div>
                 </div>
             </div>
         </div>
@@ -99,14 +104,14 @@
             <img src="../media/site/Queen.png" alt="Room 1">
             <div class="rooms-text-container">
                 <div>
-                    <p>1-2 GUESTS</p>
+                    <p>1-5 GUESTS</p>
                     <h3>Queen Bed</h3>
                 </div>
                 <div class="middle-info">
-                    <p>Our Queen Bed room, designed for 1-2 guests, provides a cozy space for a tranquil retreat.</p>
+                    <p>Our Queen Bed room, with additional foldouts available, provides a cozy space for a tranquil retreat.</p>
                 </div>
                 <div>
-                    <div class="room-button"><a href="#">Book Now</a></div>
+                    <div class="room-button"><a href="#top">Book Now</a></div>
                 </div>
             </div>
         </div> 
@@ -114,14 +119,14 @@
             <img src="../media/site/King.png" alt="Room 1">
             <div class="rooms-text-container">
                 <div>
-                    <p>1-2 GUESTS</p>
+                    <p>1-5 GUESTS</p>
                     <h3>King Bed</h3>
                 </div>
                 <div class="middle-info">
-                    <p>The King Bed room, suitable for 1-2 guests, ensures a regal experience with a luxurious king-size bed.</p>
+                    <p>The King Bed room, with additional foldouts available, ensures a regal experience with a luxurious king-size bed.</p>
                 </div>
                 <div>
-                    <div class="room-button"><a href="#">Book Now</a></div>
+                    <div class="room-button"><a href="#top">Book Now</a></div>
                 </div>
             </div>
         </div>

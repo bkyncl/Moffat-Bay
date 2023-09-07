@@ -93,7 +93,7 @@ def reservation_lookup(request):
         }
     return render(request, 'reservations/reservation_lookup.html', context)
 
-#book reservations page view"
+#book reservations page view:
 @login_required
 def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
     nightlyCost = Stay_Costs.objects.filter(guests=guests).get()
@@ -116,32 +116,25 @@ def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
 
 
 def book_now(request):
-    # I tried out some checkin checkout date validation here, if it isn't suitable your original code block is maintained and commented below just delete the below here
     if request.method == "POST":
         searchForm = AvailabilityForm(request.POST)
         if searchForm.is_valid(): 
             checkInDate = searchForm.cleaned_data['checkInDate']
             checkOutDate = searchForm.cleaned_data['checkOutDate']
             
-            # Perform date validation (decided for checkin <= checkout logic)
-            if checkOutDate <= checkInDate:
-                # I have not set an error message to be sent it just re-directs as of now
-                # Redirect back to the referring URL (current page)
+            # Perform date validation 
+            if checkOutDate <= checkInDate:     #if check-out is before check-in
+                messages.error(request, "Error: Check-out date must be AFTER check-in date. Please try again.")
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-            
+            if checkInDate < date.today():  #if check-in date is in the past
+                messages.error(request, "Error: Check-in date cannot be in the past. Please try again.")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            #if no date validation errors:
             guests = searchForm.cleaned_data['guests']
             checkInDate = checkInDate.strftime('%Y-%m-%d')
             checkOutDate = checkOutDate.strftime('%Y-%m-%d')
             
             return redirect('available_rooms', checkInDate, checkOutDate, guests) 
-
-    # if request.method == "POST":
-    #     searchForm = AvailabilityForm(request.POST)
-    #     if searchForm.is_valid(): add this code to any view with room availability search 
-    #         checkInDate = (searchForm.cleaned_data['checkInDate']).strftime('%Y-%m-%d')
-    #         checkOutDate = (searchForm.cleaned_data['checkOutDate']).strftime('%Y-%m-%d')
-    #         guests = searchForm.cleaned_data['guests']
-    #         return redirect('available_rooms', checkInDate, checkOutDate, guests) 
     
     else:
         searchForm = AvailabilityForm()
