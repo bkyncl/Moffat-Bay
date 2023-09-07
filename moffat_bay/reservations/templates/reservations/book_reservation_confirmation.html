@@ -8,7 +8,7 @@
 
 {% extends "reservations/base.html" %}{% load static %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/> <!-- change to about us page css/ whatever css needed-->
 {% endblock %}
 {% block content %}
 <!--book reservation  page HTML here
@@ -18,8 +18,111 @@
     
     Sample: (for back end functionality testing)
 -->
-</br></br></br></br></br></br></br></br>
-<h2>Please Confirm your reservation details:</h2>
+<div class="room-preview">
+    <div class="room-preview-container">
+        <div class="room-item big">
+            <!-- Content for the first grid item -->
+            <img src="/media/site/{{reservation.roomID.size}}.png" alt="Image 1">
+        </div>
+        <div class="room-item">
+            <!-- Content for the second grid item -->
+            <img src="/media/site/extra_room.jpg" alt="Image 2">
+        </div>
+        <div class="room-item">
+            <!-- Content for the third grid item -->
+            <img src="/media/site/kitchen.jpg" alt="Image 3">
+        </div>
+        <div class="room-item">
+            <!-- Content for the fourth grid item -->
+            <img src="/media/site/toilet.jpg" alt="Image 4">
+        </div>
+        <div class="room-item">
+            <!-- Content for the fifth grid item -->
+            <img src="/media/site/towels.jpg" alt="Image 5">
+        </div>
+    </div>
+</div>
+<div class="details-container">
+    <div class="reservation-container">
+        <div class="room-details">
+            <h1>Reservation Confirmation Summary</h1>
+            <br>
+            <h2>{{reservation.roomID.size}}</h2>
+            <p>{{ reservation.roomID }}</p>
+            <p>{{reservation.guests}} Guest(s)</p>
+            <div class="amenities-container">
+                <h2>{{reservation.roomID.size}} Suite Amenities</h2>
+                <p class="room-details-text">This spacious and tastefully designed room offers everything you need for a relaxing stay. Enjoy a fully-equipped kitchenette, air conditioning, and your private balcony or patio with stunning views.</p>
+                <p class="room-details-text"> Relax with Netflix on the Smart TV and stay connected with free Wi-Fi. Benefit from daily housekeeping and a leisurely 11 AM checkout time, making your stay carefree and enjoyable. Book now for an unforgettable retreat.</p>
+                <div class="amenities">
+                    <div class="amenity">
+                        <img src="/media/site/kitchen.png" alt="Logo 2">
+                        <p>Kitchenette</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/aircon.png" alt="Logo 2">
+                        <p>Air Conditioning</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/balcony.png" alt="Logo 2">
+                        <p>Balcony or Patio</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/television.png" alt="Logo 2">
+                        <p>Television with Netflix</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/wifi.png" alt="Logo 2">
+                        <p>Free Wireless Internet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="booking-details">
+            <h2>Thank You!<br> Your Reservation is Confirmed</h2>
+            <p style="text-align: center;">Please check your email! A confirmation email has been sent to the email address on your account.</p>
+            <p style="text-align: center;">We look forward to seeing you soon!</p>
+            <br>
+            <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{reservation.totalPrice}}</span></p>
+            <p><strong>Check In:</strong> {{reservation.checkInDate}}</p>
+            <p><strong>Check Out:</strong> {{reservation.checkOutDate}}</p>
+            <p><strong>Room Size:</strong> {{reservation.roomID.size}}</p>
+            <p><strong>Room #:</strong> {{ reservation.roomID }}</p>
+            <p><strong># of Guests:</strong> {{reservation.guests}}</p>
+            <p><strong>User Account:</strong> {{reservation.userID}}</p>
+            <p><strong>Reservation #:</strong> <span class="price">{{reservation.reservationID}}</span></p>
+            <p><strong>Confirmation #:</strong> <span class="price">{{reservation.confirmationKey}}</span></p>
+            <div class="button-container">
+                <div id="confirm-booking" class="room-button"><a href="{% url 'reservations-home' %}">Back to Home</a></div>
+            </div>
+        </div> 
+    </div>
+</div>
+<!-- JavaScript code to switch images on click -->
+<script>
+    const roomItems = document.querySelectorAll('.room-item');
+    const bigContainer = document.querySelector('.big');
+
+    roomItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            // Get the clicked image source and alt attributes
+            const clickedImageSrc = item.querySelector('img').src;
+            const clickedImageAlt = item.querySelector('img').alt;
+
+            // Swap the images and alt attributes
+            const bigImage = bigContainer.querySelector('img');
+            const bigImageSrc = bigImage.src;
+            const bigImageAlt = bigImage.alt;
+
+            bigImage.src = clickedImageSrc;
+            bigImage.alt = clickedImageAlt;
+
+            item.querySelector('img').src = bigImageSrc;
+            item.querySelector('img').alt = bigImageAlt;
+        });
+    });
+</script>
+<!-- <h2>Thank You! Your Reservation is Confirmed:</h2>
 <p>Check In: {{reservation.checkInDate}}</p>
 <p>Check Out: {{reservation.checkOutDate}}</p>
 <p>Room Size: {{reservation.roomID.size}}</p>
@@ -31,8 +134,6 @@
 <p>Please check your email! A confirmation email has been sent to the email address on your account.</p>
 <p>We look forward to seeing you soon!</p>
 <p></p><p></p>
-<a href="{% url 'reservations-home' %}">Back Home</a>
-
-
+<a href="{% url 'reservations-home' %}">Back Home</a> -->
 
 {% endblock %}

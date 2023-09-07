@@ -8,7 +8,7 @@
 
 {% extends "reservations/base.html" %}{% load static %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/> <!-- change to about us page css/ whatever css needed-->
 {% endblock %}
 {% block content %}
 <!--book reservation  page HTML here
@@ -18,19 +18,106 @@
     
     Sample: (for back end functionality testing)
 -->
-</br></br></br></br></br></br></br></br>
-<h2>Please Confirm your reservation details:</h2>
-<p>Check In: {{checkInDate}}</p>
-<p>Check Out: {{checkOutDate}}</p>
-<p># of Nights: {{nights}}</p>
-<p>Room Size: {{room.size}}</p>
-<p>Room # {{room.roomID}}</p>
-<p># of Guests: {{guests}}</p>
-<p>Price per Night: ${{nightlyCost.price}}</p>
-<p>Total Stay Cost: ${{totalCost}}</p></br>
-<p> user account: {{user}}</p>
-<p><a href="{% url 'reservation_confirmation' checkInDate checkOutDate guests room.roomID totalCost %}">Looks good, Book it!</a></p></br>
-<p><a href="{% url 'book_now' %}">NO! Start Over</a></p></br>
+<div class="room-preview">
+    <div class="room-preview-container">
+        <div class="room-item big">
+            <!-- Content for the first grid item -->
+            <img src="/media/site/{{ room.size }}.png" alt="Image 1">
+        </div>
+        <div class="room-item">
+            <!-- Content for the second grid item -->
+            <img src="/media/site/extra_room.jpg" alt="Image 2">
+        </div>
+        <div class="room-item">
+            <!-- Content for the third grid item -->
+            <img src="/media/site/kitchen.jpg" alt="Image 3">
+        </div>
+        <div class="room-item">
+            <!-- Content for the fourth grid item -->
+            <img src="/media/site/toilet.jpg" alt="Image 4">
+        </div>
+        <div class="room-item">
+            <!-- Content for the fifth grid item -->
+            <img src="/media/site/towels.jpg" alt="Image 5">
+        </div>
+    </div>
+</div>
+<div class="details-container">
+    <div class="reservation-container">
+        <div class="room-details">
+            <h1>Room Details</h1>
+            <br>
+            <h2>{{ room.size }}</h2>
+            <p>Room #: {{ room.roomID }}</p>
+            <p>{{ guests }} Guest(s)</p>
+            <div class="amenities-container">
+                <h2>{{ room.size }} Suite Amenities</h2>
+                <p class="room-details-text">This spacious and tastefully designed room offers everything you need for a relaxing stay. Enjoy a fully-equipped kitchenette, air conditioning, and your private balcony or patio with stunning views.</p>
+                <p class="room-details-text"> Relax with Netflix on the Smart TV and stay connected with free Wi-Fi. Benefit from daily housekeeping and a leisurely 11 AM checkout time, making your stay carefree and enjoyable. Book now for an unforgettable retreat.</p>
+                <div class="amenities">
+                    <div class="amenity">
+                        <img src="/media/site/kitchen.png" alt="Logo 2">
+                        <p>Kitchenette</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/aircon.png" alt="Logo 2">
+                        <p>Air Conditioning</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/balcony.png" alt="Logo 2">
+                        <p>Balcony or Patio</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/television.png" alt="Logo 2">
+                        <p>Television with Netflix</p>
+                    </div>
+                    <div class="amenity">
+                        <img src="/media/site/wifi.png" alt="Logo 2">
+                        <p>Free Wireless Internet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="booking-details">
+            <h2>Please Confirm your reservation details:</h2>
+            <p><strong>Price per Night:</strong> <span class="price">${{ nightlyCost.price }}</span></p>
+            <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{ totalCost }}</span></p>
+            <p><strong>Check In:</strong> {{ checkInDate }}</p>
+            <p><strong>Check Out:</strong> {{ checkOutDate }}</p>
+            <p><strong># of Nights:</strong> {{ nights }}</p>
+            <p><strong>Room Size:</strong> {{ room.size }}</p>
+            <p><strong>Room #:</strong> {{ room.roomID }}</p>
+            <p><strong># of Guests:</strong> {{ guests }}</p>
+            <p><strong>User Account:</strong> {{ user }}</p>
+            <div class="button-container">
+                <div id="confirm-booking" class="room-button"><a href="{% url 'reservation_confirmation' checkInDate checkOutDate guests room.roomID totalCost %}">Confirm Reservation</a></div>
+                <div id="cancel-booking" class="room-button"><a href="{% url 'book_now' %}">Cancel, Go Back!</a></div>
+            </div>
+        </div> 
+    </div>
+</div>
+<!-- JavaScript code to switch images on click -->
+<script>
+    const roomItems = document.querySelectorAll('.room-item');
+    const bigContainer = document.querySelector('.big');
 
+    roomItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            // Get the clicked image source and alt attributes
+            const clickedImageSrc = item.querySelector('img').src;
+            const clickedImageAlt = item.querySelector('img').alt;
 
+            // Swap the images and alt attributes
+            const bigImage = bigContainer.querySelector('img');
+            const bigImageSrc = bigImage.src;
+            const bigImageAlt = bigImage.alt;
+
+            bigImage.src = clickedImageSrc;
+            bigImage.alt = clickedImageAlt;
+
+            item.querySelector('img').src = bigImageSrc;
+            item.querySelector('img').alt = bigImageAlt;
+        });
+    });
+</script>
 {% endblock %}

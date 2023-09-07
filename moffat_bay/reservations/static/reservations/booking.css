@@ -1,4 +1,10 @@
+/*
 
+ Mark Witt / Brittany Kyncl
+ CSD-440: Capstone Project
+ Moffat-Bay Lodge - Bravo Team
+
+*/
 .banner-rooms{
     height: auto; 
     overflow: hidden;
@@ -47,10 +53,6 @@
     color: #121212;
     margin-top: 2.5vw;
 }
-
-
-
-
 .search {
     position: absolute;
     top: 83%;
@@ -106,8 +108,8 @@
     background-color: #9fce9eb6;
 }
 .grid-item label {
-    display: flex; /* Add this line */
-    align-items: center; /* Add this line */
+    display: flex; 
+    align-items: center; 
     color: #121212;
     font-size: 1.1vw;
     font-weight: 400;
@@ -115,9 +117,9 @@
     gap: 10px;
 }
 .grid-item .label-icon{
-    width: 1.4vw; /* Adjust the width as needed */
-    height: auto; /* Adjust the height as needed */
-    margin: 0; /* Adjust the spacing between icon and label */
+    width: 1.4vw; 
+    height: auto;
+    margin: 0; 
     vertical-align: middle;
     border-radius: 0;
     vertical-align: middle;
@@ -172,7 +174,8 @@
     border-radius: 2vw;
     padding: .7vw 3vw;
     cursor: pointer;
-    max-width: 12vw;
+    width: 12vw;
+    text-align: center;
 }
 .room-button:hover {
     background-color: #9fce9eb6;
@@ -212,11 +215,183 @@
     width: 75vw;
     height: 40vw;
 }
+.room-preview {
+    display: flex;
+    justify-content: center;
+}
+.room-preview-container {
+    margin-top: 10vw;
+    width: 83%;
+    height: 32vw;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: .8vw; /* Adjust the gap as needed */
+}
 
+.room-item {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
 
+.room-item.big {
+    grid-row: span 2; /* This item spans 2 columns */
+}
+.room-item.big img {
+    width: 40vw;
+    display: block;
+    object-fit: cover; 
+    object-position: center center; 
+    height: 100%; 
+}
+/* Optional: Set a fixed height for all grid items to maintain uniformity */
+.room-item img {
+    width: 20vw;
+    object-fit: cover; 
+    object-position: center center; 
+    height: 100%;
+    border-radius: .5vw;
+}
+.room-item:hover img {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.486); /* Add shadow on hover */
+}
+.details-container {
+    display: flex;
+    justify-content: center;
+    padding: 2vw 0 2vw 0;
+}
+.reservation-container {
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+    background-color: #c1dfe2;
+    border-radius: .5vw;
+    padding: 2vw;
+}
+#confirm-booking,
+#cancel-booking {
+    width: 18vw;
+    margin-left: 1vw;
+}
+#cancel-booking {
+    background-color: #b84141;
+    border-color: #b84141;
+}
+#cancel-booking:hover {
+    background-color: #b8414194;
+}
 
+.room-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    width: 60%;
+}
+.room-details h1 {
+    font-size: 2.5vw;
+    margin-left: 1vw;
+}
+.room-details h2 {
+    font-size: 1.8vw;
+    margin-left: 1vw;
 
+}
+.room-details p {
+    font-size: 1.2vw;
+    margin-left: 1vw;
+}
+.amenities-container {
+    background-color: white; /* Background color for the container */
+    padding: 20px;
+    border: .1vw solid #ccc;
+    border-radius: .5vw;
+    margin-top: 2vw;
+}
 
+.amenities-container h2 {
+    font-size:1.5vw; /* Adjust the font size as needed */
+    margin-bottom: 2vw;
+}
+
+.amenities {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+}
+
+.amenity {
+    flex: 0 0 calc(40% - 1vw); /* Adjust the width of each amenity (33.33% for three items per row) */
+    margin: 1vw; /* Add spacing below each amenity */
+}
+
+.amenity img {
+    width: 2vw; /* Adjust the max width for the amenity logos */
+    margin-left: 1vw;
+}
+
+.amenity p {
+    font-size: 1.2vw;
+}
+.room-details-text {
+    color: #0e0d0d9d;
+    font-size: .8vw;
+    line-height: 1.5em;
+    margin-bottom: 1.5vw;
+    width: 35vw;
+    
+}
+.booking-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    background-color: white;
+    padding: 1.5vw;
+    border: .1vw solid #ccc;
+    border-radius: .5vw;
+    width: 30vw;
+    height: fit-content;
+    text-align: left;
+    margin: 1vw;
+}
+.booking-details p {
+    font-size: 1.2vw;
+    margin-left: 1vw; 
+}
+.booking-details h2 {
+    font-size: 1.8vw;
+    font-weight: 500;
+    padding-bottom: 2.5vw;
+    text-align: center;
+}
+
+.booking-detailsstrong {
+    font-weight: bold;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    margin: 2vw;
+}
+.price {
+    font-size: 1.5vw; /* Adjust the font size as needed */
+    color: #007BFF; /* Choose a color that fits your design */
+    font-weight: bold;
+    background-color: #F0F0F0; /* Optional: Add a background color */
+    padding: .2vw 1vw; /* Optional: Add padding for spacing */
+    border-radius: .4vw; /* Optional: Add rounded corners */
+}
+
+.total-cost {
+    font-size: 1.5vw; /* Adjust the font size as needed */
+    color: #28A745; /* Choose a color that fits your design */
+    font-weight: bold;
+    background-color: #F0F0F0; /* Optional: Add a background color */
+    padding: .2vw 1vw; /* Optional: Add padding for spacing */
+    border-radius: .4vw; /* Optional: Add rounded corners */
+}
 /* styling of room search and feture container under 750px */
 @media (max-width: 750px) { 
     .search {
