@@ -25,7 +25,6 @@
                 <h1>Find your<br> perfect place to<br> stay</h1>
                 <p>Moffat Bay Marina & Lodge beckons as more than a mere location; it stands as a haven, where you'll discover a seamless fusion of aquatic adventures, serene relaxation, and untouched natural beauty.</p>
                 {% if messages %}
-                    <br><br>
                     {% for message in messages %}
                         <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
                     {% endfor %}

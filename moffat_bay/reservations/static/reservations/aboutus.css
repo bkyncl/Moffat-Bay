@@ -1,9 +1,7 @@
 /*
-
  Mark Witt / Brittany Kyncl
  CSD-440: Capstone Project
  Moffat-Bay Lodge - Bravo Team
-
 */
 .about-us{
     height: auto; 
@@ -12,7 +10,7 @@
 }
 .banner-info-container {
     position: absolute; 
-    top: 53%; 
+    top: 55%; 
     left: 65%; 
     transform: translate(-50%, -50%);
     background-color: #121212a4; 
@@ -20,7 +18,7 @@
     align-items: center;
     justify-content: center;
     width: 50%;
-    height: 65%;
+    height: 60%;
 }
 .info-banner-text {
     text-align: center;
@@ -28,7 +26,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4vw 1vw 1vw 1vw;
+    padding: 2vw 1vw 1vw 1vw;
 }
 
 .info-banner-line {

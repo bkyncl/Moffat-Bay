@@ -9,8 +9,251 @@
 {% extends "reservations/base.html" %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/attractions.css' %}"/> <!-- change to about us page css/ whatever css needed-->
 {% endblock %}
 {% block content %}
-<!--About us page HTML here-->
+    <div class="banner attractions">
+        <img src="../media/site/banner_attractions.jpg" alt="Image">
+        <div class="banner-info-container">
+            <div class="info-banner-text">
+                <h3>Adventure Awaits</h3>
+                <span class="info-banner-line"></span>
+                <h2>Our Many Attractions</h2>
+                <p>Moffat Bay Lodge offers an array of local attractions, including thrilling whale watching, guided hikes through pristine wilderness, peaceful kayaking adventures, and mesmerizing scuba diving experiences.
+                    These activities cater to diverse interests, ensuring guests can immerse themselves in the natural splendor and adventure that Moffat Bay has to offer.</p>
+            </div>
+        </div>
+    <!-- tyring out messages stream here for email signup for time being-->
+    <!-- {% if messages %}
+        <div style="height: 15vw;" class="overlay accounts-overlay">
+            <img style="margin: 1vw;" src="../media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content form-register">
+                {% for message in messages %}
+                    <h3 class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+    {% elif user.is_authenticated %}
+        <div style="height: 15vw;" class="overlay accounts-overlay">
+            <img style="margin: 1vw;" src="../media/site/logo1_variant1.png" alt="Logo">
+            <div class="text-content form-register">
+                <h3>Welcome back {{ user.first_name }}!</h3></br>
+            </div>
+        </div>
+    {% endif %} -->
+    </div>
+    <!-- WHALE WATCHING -->
+    <div class="about-feature">
+        <div class="about-logo-gallery">
+            <img id="feature-logo" src="../media/site/logo_variant2.png" alt="Logo">
+        </div>
+        <div class="about-feature-text">
+            <h1>WHALE WATCHING</h1>
+            <span class="about-feature-line"></span>
+            <p>Welcome to the world of Moffat Bay Marina & Lodge, a distinguished sanctuary situated on the enchanting Joviedsa Island. We're not just an establishment; we're a harmonious blend of aquatic adventures and natural splendor.</p>
+            <p>Located along the serene and picturesque shores of Moffat Bay, our marina and lodge offers a tranquil refuge. Where the comforts of luxury and the tranquility of nature combine.</p>
+            <div class="explore-button-item" id="explore-button"><a href="#">Book Now</a></div>  
+            
+        </div>
+        <div class="about-grid-gallery">
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/whales1.png" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/whales2.png" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/whales3.png" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/whales4.png" alt="Sailing">
+            </div>
+        </div>
+        <div class="circle-info">
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/airplane.png" alt="Logo"> -->
+                    <p>“Nature's spectacle on the open ocean waves.”</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img id="five-stars-white" src="../media/site/5_stars_white.png" alt="Logo"> -->
+                    <p>Experience the wonder of whales in their natural ocean habitat</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/going_up_graph.png" alt="Logo"> -->
+                    <p>“A breathtaking encounter with nature's gentle giants at sea.”</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- SCUBA DIVING -->
+    <div class="about-feature">
+        <div class="about-logo-gallery">
+            <img id="feature-logo" src="../media/site/logo_variant2.png" alt="Logo">
+        </div>
+        <div class="about-feature-text">
+            <h1>SCUBA DIVING</h1>
+            <span class="about-feature-line"></span>
+            <p>Discover a world beneath the waves with scuba diving! Immerse yourself in crystal-clear waters, explore vibrant coral gardens, encounter captivating marine creatures, and experience unparalleled adventures beneath the sea. Dive in today!</p>
+            <div class="explore-button-item" id="explore-button"><a href="#">Book Now</a></div>  
+            
+        </div>
+        <div class="about-grid-gallery">
+            <div class="grid-item-large">
+                <img class="about-feature-image-tall" src="../media/site/lodge_tall.jpg" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/lodge_square2.jpg" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/square_lodge.jpg" alt="Sailing">
+            </div>
+        </div>
+        <div class="circle-info">
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/airplane.png" alt="Logo"> -->
+                    <p>“Scuba diving trip: Thrilling, colorful reefs, memories to last a lifetime.”</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img id="five-stars-white" src="../media/site/5_stars_white.png" alt="Logo"> -->
+                    <p>“Unforgettable adventure, met sea turtles, breathtaking underwater world, pure exhilaration.”</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/going_up_graph.png" alt="Logo"> -->
+                    <p>"Dive excursion: majestic marine life, tranquil depths, serenity beneath the waves."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- GUIDED HIKING TOURS -->
+    <div class="about-feature">
+        <div class="about-logo-gallery">
+            <img id="feature-logo" src="../media/site/logo_variant2.png" alt="Logo">
+        </div>
+        <div class="about-feature-text">
+            <h1>GUIDED<br> HIKING TOURS</h1>
+            <span class="about-feature-line"></span>
+            <p>Hike, Connect, Recharge: Immerse yourself in nature on guided tours designed to rejuvenate your spirit.</p>
+            <p>Ascend to new heights on this guided hiking tour, where our seasoned guides lead you through rugged trails to witness awe-inspiring mountain vistas. Connect with fellow adventurers as you conquer peaks and create lasting memories.</p>
+            <div class="explore-button-item" id="explore-button"><a href="#">Book Now</a></div>  
+            
+        </div>
+        <div class="about-grid-gallery">
+            <div class="grid-item-large">
+                <img class="about-feature-image-tall" src="../media/site/lodge_tall.jpg" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/lodge_square2.jpg" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/square_lodge.jpg" alt="Sailing">
+            </div>
+        </div>
+        <div class="circle-info">
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/airplane.png" alt="Logo"> -->
+                    <p>Find Your Trek: Guided Hiking Tours Await You.</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img id="five-stars-white" src="../media/site/5_stars_white.png" alt="Logo"> -->
+                    <p>Trail Bliss: Hike, Connect, and Recharge Outdoors.</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/going_up_graph.png" alt="Logo"> -->
+                    <p>Elevate Your Journey: Guided Hiking, Nature's Embrace.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- KAYAKING -->
+    <div class="about-feature">
+        <div class="about-logo-gallery">
+            <img id="feature-logo" src="../media/site/logo_variant2.png" alt="Logo">
+        </div>
+        <div class="about-feature-text">
+            <h1>KAYAKING</h1>
+            <span class="about-feature-line"></span>
+            <p>Experience the beauty of nature from a new perspective as you glide through serene waters on our guided kayaking tours.</p>
+            <p>Explore picturesque lakes, winding rivers, and coastal wonders while surrounded by breathtaking natural beauty.  Get close to nature, enjoy the fresh air, and experience the thrill of kayaking. Encounter local wildlife, from graceful waterfowl to playful otters, in their natural habitats. </p>
+            <div class="explore-button-item" id="explore-button"><a href="#">Book Now</a></div>  
+            
+        </div>
+        <div class="about-grid-gallery">
+            <div class="grid-item-large">
+                <img class="about-feature-image-tall" src="../media/site/lodge_tall.jpg" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/lodge_square2.jpg" alt="Sailing">
+            </div>
+            <div class="grid-item">
+                <img class="about-feature-image" src="../media/site/square_lodge.jpg" alt="Sailing">
+            </div>
+        </div>
+        <div class="circle-info">
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/airplane.png" alt="Logo"> -->
+                    <p>"Kayaking tour: Serene waters, wildlife surprises, a tranquil escape from everyday."</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img id="five-stars-white" src="../media/site/5_stars_white.png" alt="Logo"> -->
+                    <p>"Adventure seekers' dream, kayaking through stunning vistas, nature's embrace beckons."</p>
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-inner">
+                    <!-- <img src="../media/site/going_up_graph.png" alt="Logo"> -->
+                    <p>"Memorable paddle, under the open sky, the river's secrets unveiled."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 {% endblock %}

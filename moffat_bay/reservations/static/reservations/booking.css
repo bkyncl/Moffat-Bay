@@ -1,9 +1,7 @@
 /*
-
  Mark Witt / Brittany Kyncl
  CSD-440: Capstone Project
  Moffat-Bay Lodge - Bravo Team
-
 */
 .banner-rooms{
     height: auto; 
@@ -15,7 +13,7 @@
 .banner-rooms-container {
     display: flex;
     align-items: center;
-    margin-top: 7vw;
+    margin-top: 9%;
     background-color: #c1dfe2;
     height: 40vw;
     width: 90%;
@@ -52,6 +50,7 @@
     line-height: 1.8em;
     color: #121212;
     margin-top: 2.5vw;
+    margin-bottom: 1vw;
 }
 .search {
     position: absolute;
@@ -130,7 +129,7 @@
     font-size: .9vw;
     width: 7vw;
     height: auto;
-    border: 1px solid #121212;
+    border: .1vw solid #121212;
     border-radius: 5px;
     background-color: #fff;
 }
@@ -392,6 +391,16 @@
     padding: .2vw 1vw; /* Optional: Add padding for spacing */
     border-radius: .4vw; /* Optional: Add rounded corners */
 }
+
+.success,
+.info,
+.warning,
+.error,
+.errorlist {
+    font-size: 1vw;
+    font-weight: 500;
+    color:#b84141;
+}
 /* styling of room search and feture container under 750px */
 @media (max-width: 750px) { 
     .search {
@@ -408,7 +417,7 @@
         height: 1.5vw;
         border: none;
         border-radius: 2px;
-        border: 1px solid #121212;
+        border: .05vw solid #121212;
         background-color: #fff;
     }
     .centered-container,
@@ -420,6 +429,6 @@
         width: 90%;
     }
     .banner-rooms-container {
-        margin-top: 13vw;
+        margin-top: 13%;
     }
 }
