@@ -239,7 +239,10 @@ ul.info-banner-list li:nth-child(3) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10vw 0 3vw 0;
+    padding: 0 0 3vw 0;
+}
+.our-services.attractions {
+    padding: 10vw 0 2vw 0;
 }
 .services-text {
     text-align: center;
@@ -282,10 +285,15 @@ ul.info-banner-list li:nth-child(3) {
 }
 .services-gallery:nth-child(4) {
     background-image: url("/media/site/spa.jpg");
+    
 }
 .services-gallery:nth-child(5) {
     background-image: url("/media/site/sunset_sailing.jpg");
 }
+.services-gallery.attractions:nth-child(2) {
+    background-image: url("/media/site/hiking_view.jpg");
+}
+
 
 .service-container {
     background-color: #121212a4;
@@ -335,6 +343,13 @@ ul.info-banner-list li:nth-child(3) {
 .services-feature-list li {
     margin-left: 4vw;
 }
+.services-feature-list li a {
+    text-decoration: none;
+    color: #fff;
+}
+.services-feature-list li a:hover {
+    text-decoration: underline;
+}
 
 
 .contact-list{
@@ -369,7 +384,7 @@ ul.contact-list li:nth-child(3) {
     background-size:1.6vw 2vw;
 }
 /* 
-Optional email contact form styling, Please DO NOT DELETE
+Optional email contact form styling, Please DO NOT DELETE   
 .contact-form {
     background-color:#82BB81;
     width: 30%;
