@@ -81,6 +81,7 @@
     background-color: #121212;
     height: auto;
     position: relative;
+    margin-bottom: 14vw;
 }
 .about-grid-gallery {
     display: grid;
@@ -110,7 +111,7 @@
 }
 .about-feature-text {
     flex: 1; 
-    padding: 4vw 0 3vw 8vw; 
+    padding: 8vw 0 3vw 8vw; 
     text-align: left; 
 }
 .about-feature-line {
@@ -182,8 +183,8 @@
 }
 .circle-inner p{
     text-align: center;
-    font-size: 1vw;
-    font-weight: 300;
+    font-size: 1.1vw;
+    font-weight: 400;
     padding: .5vw;
     width: 10vw;
     line-height: 1.4em;
