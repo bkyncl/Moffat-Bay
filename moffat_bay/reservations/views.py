@@ -236,17 +236,21 @@ def book_room(request, size):
                 checkInDate = checkInDate.strftime('%Y-%m-%d')
                 checkOutDate = checkOutDate.strftime('%Y-%m-%d')
                 roomID = alt_get_available_rooms(checkInDate, checkOutDate, size)
-                
-
-            return redirect('book-reservation', checkInDate, checkOutDate, guests, roomID)
+                if roomID:
+                    return redirect('book-reservation', checkInDate, checkOutDate, guests, roomID)
+                else:
+                    messages.info(request, "We're sorry, but that room size is not available during your requested dates. Our available rooms are listed below.")
+                    return redirect('available_rooms', checkInDate, checkOutDate, guests)
     else: 
         mailform = MailListForm()
         searchForm = AvailabilityForm()
+        roomSize = RoomChoices.objects.filter(choiceID=size).get()
     context = {
         'title':'Select dates',
         'size': size,
         'mailform':mailform,
         'searchForm': searchForm,
+        'roomSize': roomSize,
     }
     return render(request, 'reservations/book_room.html', context)
 
