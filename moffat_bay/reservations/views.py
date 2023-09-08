@@ -14,6 +14,7 @@ from .models import Stay_Costs, Reservations
 from moffat_bay.utilities import *
 from users.decorators import login_required_message
 from django.http import HttpResponseRedirect
+from datetime import datetime, timedelta
 
 #reusable method to get all available rooms
 def get_available_rooms(checkInDate, checkOutDate):
@@ -121,13 +122,17 @@ def book_now(request):
         if searchForm.is_valid(): 
             checkInDate = searchForm.cleaned_data['checkInDate']
             checkOutDate = searchForm.cleaned_data['checkOutDate']
-            
+            inputdate = datetime.strptime(str(checkInDate), '%Y-%m-%d')
+            days_difference = (inputdate - datetime.now()).days
             # Perform date validation 
             if checkOutDate <= checkInDate:     #if check-out is before check-in
                 messages.error(request, "Error: Check-out date must be AFTER check-in date. Please try again.")
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             if checkInDate < date.today():  #if check-in date is in the past
                 messages.error(request, "Error: Check-in date cannot be in the past. Please try again.")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            if (inputdate - datetime.now()).days > 365:
+                messages.error(request, "We are sorry, Moffat-Bay Marina & Lodge does not accept reservations for more than a year in advance. Please come back soon to book your stay!")
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             #if no date validation errors:
             guests = searchForm.cleaned_data['guests']
