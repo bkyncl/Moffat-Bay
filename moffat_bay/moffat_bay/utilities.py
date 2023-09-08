@@ -86,6 +86,20 @@ def find_available_rooms(checkInDate, checkOutDate, overlapping_reservations):
             available_rooms.append(available_room)
     return available_rooms
 
+#Room availability search, by size (alternate pathway):
+def alt_find_available_rooms(checkInDate, checkOutDate, overlapping_reservations, size):
+    #stripping date format into string
+    checkInDate = date.fromisoformat(str(checkInDate))
+    checkOutDate = date.fromisoformat(str(checkOutDate))
+    reserved_room_ids = overlapping_reservations.values_list('roomID', flat=True)
+    available_rooms = 0
+    #create list of available room object, filter by room size (get one of each), an exclude rooms already booked.
+    roomsize = RoomChoices.objects.filter(choiceID=size).get() # get room object from size int input
+    available_room = Rooms.objects.filter(size_id=roomsize).exclude(roomID__in=reserved_room_ids).first() #get first available room of that size
+    if available_room:
+        available_rooms= available_room.roomID
+    return available_rooms
+
 def send_email_confirmation(reservation):
     sender = "confirmations@Moffay-Bay-Lodge.com"
     subject = f"Your Reservation Confirmation for " + str(reservation.checkInDate) + " to " + str(reservation.checkOutDate)

@@ -28,6 +28,7 @@ urlpatterns = [
     path('book-reservation/<str:checkInDate>/<str:checkOutDate>/<int:guests>/<int:roomID>/', views.book_reservation, name='book-reservation'),
     path('reservation-confirmation/<str:checkInDate>/<str:checkOutDate>/<int:guests>/<int:roomID>/<decimal:totalCost>/', 
                 views.booking_confirmed, name='reservation_confirmation'),
+    path('book-room/<int:size>', views.book_room, name='book_room'),
     
     
     #add remaining site pages urls here

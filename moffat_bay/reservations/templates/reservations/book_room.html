@@ -1,0 +1,69 @@
+<!--
+
+ Mark Witt / Brittany Kyncl
+ CSD-440: Capstone Project
+ Moffat-Bay Lodge - Bravo Team
+
+-->
+
+{% extends "reservations/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/> <!-- change to about us page css/ whatever css needed--><!-- change to about us page css/ whatever css needed-->
+{% endblock %}
+{% block content %}
+<!--
+    This page will be a get started with booking - search availability form, that will then open the available_rooms.html. 
+
+    This page will be loaded from the book now header button, reservations link on header/footer, and a search again link on the available rooms page
+-->
+<div class="banner-rooms">
+    <div class="banner-rooms-container">
+        <div class="banner-info-container">
+            <div class="info-banner-text">
+                <h1>Find your<br> Change Title<br> stay</h1>
+                <p id="msg_one">Moffat Bay Marina & Lodge beckons as more than a mere location; it stands as a haven, where you'll discover a seamless fusion of aquatic adventures, serene relaxation, and untouched natural beauty.</p>
+                <p id="msg_two">Check out the many luxurious rooms we have to choose from. We're more than a location; we're a haven.</p>
+                {% if messages %}
+                    {% for message in messages %}
+                        <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <img src="../media/site/lounge_room.jpg" alt="Image">
+    </div>
+    <form class="search" acton="#" method="POST"> {% csrf_token %}
+        <div class="grid-item">
+            <label for="first-date">
+                <img src="../media/site/calendar_green.png" alt="Logo" class="label-icon">
+                Check In:
+            </label>
+            {{ searchForm.checkInDate }}
+            
+        </div>
+        <div class="grid-item">
+            <label for="second-date">
+                <img src="../media/site/calendar_green.png" alt="Logo" class="label-icon">
+                Check Out:
+            </label>
+            {{ searchForm.checkOutDate }}
+        </div>
+        
+        <div class="grid-item">
+            <label for="num-guests">
+                <img src="../media/site/guest_green.png" alt="Logo" class="label-icon">
+                Number of Guests
+            </label>
+            {{ searchForm.guests }}
+        </div>
+        <div class="grid-item">
+            <div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div> 
+        </div>
+    </form>
+</div>
+<br><br><br>
+
+
+
+{% endblock %}

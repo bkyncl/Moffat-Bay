@@ -24,6 +24,13 @@ def get_available_rooms(checkInDate, checkOutDate):
     available_rooms = find_available_rooms(checkInDate,checkOutDate, overlapping_reservations)
     return available_rooms
 
+#get available rooms method, with size choice:
+def alt_get_available_rooms(checkInDate, checkOutDate, size):
+    overlapping_reservations = Reservations.objects.filter(
+                Q(checkInDate__lte=checkInDate, checkOutDate__gt=checkInDate) |
+                Q(checkInDate__lt=checkOutDate, checkOutDate__gte=checkOutDate))
+    available_rooms = alt_find_available_rooms(checkInDate,checkOutDate, overlapping_reservations, size)
+    return available_rooms
 
 #main landing page view:
 def home(request):
@@ -49,7 +56,11 @@ def home(request):
 #about us page view:
 def about(request):
     mailform = MailListForm(request.POST or None)
-    #add any extra logic needed here
+    if request.method == "POST":
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('about_us')
     context = {     #everything in context dictionary gets passed to the html page and used as variables
         'title':'About The Lodge',
         'mailform': mailform,
@@ -73,7 +84,11 @@ def rooms(request):
 #attractions page view:
 def attractions(request):
     mailform = MailListForm(request.POST or None)
-    #add any extra logic/code needed here
+    if request.method == "POST":
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('attractions')
     context = {
         'title':'Local Attractions',
         'mailform': mailform,
@@ -85,7 +100,11 @@ def attractions(request):
 #reservation lookup view:
 def reservation_lookup(request):
     mailform = MailListForm(request.POST or None)
-    #add any extra logic/code needed here
+    if request.method == "POST":
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('')
     context = {
         'title':'My Reservations',
         'mailform': mailform,
@@ -102,6 +121,7 @@ def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
     nights = get_nights(checkInDate, checkOutDate)
     room = Rooms.objects.filter(roomID=roomID).get()
     userid = request.user.id
+    # ADD MAILIST FORM & LOGIC **************************************
     context = {
         'title' : f'Reservation summary',
         'nightlyCost': nightlyCost,
@@ -119,11 +139,11 @@ def book_reservation(request, checkInDate, checkOutDate, guests, roomID):
 def book_now(request):
     if request.method == "POST":
         searchForm = AvailabilityForm(request.POST)
+        mailform = MailListForm(request.POST)
         if searchForm.is_valid(): 
             checkInDate = searchForm.cleaned_data['checkInDate']
             checkOutDate = searchForm.cleaned_data['checkOutDate']
             inputdate = datetime.strptime(str(checkInDate), '%Y-%m-%d')
-            days_difference = (inputdate - datetime.now()).days
             # Perform date validation 
             if checkOutDate <= checkInDate:     #if check-out is before check-in
                 messages.error(request, "Error: Check-out date must be AFTER check-in date. Please try again.")
@@ -140,12 +160,18 @@ def book_now(request):
             checkOutDate = checkOutDate.strftime('%Y-%m-%d')
             
             return redirect('available_rooms', checkInDate, checkOutDate, guests) 
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('book_now')
     
     else:
         searchForm = AvailabilityForm()
+        mailform = MailListForm()
     context = {
         'title':'Start your Reservation',
         'searchForm': searchForm,
+        'mailform': mailform,
         }
     return render(request, 'reservations/start_booking.html', context)
 
@@ -174,12 +200,55 @@ def booking_confirmed(request, checkInDate, checkOutDate, guests, roomID, totalC
                                   totalPrice=totalCost, checkInDate=checkInDate, checkOutDate=checkOutDate)
     newReservation.save()
     confirm = Reservations.objects.filter(userID=userId, checkInDate=checkInDate, checkOutDate=checkOutDate).get()
+    # ADD MAILLIST FORM AND HANDLING *********************************
     context = {
         'title': 'Reservation Confirmation',
         'reservation': confirm
     }
     send_email_confirmation(confirm)
     return render(request, 'reservations/book_reservation_confirmation.html',context)
+
+#alternate booking pathway:
+def book_room(request, size):
+    if request.method == "POST":
+        searchForm = AvailabilityForm(request.POST)
+        mailform = MailListForm(request.POST)
+        if mailform.is_valid():
+            mailform.save()
+            messages.success(request, "Thank you for signing up for our mailing list!")
+            return redirect('reservations-home')
+        if searchForm.is_valid(): 
+            checkInDate = searchForm.cleaned_data['checkInDate']
+            checkOutDate = searchForm.cleaned_data['checkOutDate']
+            inputdate = datetime.strptime(str(checkInDate), '%Y-%m-%d')
+            # Perform date validation 
+            if checkOutDate <= checkInDate:     #if check-out is before check-in
+                messages.error(request, "Error: Check-out date must be AFTER check-in date. Please try again.")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            if checkInDate < date.today():  #if check-in date is in the past
+                messages.error(request, "Error: Check-in date cannot be in the past. Please try again.")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            if (inputdate - datetime.now()).days > 365:
+                messages.error(request, "We are sorry, Moffat-Bay Marina & Lodge does not accept reservations for more than a year in advance. Please come back soon to book your stay!")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            else:
+                guests = searchForm.cleaned_data['guests']
+                checkInDate = checkInDate.strftime('%Y-%m-%d')
+                checkOutDate = checkOutDate.strftime('%Y-%m-%d')
+                roomID = alt_get_available_rooms(checkInDate, checkOutDate, size)
+                
+
+            return redirect('book-reservation', checkInDate, checkOutDate, guests, roomID)
+    else: 
+        mailform = MailListForm()
+        searchForm = AvailabilityForm()
+    context = {
+        'title':'Select dates',
+        'size': size,
+        'mailform':mailform,
+        'searchForm': searchForm,
+    }
+    return render(request, 'reservations/book_room.html', context)
 
 #add additional site views here (about, reservations, etc)
 
