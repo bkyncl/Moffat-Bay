@@ -21,9 +21,13 @@
     <div class="banner-rooms-container">
         <div class="banner-info-container">
             <div class="info-banner-text">
-                <h1>Let's find available<br>{{roomSize.roomSize}} rooms <br>for your stay</h1>
-                <p id="msg_one">Please select the check-in date, check-out date, and number of guests for your stay so we can find the perfect {{ roomSize.roomSize}} room for you!
+                <h1 id="msg_one">Let's find available<br>{{roomSize.roomSize}} rooms <br>for your stay</h1>
+                <h1 id="msg_two">Search available<br>{{roomSize.roomSize}} rooms</h1>
+                <p id="msg_one">Please the your check-in/check-out dates and number of guests below.
                 </br></br><i>Please Note: If we do not have an available {{roomSize.roomSize}} room for the dates you requested, we will find other rooms available for your stay dates.</i></p>
+                <p id="msg_two">
+                </br><i>Please Note: Enter your check-in/check-out dates and number of guests below. If we do not have an available {{roomSize.roomSize}} room for the dates you requested, we will find other rooms available for your stay dates.</i>
+                </p>
                 {% if messages %}
                     {% for message in messages %}
                         <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
