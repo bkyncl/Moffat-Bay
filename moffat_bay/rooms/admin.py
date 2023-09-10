@@ -18,6 +18,9 @@ class RoomChoiceAdmin(admin.ModelAdmin):
     
     def has_change_permission(self, request, obj=None):
         return False
+    
+    def has_recent_actions(self, request):
+        return False
 
 class RoomsAdmin(admin.ModelAdmin):
     ordering = ['roomID']
@@ -30,6 +33,9 @@ class RoomsAdmin(admin.ModelAdmin):
         return False
     
     def has_change_permission(self, request, obj=None):
+        return False
+    
+    def has_recent_actions(self, request):
         return False
     
 admin.site.register(RoomChoices, RoomChoiceAdmin)

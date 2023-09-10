@@ -35,33 +35,39 @@ class CostAdmin(admin.ModelAdmin):
     
     def has_change_permission(self, request, obj=None):
         return False
+    def has_recent_actions(self, request):
+        return False
     
 #add admin class for reservations model
 class ReservationsAdmin(admin.ModelAdmin):
     model = Reservations
-    readonly_fields = ('reservationID',)
-#    readonly_fields = ('reservationID', 'confirmationKey', 'userID', 'totalPrice')
+    readonly_fields = ('reservationID', 'confirmationKey', 'userID', 'totalPrice', 'roomID')
     ordering = ('checkInDate', 'checkOutDate')
-    search_fields = ('reservationID', 'confirmationKey')
+    search_fields = ('reservationID', 'confirmationKey', 'checkInDate', 'checkOutDate')
     fieldsets = (
         ('Reservation', {'fields': ('reservationID', 'confirmationKey')}),
         ('Reservation Details', {'fields' : ('checkInDate', 'checkOutDate', 'roomID', 'guests', 'totalPrice')}),
         ('User Details - click to see user account', {'fields': ('userID',)}),
     )
+    list_filter = ('checkInDate', 'checkOutDate', 'userID')
+    search_help_text = ("Search by:  Reservation #, Confirmation #, Check-in Date (YYYY-MM-DD), or Check-out Date (YYYY-MM-DD).")
     
 
     def has_add_permission(self, request):
-        return True
+        return False
     
     def has_delete_permission(self, request, obj=None):
         return True
     
     def has_change_permission(self, request, obj=None):
         return True
+    def has_recent_actions(self, request):
+        return True
 
 
 # Register models for admin page here.
 admin.site.register(Stay_Costs, CostAdmin)
 admin.site.register(Reservations, ReservationsAdmin)
-#register reservations model and admin here
+
+
 
