@@ -153,16 +153,22 @@
         </div> 
         <div class="services-gallery float-right">
             <!-- Optional email contact form here, Please DO NOT DELETE -->
-            <!-- <div class="contact-form">
+            <div class="contact-form" id="contact-form">
                 <img id="contact-logo" src="../media/site/logo_variant2.png" alt="Logo">
                 <h3>Contact Us</h3>
-                <form class="email-form" action="#" method="POST">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    <input type="email" id="email-input" name="email" placeholder="Your Email" required>  
-                    <textarea id="message" name="message" rows="4" placeholder="Your Message Here" required></textarea>
-                    <button class="login-button" type="submit">Contact</button>
+                <form class="email-form-two" method="POST">
+                    {% csrf_token %}
+                    <input type="text" id="name" name="{{ contact_form.name.name }}" placeholder="Your Name" required>
+                    <input type="email" id="email-input" name="{{ contact_form.email.name }}" placeholder="Your Email" required>
+                    <textarea id="message" name="{{ contact_form.message.name }}" rows="4" placeholder="Your Message Here" required></textarea>
+                    {% if messages %}
+                            {% for message in messages %}
+                                <p class="feedback">{{ message }}</p>
+                            {% endfor %}
+                    {% endif %}
+                    <button class="login-button" type="submit" name="contact_form_submit">Contact</button>
                 </form>
-            </div> -->
+            </div>
             <div class="service-container">
                 <div class="info-banner-text">
                     <h3>Contact Us</h3>

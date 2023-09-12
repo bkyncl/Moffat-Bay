@@ -54,17 +54,46 @@ def home(request):
 
 #about us page view:
 def about(request):
+    # Create instances of both forms
     mailform = MailListForm(request.POST or None)
+    contact_form = ContactForm(request.POST or None)
+
     if request.method == "POST":
-        if mailform.is_valid():
-            mailform.save()
-            messages.success(request, "Thank you for signing up for our mailing list!")
-            return redirect('about_us')
-    context = {     #everything in context dictionary gets passed to the html page and used as variables
-        'title':'About The Lodge',
+        if 'mailform_submit' in request.POST:
+            # Handle the MailListForm submission
+            if mailform.is_valid():
+                mailform.save()
+                messages.success(request, "Thank you for signing up for our mailing list!")
+                return redirect('about_us')
+        elif 'contact_form_submit' in request.POST:
+            # Handle the ContactForm submission
+            if contact_form.is_valid():
+                # Get form data
+                name = contact_form.cleaned_data["name"]
+                email = contact_form.cleaned_data["email"]
+                message = contact_form.cleaned_data["message"]
+
+                # Create a dictionary with the contact form data
+                contact_data = {
+                    'name': name,
+                    'email': email,
+                    'message': message,
+                }
+
+                # Send the contact form email
+                # Send the contact form email
+                if send_contact_email(contact_data):
+                    messages.success(request, "Your message has been sent!")  # Display success message
+                    #i tried to have it redirect to the #contact-from div here but could not determine a simple way
+                    #will look into more simple options....
+                else:
+                    messages.error(request, "Failed to send your message. Please try again.")  # Display error message
+    context = {
+        'title': 'Contact Us',
         'mailform': mailform,
-        #add anything else we want returned and displayed on about page here
-        }
+        'contact_form': contact_form,  # Add the contact form to the context
+        # Add anything else you want to be returned and displayed on the contact us page here
+    }
     return render(request, 'reservations/about_us.html', context)
 
 #contact us page view with both MailListForm and ContactForm: 
