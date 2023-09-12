@@ -20,6 +20,7 @@ register_converter(DecimalConverter, 'decimal')
 urlpatterns = [
     path('', views.home, name='reservations-home'),
     path('about-moffat-bay-lodge/', views.about, name='about_us'),
+    path('contact-moffat-bay-lodge/', views.contact_us, name='contact_us'), 
     path('our-rooms/', views.rooms, name='rooms'),
     path('local-attractions/', views.attractions, name='attractions'),
     path('my-reservations/', views.reservation_lookup, name='reservation_lookup'),

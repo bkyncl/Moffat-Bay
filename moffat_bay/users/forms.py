@@ -38,3 +38,9 @@ class MailListForm(forms.ModelForm):
     class Meta:
         model = MailingList
         fields = ['email',]
+
+#form class for email contact form on 'contact_us.html'
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, label="Your Name")
+    email = forms.EmailField(label="Your Email")
+    message = forms.CharField(widget=forms.Textarea, label="Your Message")

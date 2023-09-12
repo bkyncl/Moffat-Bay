@@ -381,9 +381,9 @@ ul.contact-list li:nth-child(3) {
     background: url("/media/site/nav.png") no-repeat left center; /* Custom image for the third list item */
     background-size:1.6vw 2vw;
 }
-/* 
-Optional email contact form styling, Please DO NOT DELETE   
-.contact-form {
+
+/* Optional email contact form styling, Please DO NOT DELETE    */
+/* .contact-form {
     background-color:#82BB81;
     width: 30%;
     height: 80%;

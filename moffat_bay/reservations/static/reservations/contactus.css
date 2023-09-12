@@ -1,0 +1,171 @@
+ /*
+ Mark Witt / Brittany Kyncl
+ CSD-440: Capstone Project
+ Moffat-Bay Lodge - Bravo Team
+*/
+.contact-us{
+    height: auto; 
+    overflow: hidden;
+    position: relative;
+}
+.info-banner-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw 1vw 1vw 1vw;
+}
+
+.info-banner-line {
+    display: block;
+    width: 13vw;
+    height: .12vw;
+    background-color: #fafafaa6; 
+    margin: 1.5vw;
+}
+
+.info-banner-text h2 {
+    font-size: 2.5vw;
+    color: #fff;
+}
+.info-banner-text h3 {
+    font-size: 2vw;
+    color: #fff;
+    font-weight: 300;
+}
+
+.info-banner-text p {
+    font-size: 1.3vw;
+    font-weight: 300;
+    line-height: 1.8em;
+    margin: 2vw;
+    color: #fff;
+}
+
+
+.services-gallery {
+    background-size: cover; /* Adjust the background image size as needed */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; 
+    width: 100vw;
+    height: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5vw;
+
+}
+.services-gallery:nth-child(1) {
+    background-image: url("/media/site/hiking_view.jpg");
+}
+
+.service-container {
+    background-color: #121212a4;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.contact-list{
+    font-size: 1.3vw;
+    font-weight: 300;
+    line-height: 1.8em;
+    margin: 4vw 2vw 2vw 2vw;
+    color: #fff;
+    text-align: left;
+    list-style-type: none;
+    width: 50%;
+
+}
+ul.contact-list li {
+    margin: 0 0 1.5vw 0; /* Add some spacing between list items */
+    padding-left: 3vw; /* Add padding to the left for custom bullets */
+}
+
+ul.contact-list li:nth-child(1) {
+    background: url("/media/site/phone.png") no-repeat left center;/* Custom image for the first list item */
+    background-size:2vw 2vw;
+}
+
+ul.contact-list li:nth-child(2) {
+    background: url("/media/site/mail.png") no-repeat left center; /* Custom image for the second list item */
+    background-size:2vw 1.5vw;
+
+}
+
+ul.contact-list li:nth-child(3) {
+    background: url("/media/site/nav.png") no-repeat left center; /* Custom image for the third list item */
+    background-size:1.6vw 2vw;
+}
+/* Optional email contact form styling, Please DO NOT DELETE    */
+.contact-form {
+    background-color:#82BB81;
+    width: 27%;
+    height: 65%;
+    margin: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1vw;
+    padding: 2vw;
+}
+#contact-logo {
+    width: auto;
+    height: 5vw;
+    margin: 0;
+}
+.contact-form h3 {
+    font-weight: 400;
+    font-size: 1.5vw;
+    color: #fff;
+    margin: .5vw;
+}
+.email-form-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2vw;
+}
+#name,
+#email-input,
+#message {
+    border: .1vw solid #b1aeae;
+    padding: .5vw;
+    border-radius: .3vw;
+    font-size: 1vw;
+    background-color: #fff;
+    width: 18vw;
+    max-width: 18vw;
+}
+#name,
+#email-input {
+    height: 2.2vw;
+}
+#message {
+    height: 8vw;
+    max-height: 10vw;
+}
+.feedback{
+    color:#fff;
+    font-size: 1vw;
+}
+
+.email-form-two .login-button  {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    padding: .5vw 0vw; 
+    border-radius: 40px;
+    background-color: #121212;
+    border: .3vw solid #121212;
+    width: 10vw; 
+    margin: 0;
+    font-size: 1vw;
+}
+
+.email-form-two .login-button:hover {
+    color: #fff;
+    background-color: #1e1e1ea6;
+}

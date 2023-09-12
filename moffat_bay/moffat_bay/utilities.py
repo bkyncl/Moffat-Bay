@@ -118,3 +118,26 @@ def send_email_confirmation(reservation):
                 )
     recipient = [reservation.userID.email, ]
     send_mail(subject, message, sender, recipient, fail_silently=False)
+
+# contact_us email form submission to save "sent" email to same folder as reservation confirmations
+# Please reconfigure the structure of the email if you like this is just a basic layout
+def send_contact_email(contact_data):
+    sender = contact_data['email']
+    subject = "Contact Form Submission"
+    message = (
+        f"Hello,\n\n"
+        f"A new message has been submitted through the contact form on your website.\n\n"
+        f"Name: {contact_data['name']}\n"
+        f"Email: {contact_data['email']}\n\n"
+        f"Message:\n{contact_data['message']}\n\n"
+        f"Regards,\n"
+        f"Moffat-Bay Marina & Lodge"
+    )
+    recipient = ["contact@Moffay-Bay-Lodge.com"]  # Replace with the recipient's email address
+
+    try:
+        # Attempt to send the email
+        send_mail(subject, message, sender, recipient, fail_silently=False)
+        return True  # Email sent successfully
+    except Exception as e:
+        return False  # Error occurred while sending the email
