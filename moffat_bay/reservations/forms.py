@@ -21,3 +21,6 @@ class NightlyCostPriceUpdateForm(forms.Form):
 
 class NightlyCostPriceChangeForm(forms.Form):
     costChange = forms.DecimalField(label="$", min_value=0, max_value=1000, decimal_places=2)
+
+class MyReservationSearchForm(forms.Form):
+    searchConfirm = forms.CharField(label="Confirmation #", required=True)

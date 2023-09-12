@@ -12,5 +12,26 @@
 <link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
 {% endblock %}
 {% block content %}
-<!--About us page HTML here-->
+<br><br><br><br><br><br><br><br>
+<form>
+{% csrf_token %}
+{{ mySearchForm }}
+<div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div><br>
+</form><br>
+
+<h2>Search Value: {{searchValue}}</h2>
+<h2>Results:<h2>
+<!--Add reservation info/overlay here - with messages section included-->
+{% if messages %}
+    {% for message in messages %}
+        <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+    {% endfor %}
+{% endif %}
+<ul>
+    {% for reservation in myReservation %}
+        <li>Reservation ID: {{reservation.reservationID }}</li>
+        <li>Confirmation Key: {{reservation.confirmationKey }}</li>
+        <hr>
+    {% endfor %}
+
 {% endblock %}

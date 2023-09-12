@@ -153,6 +153,12 @@
     .centered-container {
         width: 90%;
     }
+    #salish-salmon-two {
+        display: none;
+    }
+    #top-paragraph {
+        margin-top: 0;
+    }
 }
 .our-rooms {
     display: flex;
@@ -303,10 +309,40 @@
 }
 
 .amenities-text {
-    padding: 10vw 2vw 0vw 2vw;
+    padding: 8vw 2vw 0vw 2vw;
+    position: relative;
+}
+#salish-salmon-one {
+    position: absolute;
+    top: 3vw;
+    margin-left: -4.5vw; /* Adjust the negative margin to overlap the h1 */
+    width: 7.5vw; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    transform: rotate(25deg);
+
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+#salish-salmon-two {
+    position: absolute;
+    top: 11.5vw;
+    margin-left: 16vw; /* Adjust the positive margin to overlap the h1 */
+    width: 5.5vw; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    transform: rotate(30deg);
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+#salish-salmon-one:hover {
+    transform: translate(10px, -10px) rotate(50deg); /* adjust translate/rotate for animation effect */
+}
+#salish-salmon-two:hover {
+    transform: translate(-10px, 10px) rotate(50deg); /* adjust translate/rotate for animation effect */
+}
+#top-paragraph {
+    margin-top: 6vw;
 }
 .amenities-text h1 {
     font-size: 2.4vw;
+    margin-left: 2vw;
 }
 .amenities-text p {
     color: #1e1e1ea6;
@@ -360,6 +396,8 @@
     margin: .3vw 0vw 0vw .4vw;
     width: 21vw;
 }
-
-
-  
+@media (max-width: 970px) {
+    #salish-salmon-two {
+        margin-left: 18vw; 
+    }
+}

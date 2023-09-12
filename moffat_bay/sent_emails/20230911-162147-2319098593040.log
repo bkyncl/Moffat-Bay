@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: brittanyrosekyncl@gmail.com
+Date: Mon, 11 Sep 2023 21:21:47 -0000
+Message-ID: 
+ <169446730705.13992.1921451272878690027@DESKTOP-H2KPN0L.hsd1.co.comcast.net>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/password_reset-confirm/Mg/budesb-4a155df8868be1486434d82282827d2e/
+
+Your username, in case you’ve forgotten: brittanyrosekyncl@gmail.com
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

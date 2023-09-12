@@ -204,7 +204,8 @@
 .form-control label,
 .bottom-links h5,
 .bottom-links a,
-.register-label {
+.register-label,
+.success {
     font-weight: 500;
     font-size: 1.3vw;
 }

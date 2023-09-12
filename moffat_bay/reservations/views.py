@@ -7,12 +7,10 @@ from users.forms import MailListForm
 from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import FormView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import Stay_Costs, Reservations
 from moffat_bay.utilities import *
-from users.decorators import login_required_message
 from django.http import HttpResponseRedirect
 from datetime import datetime, timedelta
 
@@ -98,19 +96,27 @@ def attractions(request):
     return render(request, 'reservations/attractions.html', context)
 
 #reservation lookup view:
-def reservation_lookup(request):
+@login_required
+def reservation_lookup(request, *args, **kwargs):
     mailform = MailListForm(request.POST or None)
+    mySearchForm = MyReservationSearchForm(request.POST or None)
+    context = {
+        'title':'My Reservations',
+        'mailform': mailform,
+        'mySearchForm': mySearchForm,
+        }
     if request.method == "POST":
         if mailform.is_valid():
             mailform.save()
             messages.success(request, "Thank you for signing up for our mailing list!")
-            return redirect('')
-    context = {
-        'title':'My Reservations',
-        'mailform': mailform,
-        #add search availability form here
-        #add anything else we want returned and displayed on about page here
-        }
+            return redirect(request)
+        if mySearchForm.is_valid():
+            searchValue = mySearchForm.cleaned_data['searchConfirm']
+            
+
+    else:
+        context.update({'myReservation': Reservations.objects.filter(reservationID=1011)})
+
     return render(request, 'reservations/reservation_lookup.html', context)
 
 #book reservations page view:
