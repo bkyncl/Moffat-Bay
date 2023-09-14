@@ -356,7 +356,14 @@ def booking_confirmed(request, checkInDate, checkOutDate, guests, roomID, totalC
             checkOutDate=checkOutDate,
         )
         newReservation.save()
-        confirm = newReservation
+        confirm = Reservations.objects.filter(
+            userID=userId,
+            roomID=room,
+            guests=guests,
+            totalPrice=totalCost,
+            checkInDate=checkInDate,
+            checkOutDate=checkOutDate,
+        ).get()
         new_reservation_created = True
 
     # ADD MAILLIST FORM AND HANDLING *********************************
@@ -370,6 +377,9 @@ def booking_confirmed(request, checkInDate, checkOutDate, guests, roomID, totalC
     # Retrieve messages and filter 'mail_form' messages
     mail_form_messages = messages.get_messages(request)
     mail_form_messages = [message for message in mail_form_messages if 'mail_form' in message.tags]
+
+     # Debugging statement to check the value of confirm.reservationID
+    print("Reservation ID:", confirm.reservationID)
 
     context = {
         'title': 'Reservation Confirmation',
@@ -397,7 +407,7 @@ def book_room(request, size):
                 messages.success(request, "Thank you for signing up for our mailing list!", extra_tags='mail_form')
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        elif 'filter_room_btn' in request.POST:
+        if 'filter_room_btn' in request.POST:
             searchForm = AvailabilityForm(request.POST)
             if searchForm.is_valid(): 
                 checkInDate = searchForm.cleaned_data['checkInDate']
