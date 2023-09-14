@@ -30,7 +30,9 @@
                 </p>
                 {% if messages %}
                     {% for message in messages %}
-                        <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+                        {% if 'search_room' in message.tags %}
+                            <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>
@@ -62,7 +64,7 @@
             {{ searchForm.guests }}
         </div>
         <div class="grid-item">
-            <div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div> 
+            <div class="search-button-item"><button id="search-button" type="submit" name="filter_room_btn">Search Now</button></div> 
         </div>
     </form>
 </div>

@@ -88,18 +88,19 @@
             <div class="footer-column subscribe">
                 <h2>GET IN TOUCH</h2>
                 <!-- took out message stream her for later configuration -->
-                <!-- {% if messages %}
+                {% if has_mailform_messages %}
                     {% for message in messages %}
-                        <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+                        {% if 'mail_form' in message.tags %}
+                            <p class="signup-feedback {{ message.tags }}">{{ message }}</p>
+                        {% endif %}
                     {% endfor %}
                 {% else %}
-                    
-                {% endif %} -->
-                <p>Stay connected with us! Join out mailing list to receive updates and special discounts. </p>
+                    <p>Stay connected with us! Join our mailing list to receive updates and special discounts.</p>
+                {% endif %}
                 <form class="email-form" method='POST'>
                     {% csrf_token %}
                     {{mailform.email}}
-                    <button type="submit">Subscribe</button>
+                    <button type="submit" name="mailform_submit">Subscribe</button>
                 </form>
             </div>
             <div class="footer-right">

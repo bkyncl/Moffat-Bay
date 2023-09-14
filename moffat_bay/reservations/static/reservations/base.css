@@ -350,6 +350,10 @@ nav {
     background-color: #82BB81;
   }
 }
+.signup-feedback{
+  color:#fff;
+  font-size: 1vw;
+}
 
 /* External Shared component styling here for page extension */
 .overlay {

@@ -36,7 +36,9 @@
                 <p>Moffat Bay Marina & Lodge beckons as more than a mere location; it stands as a haven, where you'll discover a seamless fusion of aquatic adventures, serene relaxation, and untouched natural beauty.</p>
                 {% if messages %}
                     {% for message in messages %}
-                        <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+                        {% if 'search_room' in message.tags %}
+                            <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>

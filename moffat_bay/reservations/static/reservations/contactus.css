@@ -147,11 +147,10 @@ ul.contact-list li:nth-child(3) {
     height: 8vw;
     max-height: 10vw;
 }
-.feedback{
+.sentmail-feedback{
     color:#fff;
     font-size: 1vw;
 }
-
 .email-form-two .login-button  {
     cursor: pointer;
     color: #fff;

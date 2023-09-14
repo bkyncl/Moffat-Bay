@@ -37,7 +37,9 @@
                     <textarea id="message" name="{{ contact_form.message.name }}" rows="4" placeholder="Your Message Here" required></textarea>
                     {% if messages %}
                             {% for message in messages %}
-                                <p class="feedback">{{ message }}</p>
+                                {% if 'contact_form' in message.tags %}
+                                    <p class="sentmail-feedback {{ message.tags }}">{{ message }}</p>
+                                {% endif %}                               
                             {% endfor %}
                     {% endif %}
                     <button class="login-button" type="submit" name="contact_form_submit">Contact</button>

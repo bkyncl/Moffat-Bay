@@ -14,24 +14,15 @@
 {% block content %}
     <div class="banner">
         <img src="media/site/landing_header.jpg" alt="Image">
-    <!-- tyring out messages stream here for email signup for time being-->
-    {% if messages %}
-        <div style="height: 15vw;" class="overlay accounts-overlay">
-            <img style="margin: 1vw;" src="/media/site/logo1_variant1.png" alt="Logo">
-            <div class="text-content form-register">
-                {% for message in messages %}
-                    <h3 class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
-                {% endfor %}
+        <!-- got rid of sign up message and only display welcome message here if authenticated-->
+        {% if user.is_authenticated %}
+            <div style="height: 15vw;" class="overlay accounts-overlay">
+                <img style="margin: 1vw;" src="/media/site/logo1_variant1.png" alt="Logo">
+                <div class="text-content form-register">
+                    <h3>Welcome back {{ user.first_name }}!</h3></br>
+                </div>
             </div>
-        </div>
-    {% elif user.is_authenticated %}
-        <div style="height: 15vw;" class="overlay accounts-overlay">
-            <img style="margin: 1vw;" src="/media/site/logo1_variant1.png" alt="Logo">
-            <div class="text-content form-register">
-                <h3>Welcome back {{ user.first_name }}!</h3></br>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
     </div>
     <div class="big-container">
         <div class="centered-container">
