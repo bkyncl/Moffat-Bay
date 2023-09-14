@@ -196,22 +196,29 @@ def attractions(request):
 def reservation_lookup(request, *args, **kwargs):
     mailform = MailListForm(request.POST or None)
     mySearchForm = MyReservationSearchForm(request.POST or None)
-    context = {
-        'title':'My Reservations',
-        'mailform': mailform,
-        'mySearchForm': mySearchForm,
-        }
+    myReservation = None  # Initialize myReservation to None
+
     if request.method == "POST":
         if mailform.is_valid():
             mailform.save()
             messages.success(request, "Thank you for signing up for our mailing list!", extra_tags='mail_form')
-            return redirect(request)
+            return redirect('reservation_lookup')
         if mySearchForm.is_valid():
-            searchValue = mySearchForm.cleaned_data['searchConfirm']
+            search_value = mySearchForm.cleaned_data['searchConfirm']
+            # Retrieve reservation based on the search criteria (confirmation key)
+            myReservation = Reservations.objects.filter(confirmationKey=search_value).first()
             
+    # Retrieve messages and filter 'mail_form' messages
+    mail_form_messages = messages.get_messages(request)
+    mail_form_messages = [message for message in mail_form_messages if 'mail_form' in message.tags]
 
-    else:
-        context.update({'myReservation': Reservations.objects.filter(reservationID=1011)})
+    context = {
+        'title': 'My Reservations',
+        'mailform': mailform,
+        'has_mailform_messages': mail_form_messages,
+        'mySearchForm': mySearchForm,
+        'myReservation': myReservation,  # Add the myReservation to the context
+    }
 
     return render(request, 'reservations/reservation_lookup.html', context)
 
