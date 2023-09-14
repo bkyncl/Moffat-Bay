@@ -17,9 +17,11 @@
     <img src="/media/site/user_banner2.jpg" alt="Image">
     <div class="overlay-register" style="padding-bottom: 4vw;">
         {% if messages %}
-        <br>
+            <br>
             {% for message in messages %}
-                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+                {% if 'account-feedback' in message.tags %}
+                    <p class="account-feedback {{ message.tags }}">{{ message }}</p>
+                {% endif %}  
             {% endfor %}
         {% endif %}
         <img src="/media/site/logo1_variant1.png" alt="Logo" >

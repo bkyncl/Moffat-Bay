@@ -19,7 +19,9 @@
         {% if messages %}
             <br>
             {% for message in messages %}
-                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+                {% if 'account-feedback' in message.tags %}
+                    <p class="account-feedback {{ message.tags }}">{{ message }}</p>
+                {% endif %}  
             {% endfor %}
         {% endif %}
         <img src="/media/site/logo1_variant1.png" alt="Logo">
@@ -39,7 +41,7 @@
                             <div class="register-section"><div class="register-label">Zipcode:&nbsp;</div><div class="register-input">{{form.zip}}</div> </div>
                         </div>
                     </fieldset>
-                    <button class="login-button" type="submit">Update</button>
+                    <button class="login-button" type="submit" name="change_profile_submit">Update</button>
                 </form>
                 </div>
             </div>

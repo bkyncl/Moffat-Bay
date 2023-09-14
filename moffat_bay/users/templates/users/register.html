@@ -18,7 +18,9 @@
         {% if messages %}
             <br>
             {% for message in messages %}
-                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+                {% if 'account-feedback' in message.tags %}
+                    <p class="account-feedback {{ message.tags }}">{{ message }}</p>
+                {% endif %}  
             {% endfor %}
         {% endif %}
             <div class="text-content form-register">
@@ -42,7 +44,7 @@
                             
                         </div>
                     </fieldset>
-                    <button class="login-button" type="submit">Create Account</button>
+                    <button class="login-button" type="submit" name="register_submit">Create Account</button>
                     <div class="menu-item bottom-links">
                         <h5>Already Have an Account?</h5>&nbsp;&nbsp;<a href="{% url 'login' %}">Login Here</a>
                     </div>
