@@ -16,17 +16,20 @@
 <form method="POST">
     {% csrf_token %}
     {{ mySearchForm}}
-    <div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div>
+    <div class="search-button-item"><button id="search-button" type="submit" name="reservation_lookup_submit">Search Now</button></div>
 </form>
 <br>
-
-<h2>Search Value: {{searchValue}}</h2>
+{% if searchValue %}
+    <h2>Search Value: {{searchValue}}</h2>
+{% endif %}
 <!--Add reservation info/overlay here - with messages section included-->
 {% if messages %}
-    {% for message in messages %}
-        <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
-    {% endfor %}
-{% endif %}
+        {% for message in messages %}
+            {% if 'reservation-found-result' in message.tags %}
+                <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 <h2>Results:</h2>
 {% if myReservation %}
   <ul>
@@ -34,7 +37,7 @@
     <p><strong>Check In:</strong> {{ myReservation.checkInDate }}</p>
     <p><strong>Check Out:</strong> {{ myReservation.checkOutDate }}</p>
     <p><strong>Room Size:</strong> {{ myReservation.roomID.size }}</p>
-    <p><strong>Room #:</strong> {{ myReservation.roomID.roomNumber }}</p>
+    <p><strong>Room #:</strong> {{ myReservation.roomID }}</p>
     <p><strong># of Guests:</strong> {{ myReservation.guests }}</p>
     <p><strong>Email Contact:</strong> {{ myReservation.userID.email }}</p>
     <p><strong>Reservation #:</strong> <span class="price">{{ myReservation.reservationID }}</span></p>
@@ -42,6 +45,12 @@
     <hr>
   </ul>
 {% else %}
-  <p>Sorry, no matching reservation found. Please try again.</p>
+    {% if messages %}
+        {% for message in messages %}
+            {% if 'not-found-result' in message.tags %}
+                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 {% endif %}
 {% endblock %}

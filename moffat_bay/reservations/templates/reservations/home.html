@@ -28,7 +28,6 @@
         <div class="centered-container">
           <img src="media/site/marcus-lofvenberg-LyghSgFG8QQ-unsplash.jpg" alt="Image">
             <form class="search" acton="#" method="POST"> {% csrf_token %}
-<!--This form will be replaced/updated with a form from the backend, similar to the registration page, once we get to the registration back end stuff in mod 7-->
                 <div class="grid-item">
                     <label for="first-date">
                         <img src="media/site/calendar_icon.png" alt="Logo" class="label-icon">
@@ -51,7 +50,7 @@
                     {{ searchForm.guests }}
                 </div>
                 <div class="grid-item">
-                    <div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div> 
+                    <div class="search-button-item"><button id="search-button" type="submit" name="filter_room_btn">Search Now</button></div> 
                 </div>
             </form>
         </div>

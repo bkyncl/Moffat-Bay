@@ -36,16 +36,34 @@ def home(request):
     mailform = MailListForm(request.POST or None)
     searchForm = AvailabilityForm(request.POST or None)
     if request.method == "POST":
+        searchForm = AvailabilityForm(request.POST)
+        mailform = MailListForm(request.POST)
+        if searchForm.is_valid(): 
+            checkInDate = searchForm.cleaned_data['checkInDate']
+            checkOutDate = searchForm.cleaned_data['checkOutDate']
+            inputdate = datetime.strptime(str(checkInDate), '%Y-%m-%d')
+            # Perform date validation 
+            if checkOutDate <= checkInDate:     #if check-out is before check-in
+                messages.error(request, "Error: Check-out date must be AFTER check-in date. Please try again.", extra_tags='search_room')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            if checkInDate < date.today():  #if check-in date is in the past
+                messages.error(request, "Error: Check-in date cannot be in the past. Please try again.", extra_tags='search_room')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            if (inputdate - datetime.now()).days > 365:
+                messages.error(request, "We are sorry, Moffat-Bay Marina & Lodge does not accept reservations for more than a year in advance. Please come back soon to book your stay!", extra_tags='search_room')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            #if no date validation errors:
+            guests = searchForm.cleaned_data['guests']
+            checkInDate = checkInDate.strftime('%Y-%m-%d')
+            checkOutDate = checkOutDate.strftime('%Y-%m-%d')
+            
+            return redirect('available_rooms', checkInDate, checkOutDate, guests) 
         if mailform.is_valid():
             mailform.save()
             messages.success(request, "Thank you for signing up for our mailing list!", extra_tags='mail_form')
-            return redirect('reservations-home')
-        if searchForm.is_valid(): #add this code to any view with room availability search 
-            checkInDate = (searchForm.cleaned_data['checkInDate']).strftime('%Y-%m-%d')
-            checkOutDate = (searchForm.cleaned_data['checkOutDate']).strftime('%Y-%m-%d')
-            guests = searchForm.cleaned_data['guests']
-            return redirect('available_rooms', checkInDate, checkOutDate, guests) 
-        
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
+
     # Retrieve messages and filter 'mail_form' messages
     mail_form_messages = messages.get_messages(request)
     mail_form_messages = [message for message in mail_form_messages if 'mail_form' in message.tags]
@@ -197,17 +215,25 @@ def reservation_lookup(request, *args, **kwargs):
     mailform = MailListForm(request.POST or None)
     mySearchForm = MyReservationSearchForm(request.POST or None)
     myReservation = None  # Initialize myReservation to None
+    search_value = None
 
     if request.method == "POST":
-        if mailform.is_valid():
-            mailform.save()
-            messages.success(request, "Thank you for signing up for our mailing list!", extra_tags='mail_form')
-            return redirect('reservation_lookup')
-        if mySearchForm.is_valid():
-            search_value = mySearchForm.cleaned_data['searchConfirm']
-            # Retrieve reservation based on the search criteria (confirmation key)
-            myReservation = Reservations.objects.filter(confirmationKey=search_value).first()
-            
+        if 'mailform_submit' in request.POST:  # Check if the mailform was submitted
+            if mailform.is_valid():
+                mailform.save()
+                messages.success(request, "Thank you for signing up for our mailing list!", extra_tags='mail_form')
+                return redirect('reservation_lookup')
+        elif 'reservation_lookup_submit' in request.POST:  # Check if the mySearchForm was submitted
+            if mySearchForm.is_valid():
+                search_value = mySearchForm.cleaned_data['searchConfirm']
+                # Retrieve reservation based on the search criteria (confirmation key)
+                myReservation = Reservations.objects.filter(confirmationKey=search_value).first()
+
+                if myReservation:
+                    messages.success(request, "Reservation found!", extra_tags='reservation-found-result')
+                else:
+                    messages.error(request, "No reservation found with the provided confirmation key.", extra_tags='not-found-result')
+
     # Retrieve messages and filter 'mail_form' messages
     mail_form_messages = messages.get_messages(request)
     mail_form_messages = [message for message in mail_form_messages if 'mail_form' in message.tags]
@@ -217,6 +243,7 @@ def reservation_lookup(request, *args, **kwargs):
         'mailform': mailform,
         'has_mailform_messages': mail_form_messages,
         'mySearchForm': mySearchForm,
+        'searchValue': search_value,
         'myReservation': myReservation,  # Add the myReservation to the context
     }
 
