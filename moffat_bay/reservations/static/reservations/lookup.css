@@ -1,0 +1,232 @@
+ /*
+ Mark Witt / Brittany Kyncl
+ CSD-440: Capstone Project
+ Moffat-Bay Lodge - Bravo Team
+*/
+.form-group{
+    border: none;
+}
+.banner {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.banner img {
+    max-width: 100%; 
+    height: auto;
+}
+.overlay-lookup,
+.overlay-results {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    position: absolute;
+    height: auto;
+    padding: 1vw;
+    background-color: rgba(245, 243, 243, 0.925);
+    border-radius: 20px;
+}
+.overlay-lookup {
+    top: 13vw;
+    width: 70%;
+} 
+.overlay-results {
+    top: 40vw;
+    width: 70%;
+}
+.lookup-instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    gap: 1vw;
+    padding: 1vw;
+    font-size: 1vw;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+.lookup-instructions a {
+    color:#0b0477;
+    font-weight: bold;
+    text-decoration: none;
+}
+.lookup-instructions a:hover {
+    text-decoration: underline;
+}
+.search-container {
+    width: 75%;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.search-heading {
+    display: inline-flex; /* Display image and text inline */
+    align-items: center; /* Vertically align content */
+    padding: .5vw;
+    font-size: 2vw;
+}
+#search-heading-icon {
+    height: 2.5vw;
+    width: auto;
+    margin: 0 1vw;
+}
+.search {
+    background-color: #c1dfe2;
+    border: .2vw solid #282928;
+    height: auto;
+    min-height: 5vw;
+    width: 82%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5vw;
+}
+.grid-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center; 
+    padding: .5vw;
+    gap: 1vw;
+}
+
+.search .search-button-item {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+#search-button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1vw;
+    font-weight: 400;
+    color: #fff;
+    background-color: #82BB81;
+    border: .2vw solid #82BB81;
+    border-radius: 2vw;
+    padding: 1vw 2vw;
+    min-width: 12vw;
+    cursor: pointer;
+    margin-right: .2vw;
+}
+#search-button-icon {
+    height: 1.2vw;
+    width: auto;
+    margin: 0 .5vw 0 0;
+}
+#search-button:hover {
+    color: #fff;
+    background-color: #9fce9eb6;
+}
+.grid-item label {
+    display: flex; /* Add this line */
+    align-items: center; /* Add this line */
+    color: #0a0a0a;
+    font-size: 1.1vw;
+    font-weight: 500;
+    gap: .5vw;
+}
+.grid-item .label-icon{
+    width: 1.6vw; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    margin: 0; /* Adjust the spacing between icon and label */
+    vertical-align: middle;
+    border-radius: 0;
+    vertical-align: middle;
+
+}
+#id_searchConfirm {
+    font-size: 1vw;
+    width: 10vw;
+    height: 1.8vw;
+    border: .1vw solid #9e9b9b;
+    border-radius: .3vw;
+    background-color: #fff;
+}
+input[name="searchConfirm"]:focus {
+    outline: .1vw solid #9e9b9b;
+}
+.search-input-error {
+    padding-bottom: 1vw;
+    font-size: 1vw;
+    color:#b84141;
+}
+.booking-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    background-color: white;
+    padding: 1.5vw;
+    border: .1vw solid #ccc;
+    border-radius: .5vw;
+    width: 30vw;
+    height: fit-content;
+    text-align: left;
+    margin: 1vw;
+}
+.booking-details p {
+    font-size: 1.2vw;
+    margin-left: 1vw; 
+}
+.booking-details h2 {
+    font-size: 1.8vw;
+    font-weight: 500;
+    padding-bottom: 2.5vw;
+    text-align: center;
+}
+
+.booking-detailsstrong {
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.5vw; /* Adjust the font size as needed */
+    color: #007BFF; /* Choose a color that fits your design */
+    font-weight: bold;
+    background-color: #F0F0F0; /* Optional: Add a background color */
+    padding: .2vw 1vw; /* Optional: Add padding for spacing */
+    border-radius: .4vw; /* Optional: Add rounded corners */
+}
+
+.total-cost {
+    font-size: 1.5vw; /* Adjust the font size as needed */
+    color: #28A745; /* Choose a color that fits your design */
+    font-weight: bold;
+    background-color: #F0F0F0; /* Optional: Add a background color */
+    padding: .2vw 1vw; /* Optional: Add padding for spacing */
+    border-radius: .4vw; /* Optional: Add rounded corners */
+}
+.not-found {
+    padding: 2vw;
+    text-align: center;
+    font-size: 1.5vw;
+    width: 75%;
+}
+.reservation-found-result {
+    padding: 2vw;
+    text-align: center;
+    font-size: 2vw;
+}
+#cancel-booking a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 500;
+}
+#cancel-booking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3vw;
+    padding: 1vw;
+    width: 15vw;
+    background-color: #b84141;
+    border: .2vw solid #b84141;
+}
+#cancel-booking:hover {
+    background-color: #b8414194;
+}

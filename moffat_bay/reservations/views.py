@@ -230,9 +230,9 @@ def reservation_lookup(request, *args, **kwargs):
                 myReservation = Reservations.objects.filter(confirmationKey=search_value).first()
 
                 if myReservation:
-                    messages.success(request, "Reservation found!", extra_tags='reservation-found-result')
+                    messages.success(request, "We found your reservation!", extra_tags='reservation-found-result')
                 else:
-                    messages.error(request, "No reservation found with the provided confirmation key.", extra_tags='not-found-result')
+                    messages.error(request, "No reservation found with the provided confirmation number. Please try again.", extra_tags='not-found-result')
 
     # Retrieve messages and filter 'mail_form' messages
     mail_form_messages = messages.get_messages(request)

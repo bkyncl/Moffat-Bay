@@ -1,0 +1,132 @@
+<!--
+
+ Mark Witt / Brittany Kyncl
+ CSD-440: Capstone Project
+ Moffat-Bay Lodge - Bravo Team
+
+-->
+
+{% extends "reservations/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/> <!-- change to about us page css/ whatever css needed--><!-- change to about us page css/ whatever css needed-->
+{% endblock %}
+{% block content %}
+<!--
+    This page will be a get started with booking - search availability form, that will then open the available_rooms.html. 
+
+    This page will be loaded from the book now header button, reservations link on header/footer, and a search again link on the available rooms page
+-->
+<div class="banner-rooms">
+    <div class="banner-rooms-container">
+        <div class="banner-info-container">
+            <div class="info-banner-text">
+                <h1>Find your<br> perfect place to<br> stay</h1>
+                <p>Moffat Bay Marina & Lodge beckons as more than a mere location; it stands as a haven, where you'll discover a seamless fusion of aquatic adventures, serene relaxation, and untouched natural beauty.</p>
+            </div>
+        </div>
+        <img src="../media/site/lounge_room.jpg" alt="Image">
+    </div>
+    <form class="search" acton="#" method="POST"> {% csrf_token %}
+        <!--This form will be replaced/updated with a form from the backend, similar to the registration page, once we get to the registration back end stuff in mod 7-->
+        <div class="grid-item">
+            <label for="first-date">
+                <img src="../media/site/calendar_green.png" alt="Logo" class="label-icon">
+                Check In:
+            </label>
+            {{ searchForm.checkInDate }}
+            
+        </div>
+        <div class="grid-item">
+            <label for="second-date">
+                <img src="../media/site/calendar_green.png" alt="Logo" class="label-icon">
+                Check Out:
+            </label>
+            {{ searchForm.checkOutDate }}
+        </div>
+        
+        <div class="grid-item">
+            <label for="num-guests">
+                <img src="../media/site/guest_green.png" alt="Logo" class="label-icon">
+                Number of Guests
+            </label>
+            {{ searchForm.guests }}
+        </div>
+        <div class="grid-item">
+            <div class="search-button-item"><button id="search-button" type="submit">Search Now</button></div> 
+        </div>
+    </form>
+</div>
+
+<div class="our-rooms">
+    <div class="rooms-text">
+        <h1>Choose Your Perfect Space</h1>
+        <p>At Moffat Bay Marina & Lodge, our luxurious accommodation offers a welcoming retreat after a day on the water. We can provide the perfect space for your stay.  Wake up to breathtaking sunrises over the bay, unwind under a starlit sky, or prepare yourself for a new adventure. Our staff is ready to pamper and serve you today!</p>
+    </div>
+    <div class="rooms-gallery">
+        <div class="rooms-container">
+            <img id="room_3" src="../media/site/Double Queen.png" alt="Room 1">
+            <div class="rooms-text-container">
+                <div>
+                    <p>2-5 GUESTS</p>
+                    <h3>Double Queen Beds</h3>
+                </div>
+                <div class="middle-info">
+                    <p>The Double Queen Beds room accommodates 2-5 guests and offers a spacious stay with two queen-size beds</p>
+                </div>
+                <div>
+                    <div class="room-button"><a href="#">Book Now</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="rooms-container">
+            <img src="../media/site/Double Full.png" alt="Room 1">
+            <div class="rooms-text-container">
+                <div>
+                    <p>2-4 GUESTS</p>
+                    <h3>Double Full Beds</h3>
+                </div>
+                <div class="middle-info">
+                    <p>The Double Full Beds room is perfect for 2-4 guests, featuring two full-size beds for a comfortable night's rest.</p>
+                </div>
+                <div>
+                    <div class="room-button"><a href="#">Book Now</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="rooms-container">
+            <img src="../media/site/Queen.png" alt="Room 1">
+            <div class="rooms-text-container">
+                <div>
+                    <p>1-2 GUESTS</p>
+                    <h3>Queen Bed</h3>
+                </div>
+                <div class="middle-info">
+                    <p>Our Queen Bed room, designed for 1-2 guests, provides a cozy space for a tranquil retreat.</p>
+                </div>
+                <div>
+                    <div class="room-button"><a href="#">Book Now</a></div>
+                </div>
+            </div>
+        </div> 
+        <div class="rooms-container">
+            <img src="../media/site/King.png" alt="Room 1">
+            <div class="rooms-text-container">
+                <div>
+                    <p>1-2 GUESTS</p>
+                    <h3>King Bed</h3>
+                </div>
+                <div class="middle-info">
+                    <p>The King Bed room, suitable for 1-2 guests, ensures a regal experience with a luxurious king-size bed.</p>
+                </div>
+                <div>
+                    <div class="room-button"><a href="#">Book Now</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

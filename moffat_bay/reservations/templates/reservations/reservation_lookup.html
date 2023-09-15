@@ -5,52 +5,89 @@
  Moffat-Bay Lodge - Bravo Team
 
 -->
-
 {% extends "reservations/base.html" %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'reservations/landing.css' %}"/> <!-- change to about us page css/ whatever css needed-->
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'reservations/accounts.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/>  -->
+<link rel="stylesheet" type="text/css" href="{% static 'reservations/lookup.css' %}"/>
 {% endblock %}
 {% block content %}
-<br><br><br><br><br><br><br><br>
-<form method="POST">
-    {% csrf_token %}
-    {{ mySearchForm}}
-    <div class="search-button-item"><button id="search-button" type="submit" name="reservation_lookup_submit">Search Now</button></div>
-</form>
-<br>
-{% if searchValue %}
-    <h2>Search Value: {{searchValue}}</h2>
-{% endif %}
-<!--Add reservation info/overlay here - with messages section included-->
-{% if messages %}
-        {% for message in messages %}
-            {% if 'reservation-found-result' in message.tags %}
-                <b class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</b>
+<div class="banner">
+    <img src="/media/site/user_banner2.jpg" alt="Image">
+    <div class="overlay-lookup">
+        <div class="lookup-instructions">
+            <h2 class="search-heading">
+                <img src="../media/site/magnifying_glass.png" alt="Logo" id="search-heading-icon">
+                Search Existing Reservations
+            </h2>
+            <p>Please enter the 7 character confirmation number you received with your booking confirmation in
+                order to view your existing reservation. If you do not have your confirmation code please 
+                reach out to use via email or phone. <a href="{% url 'about_us' %}#contact-form">Contact us here.</a>
+            </p>
+            <p>If you do not see your existing reservation listed. Please reach out to us via email. Place your name,
+                contact information, reservation details, and confirmation number in the email and we will be happy 
+                to help.
+            </p>
+        </div>
+        <div class="search-container">
+            {% if mySearchForm.searchConfirm.errors %}
+                    {% for error in mySearchForm.searchConfirm.errors %}
+                        <p class="search-input-error">{{ error }}</p>
+                    {% endfor %}
             {% endif %}
-        {% endfor %}
-    {% endif %}
-<h2>Results:</h2>
-{% if myReservation %}
-  <ul>
-    <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{ myReservation.totalPrice }}</span></p>
-    <p><strong>Check In:</strong> {{ myReservation.checkInDate }}</p>
-    <p><strong>Check Out:</strong> {{ myReservation.checkOutDate }}</p>
-    <p><strong>Room Size:</strong> {{ myReservation.roomID.size }}</p>
-    <p><strong>Room #:</strong> {{ myReservation.roomID }}</p>
-    <p><strong># of Guests:</strong> {{ myReservation.guests }}</p>
-    <p><strong>Email Contact:</strong> {{ myReservation.userID.email }}</p>
-    <p><strong>Reservation #:</strong> <span class="price">{{ myReservation.reservationID }}</span></p>
-    <p><strong>Confirmation #:</strong> <span class="price">{{ myReservation.confirmationKey }}</span></p>
-    <hr>
-  </ul>
-{% else %}
-    {% if messages %}
-        {% for message in messages %}
-            {% if 'not-found-result' in message.tags %}
-                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+            <form class="search" acton="#" method="POST"> {% csrf_token %}         
+                <div class="grid-item">
+                    <label for="num-guests">
+                        <img src="../media/site/tag.png" alt="Logo" class="label-icon">
+                        Confirmation # :
+                    </label>
+                    {{ mySearchForm.searchConfirm }}
+                </div>
+                <div class="grid-item">
+                    <div class="search-button-item">
+                        <button id="search-button" type="submit" name="reservation_lookup_submit">
+                            <img src="../media/site/white_search.png" alt="Logo" id="search-button-icon">
+                            Search Now
+                        </button>
+                    </div> 
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if myReservation %}
+        <div class="overlay-results" style="padding-bottom: 4vw;">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if 'reservation-found-result' in message.tags %}
+                        <h2 class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h2>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-        {% endfor %}
+            <div class="form-register">
+                <div class="booking-details">
+                    <p><strong>Confirmation #:</strong> <span class="price">{{myReservation.confirmationKey}}</span></p>
+                    <p><strong>Reservation #:</strong> <span class="price">{{myReservation.reservationID}}</span></p>
+                    <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{myReservation.totalPrice}}</span></p>
+                    <p><strong>Check In:</strong> {{myReservation.checkInDate}}</p>
+                    <p><strong>Check Out:</strong> {{myReservation.checkOutDate}}</p>
+                    <p><strong>Room Details:</strong> {{ myReservation.roomID }}</p>
+                    <p><strong># of Guests:</strong> {{myReservation.guests}}</p>
+                    <p><strong>Email Contact:</strong> {{myReservation.userID}}</p>
+                </div> 
+            </div>
+            <button id="cancel-booking" class="cancel-button"><a href="{% url 'reservations-home' %}">Delete Reservation</a></button>
+        </div>
+    {% else %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'not-found-result' in message.tags %}
+                <div class="overlay-results" style="padding-bottom: 4vw;">
+                    <h2 class="not-found {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h2>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     {% endif %}
-{% endif %}
-{% endblock %}
+</div> 
+{% endblock content%}
