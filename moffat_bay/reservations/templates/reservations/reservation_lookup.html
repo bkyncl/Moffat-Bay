@@ -23,7 +23,7 @@
             </h2>
             <p>Please enter the 7 character confirmation number you received with your booking confirmation in
                 order to view your existing reservation. If you do not have your confirmation code please 
-                reach out to use via email or phone. <a href="{% url 'about_us' %}#contact-form">Contact us here.</a>
+                reach out to use via email or phone. <a href="{% url 'about_us' %}#contact_us_here">Contact us here.</a>
             </p>
             <p>If you do not see your existing reservation listed. Please reach out to us via email. Place your name,
                 contact information, reservation details, and confirmation number in the email and we will be happy 
@@ -56,7 +56,7 @@
         </div>
     </div>
     {% if myReservation %}
-        <div class="overlay-results" style="padding-bottom: 4vw;">
+        <div class="overlay-results">
             {% if messages %}
                 {% for message in messages %}
                     {% if 'reservation-found-result' in message.tags %}
@@ -64,17 +64,29 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            <div class="form-register">
-                <div class="booking-details">
-                    <p><strong>Confirmation #:</strong> <span class="price">{{myReservation.confirmationKey}}</span></p>
-                    <p><strong>Reservation #:</strong> <span class="price">{{myReservation.reservationID}}</span></p>
-                    <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{myReservation.totalPrice}}</span></p>
-                    <p><strong>Check In:</strong> {{myReservation.checkInDate}}</p>
-                    <p><strong>Check Out:</strong> {{myReservation.checkOutDate}}</p>
-                    <p><strong>Room Details:</strong> {{ myReservation.roomID }}</p>
-                    <p><strong># of Guests:</strong> {{myReservation.guests}}</p>
-                    <p><strong>Email Contact:</strong> {{myReservation.userID}}</p>
+            <h3>Reservation Details for: #{{searchValue}}</h3>
+            <div class="res-result-container">
+                <div class="room-details">
+                    <img src="../media/site/{{ myReservation.roomID.size }}.png" alt="Logo" id="room-photo">
+                    <div class="details-container">
+                        <b>{{ myReservation.roomID.size }} Room</b>
+                        <p>Sleeps 1 or {{myReservation.guests}} guest(s)</p>
+                        <p>1 Bathroom</p>
+                        <p>1 Kitchenette</p>
+                    </div>
                 </div> 
+                <div class="reservation-details">
+                    <div class="booking-details">
+                        <p><strong>Confirmation #:</strong> <span class="price">{{myReservation.confirmationKey}}</span></p>
+                        <p><strong>Reservation #:</strong> <span class="price">{{myReservation.reservationID}}</span></p>
+                        <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{myReservation.totalPrice}}</span></p>
+                        <p><strong>Check In:</strong> {{myReservation.checkInDate}}</p>
+                        <p><strong>Check Out:</strong> {{myReservation.checkOutDate}}</p>
+                        <p><strong>Room Details:</strong> {{ myReservation.roomID }}</p>
+                        <p><strong># of Guests:</strong> {{myReservation.guests}}</p>
+                        <p><strong>Email Contact:</strong> {{myReservation.userID}}</p>
+                    </div> 
+                </div>
             </div>
             <button id="cancel-booking" class="cancel-button"><a href="{% url 'reservations-home' %}">Delete Reservation</a></button>
         </div>

@@ -25,19 +25,19 @@
             <!-- Content for the first grid item -->
             <img src="/media/site/{{ room.size }}.png" alt="Image 1">
         </div>
-        <div class="room-item">
+        <div class="room-item small">
             <!-- Content for the second grid item -->
             <img src="/media/site/{{ room.size }}_patio.jpg" alt="Image 2">
         </div>
-        <div class="room-item">
+        <div class="room-item small">
             <!-- Content for the third grid item -->
             <img src="/media/site/{{ room.size }}_kitchen.jpg" alt="Image 3">
         </div>
-        <div class="room-item">
+        <div class="room-item small">
             <!-- Content for the fourth grid item -->
             <img src="/media/site/{{ room.size }}_bathroom.jpg" alt="Image 4">
         </div>
-        <div class="room-item">
+        <div class="room-item small">
             <!-- Content for the fifth grid item -->
             <img src="/media/site/{{ room.size }}_seating.jpg" alt="Image 5">
         </div>
@@ -100,23 +100,34 @@
 <script>
     const roomItems = document.querySelectorAll('.room-item');
     const bigContainer = document.querySelector('.big');
+    const bigImage = bigContainer.querySelector('img');
 
-    roomItems.forEach((item, index) => {
+    roomItems.forEach((item) => {
         item.addEventListener('click', () => {
             // Get the clicked image source and alt attributes
             const clickedImageSrc = item.querySelector('img').src;
             const clickedImageAlt = item.querySelector('img').alt;
 
-            // Swap the images and alt attributes
-            const bigImage = bigContainer.querySelector('img');
-            const bigImageSrc = bigImage.src;
-            const bigImageAlt = bigImage.alt;
+            // Add a class to trigger the CSS transition on both the big image and the clicked image
+            bigImage.classList.add('image-transition');
+            item.querySelector('img').classList.add('image-transition');
 
-            bigImage.src = clickedImageSrc;
-            bigImage.alt = clickedImageAlt;
+            // Wait for the transition to finish (you can adjust the time)
+            setTimeout(() => {
+                // Swap the images and alt attributes
+                const bigImageSrc = bigImage.src;
+                const bigImageAlt = bigImage.alt;
 
-            item.querySelector('img').src = bigImageSrc;
-            item.querySelector('img').alt = bigImageAlt;
+                bigImage.src = clickedImageSrc;
+                bigImage.alt = clickedImageAlt;
+
+                item.querySelector('img').src = bigImageSrc;
+                item.querySelector('img').alt = bigImageAlt;
+
+                // Remove the class to reset the transition
+                bigImage.classList.remove('image-transition');
+                item.querySelector('img').classList.remove('image-transition');
+            }, 100); // Adjust the time (in milliseconds) as needed
         });
     });
 </script>

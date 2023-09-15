@@ -210,7 +210,7 @@ def attractions(request):
     return render(request, 'reservations/attractions.html', context)
 
 #reservation lookup view:
-@login_required
+# @login_required
 def reservation_lookup(request, *args, **kwargs):
     mailform = MailListForm(request.POST or None)
     mySearchForm = MyReservationSearchForm(request.POST or None)
@@ -225,14 +225,14 @@ def reservation_lookup(request, *args, **kwargs):
                 return redirect('reservation_lookup')
         elif 'reservation_lookup_submit' in request.POST:  # Check if the mySearchForm was submitted
             if mySearchForm.is_valid():
-                search_value = mySearchForm.cleaned_data['searchConfirm']
+                search_value = mySearchForm.cleaned_data['searchConfirm'].upper()
                 # Retrieve reservation based on the search criteria (confirmation key)
                 myReservation = Reservations.objects.filter(confirmationKey=search_value).first()
 
                 if myReservation:
                     messages.success(request, "We found your reservation!", extra_tags='reservation-found-result')
                 else:
-                    messages.error(request, "No reservation found with the provided confirmation number. Please try again.", extra_tags='not-found-result')
+                    messages.error(request, "Sorry, we could not find a reservation for the search value of #" + search_value + ". Please try again.", extra_tags='not-found-result')
 
     # Retrieve messages and filter 'mail_form' messages
     mail_form_messages = messages.get_messages(request)

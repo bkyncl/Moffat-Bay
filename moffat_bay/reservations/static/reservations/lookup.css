@@ -33,6 +33,7 @@
 .overlay-results {
     top: 40vw;
     width: 70%;
+    padding: 2vw;
 }
 .lookup-instructions {
     display: flex;
@@ -155,34 +156,59 @@ input[name="searchConfirm"]:focus {
     font-size: 1vw;
     color:#b84141;
 }
+.res-result-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    border: .1vw solid #ccc;
+    border-radius: .5vw;
+    height: fit-content;
+    text-align: left;
+    gap: 1vw;
+    margin: 2vw;
+    padding: 3vw;
+}
+.room-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.room-details p {
+    text-align: left;
+    font-size: 1vw;
+    color: #0a0a0ac4;
+}
+.details-container {
+    padding: .2vw;
+    line-height: 1.5em;
+    width: 90%;
+}
+.room-details b {
+    font-size: 1.2vw;
+}
+#room-photo {
+    border-radius: .5vw;
+    width: 25vw;
+    height: 14vw;
+    margin: 0;
+    box-shadow: .5px .5px 8px rgba(0, 0, 0, 0.40);
+}
+.reservation-details {
+    display: flex;
+    justify-content: center;
+}
 .booking-details {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    background-color: white;
-    padding: 1.5vw;
-    border: .1vw solid #ccc;
-    border-radius: .5vw;
-    width: 30vw;
-    height: fit-content;
-    text-align: left;
-    margin: 1vw;
 }
 .booking-details p {
     font-size: 1.2vw;
     margin-left: 1vw; 
 }
-.booking-details h2 {
-    font-size: 1.8vw;
-    font-weight: 500;
-    padding-bottom: 2.5vw;
-    text-align: center;
-}
-
 .booking-detailsstrong {
     font-weight: bold;
 }
-
 .price {
     font-size: 1.5vw; /* Adjust the font size as needed */
     color: #007BFF; /* Choose a color that fits your design */
@@ -191,7 +217,6 @@ input[name="searchConfirm"]:focus {
     padding: .2vw 1vw; /* Optional: Add padding for spacing */
     border-radius: .4vw; /* Optional: Add rounded corners */
 }
-
 .total-cost {
     font-size: 1.5vw; /* Adjust the font size as needed */
     color: #28A745; /* Choose a color that fits your design */
@@ -207,9 +232,12 @@ input[name="searchConfirm"]:focus {
     width: 75%;
 }
 .reservation-found-result {
-    padding: 2vw;
+    padding: 1vw;
     text-align: center;
     font-size: 2vw;
+}
+.overlay-results h3 {
+    font-size: 1.5vw;
 }
 #cancel-booking a {
     text-decoration: none;
