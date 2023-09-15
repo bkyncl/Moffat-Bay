@@ -14,6 +14,7 @@ from .models import Stay_Costs, Reservations
 from moffat_bay.utilities import *
 from django.http import HttpResponseRedirect
 from datetime import datetime, timedelta
+from django.http import JsonResponse
 
 #reusable method to get all available rooms
 def get_available_rooms(checkInDate, checkOutDate):
@@ -248,6 +249,40 @@ def reservation_lookup(request, *args, **kwargs):
     }
 
     return render(request, 'reservations/reservation_lookup.html', context)
+
+#delete looked up reservation view
+@login_required
+def delete_reservation(request, reservation_id):
+    if request.method == "POST":
+        # Check if the "delete_reservation_button" was clicked
+        if "delete_reservation_button" in request.POST:
+            # Get the reservation ID from the form data
+            reservation_id_from_form = request.POST.get("reservation_id")
+            print(reservation_id_from_form)
+            print(reservation_id)
+
+
+            try:
+                # Get the reservation instance or return a 404 error if not found
+                reservation = Reservations.objects.filter(
+                    userID = request.user,
+                    reservationID=reservation_id
+                ).get()
+
+                # Check if the user is authorized to delete the reservation
+                if reservation.userID == request.user:
+                    # Delete the reservation
+                    reservation.delete()
+                    messages.success(request, "Reservation deleted successfully.")
+                    return JsonResponse({"success": True})
+                else:
+                    messages.error(request, "You are not authorized to delete this reservation.")
+                    return JsonResponse({"success": False, "message": "Authorization error"})
+            except Reservations.DoesNotExist:
+                messages.error(request, "Reservation not found.")
+                return JsonResponse({"success": False, "message": "Reservation not found"})
+
+    return redirect('reservation_lookup')
 
 #book reservations page view:
 @login_required

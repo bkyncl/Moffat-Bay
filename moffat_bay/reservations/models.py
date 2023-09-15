@@ -46,5 +46,4 @@ class Reservations(models.Model):
         self.totalPrice = get_final_price(costs,self.checkInDate, self.checkOutDate, self.guests)
         self.confirmationKey = generate_confirmation_code(self.checkInDate, self.checkOutDate, self.guests, self.roomID)
         super(Reservations, self).save(*args, **kwargs)
-
 #add class meta, and return strings. 

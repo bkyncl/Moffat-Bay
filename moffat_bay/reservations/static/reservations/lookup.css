@@ -241,13 +241,10 @@ input[name="searchConfirm"]:focus {
 .overlay-results h3 {
     font-size: 1.5vw;
 }
-#cancel-booking a {
-    text-decoration: none;
+#cancel-booking {
     color: #fff;
     font-size: 1vw;
     font-weight: 500;
-}
-#cancel-booking {
     display: flex;
     justify-content: center;
     align-items: center;

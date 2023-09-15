@@ -88,7 +88,11 @@
                     </div> 
                 </div>
             </div>
-            <button id="cancel-booking" class="cancel-button"><a href="{% url 'reservations-home' %}">Delete Reservation</a></button>
+            <form method="post" action="{% url 'delete_reservation' myReservation.reservationID %}">
+                {% csrf_token %}
+                <input type="hidden" name="reservation_id" value="{{ myReservation.reservationID }}">
+                <button type="submit" id="cancel-booking" name="delete_reservation_button">Delete Reservation</button>
+            </form>
         </div>
     {% else %}
         {% if messages %}
@@ -102,4 +106,30 @@
         {% endif %}
     {% endif %}
 </div> 
+<script>
+    // Add an event listener to the "Delete Reservation" button
+    const deleteButton = document.querySelector('#cancel-booking');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', async () => {
+            // Your existing code to confirm deletion...
+
+            // Send an AJAX request to the delete_reservation view
+            const response = await fetch(deleteButton.form.action, {
+                method: 'POST',
+                body: new FormData(deleteButton.form),
+            });
+
+            // Parse the JSON response
+            const result = await response.json();
+
+            if (result.success) {
+                // Deletion was successful, redirect to reservation_lookup page
+                window.location.href = '{% url "reservation_lookup" %}';
+            } else {
+                // Handle any errors, such as authorization errors
+                alert(result.message); // Display an error message to the user
+            }
+        });
+    }
+</script>
 {% endblock content%}
