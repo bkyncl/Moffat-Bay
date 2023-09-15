@@ -257,30 +257,27 @@ def delete_reservation(request, reservation_id):
         # Check if the "delete_reservation_button" was clicked
         if "delete_reservation_button" in request.POST:
             # Get the reservation ID from the form data
-            reservation_id_from_form = request.POST.get("reservation_id")
-            print(reservation_id_from_form)
-            print(reservation_id)
-
+            requested_reservation_delete = request.POST.get("reservation_id")
 
             try:
                 # Get the reservation instance or return a 404 error if not found
                 reservation = Reservations.objects.filter(
                     userID = request.user,
-                    reservationID=reservation_id
+                    reservationID= requested_reservation_delete
                 ).get()
 
                 # Check if the user is authorized to delete the reservation
                 if reservation.userID == request.user:
                     # Delete the reservation
                     reservation.delete()
-                    messages.success(request, "Reservation deleted successfully.")
-                    return JsonResponse({"success": True})
+                    messages.success(request, "Reservation deleted successfully.", extra_tags='reservation-delete-info')
+                    return redirect('reservation_lookup')
                 else:
-                    messages.error(request, "You are not authorized to delete this reservation.")
-                    return JsonResponse({"success": False, "message": "Authorization error"})
+                    messages.error(request, "You are not authorized to delete this reservation.", extra_tags='reservation-delete-info')
+                    return redirect('reservation_lookup')
             except Reservations.DoesNotExist:
-                messages.error(request, "Reservation not found.")
-                return JsonResponse({"success": False, "message": "Reservation not found"})
+                messages.error(request, "Reservation not found.", extra_tags='reservation-delete-info')
+                return redirect('reservation_lookup')
 
     return redirect('reservation_lookup')
 

@@ -102,34 +102,14 @@
                     <h2 class="not-found {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h2>
                 </div>
                 {% endif %}
+                {% if 'reservation-delete-info' in message.tags %}
+                <div class="overlay-results" style="padding-bottom: 4vw;">
+                    <h2 class="not-found {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h2>
+                </div>
+                {% endif %}
             {% endfor %}
         {% endif %}
     {% endif %}
 </div> 
-<script>
-    // Add an event listener to the "Delete Reservation" button
-    const deleteButton = document.querySelector('#cancel-booking');
-    if (deleteButton) {
-        deleteButton.addEventListener('click', async () => {
-            // Your existing code to confirm deletion...
-
-            // Send an AJAX request to the delete_reservation view
-            const response = await fetch(deleteButton.form.action, {
-                method: 'POST',
-                body: new FormData(deleteButton.form),
-            });
-
-            // Parse the JSON response
-            const result = await response.json();
-
-            if (result.success) {
-                // Deletion was successful, redirect to reservation_lookup page
-                window.location.href = '{% url "reservation_lookup" %}';
-            } else {
-                // Handle any errors, such as authorization errors
-                alert(result.message); // Display an error message to the user
-            }
-        });
-    }
-</script>
+<!-- NOTICE NEED TO ADD CONFIRMATION PATHWAY FOR RESERVATION DELETION -->
 {% endblock content%}
