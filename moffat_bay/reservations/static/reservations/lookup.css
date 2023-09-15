@@ -175,23 +175,25 @@ input[name="searchConfirm"]:focus {
 }
 .room-details p {
     text-align: left;
-    font-size: 1vw;
+    font-size: 1.1vw;
     color: #0a0a0ac4;
 }
 .details-container {
+    display:flex;
+    flex-direction: column;
     padding: .2vw;
-    line-height: 1.5em;
     width: 90%;
+    height: min-content;
 }
 .room-details b {
-    font-size: 1.2vw;
+    font-size: 1.3vw;
 }
 #room-photo {
     border-radius: .5vw;
     width: 25vw;
     height: 14vw;
     margin: 0;
-    box-shadow: .5px .5px 8px rgba(0, 0, 0, 0.40);
+    box-shadow: 0 0 .5vw rgba(0, 0, 0, 0.40);
 }
 .reservation-details {
     display: flex;
