@@ -1,3 +1,7 @@
+# Mark Witt / Brittany Kyncl
+# CSD-440: Capstone Project
+# Moffat-Bay Lodge - Bravo Team
+
 Code References:
 
 Django Documentation: https://docs.djangoproject.com/en/4.2/
