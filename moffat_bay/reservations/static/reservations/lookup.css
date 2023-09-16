@@ -241,7 +241,7 @@ input[name="searchConfirm"]:focus {
 .overlay-results h3 {
     font-size: 1.5vw;
 }
-#cancel-booking {
+.cancel-booking {
     color: #fff;
     font-size: 1vw;
     font-weight: 500;
@@ -254,6 +254,92 @@ input[name="searchConfirm"]:focus {
     background-color: #b84141;
     border: .2vw solid #b84141;
 }
-#cancel-booking:hover {
+.cancel-booking:hover {
     background-color: #b8414194;
+}
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vw;
+}
+.review-details-delete {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+}
+.review-details-delete P {
+    text-align: left;
+    font-size: 1vw;
+}
+.modal-body b {
+    font-size: 1.2vw;
+    text-align: center;
+}
+#do-not-cancel {
+    background-color: #82BB81;
+    border: .2vw solid #82BB81;
+}
+#do-not-cancel:hover {
+    background-color: #82bb81a6;
+}
+/* Style for the modal container */
+.custom-modal {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%; /* Set your desired width */
+    height: min-content;
+    background-color: #fff;
+    border-radius: .3vw;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow */
+    z-index: 9999; /* Ensure it's above other content */
+    padding: 2vw;
+}
+.close-modal {
+    position: absolute;
+    top: .8vw; /* Adjust the top and right values as needed */
+    right: .8vw;
+    font-size: 4vw; /* Adjust the font size as needed */
+    cursor: pointer;
+    color: #000; /* Set the color of the close button */
+    width: 2.5vw; /* Adjust the width and height as needed */
+    height: 2vw;
+    text-align: center;
+    line-height: 2vw; /* Should match the height for vertical centering */
+}
+.custom-modal h2 {
+    color:#b84141;
+    padding: .5vw;
+    font-size: 2vw;
+}
+.custom-modal h3 {
+    text-align: center;
+    font-size: 1.5vw;
+}
+.custom-modal h4 {
+    color:#b84141;
+    font-size: 1.2vw;
+    padding: .5vw;
+}
+.custom-model-text{
+    text-align: center;
+    font-size: 1vw;
+    padding-bottom: 1vw;
+}
+/* Style for the background overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 9998; /* Place it below the modal */
 }

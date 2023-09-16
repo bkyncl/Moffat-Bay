@@ -211,7 +211,7 @@ def attractions(request):
     return render(request, 'reservations/attractions.html', context)
 
 #reservation lookup view:
-# @login_required
+@login_required
 def reservation_lookup(request, *args, **kwargs):
     mailform = MailListForm(request.POST or None)
     mySearchForm = MyReservationSearchForm(request.POST or None)

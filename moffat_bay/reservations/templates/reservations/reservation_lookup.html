@@ -8,8 +8,6 @@
 {% extends "reservations/base.html" %}
 {% load static %}
 {% block css %}
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'reservations/accounts.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'reservations/booking.css' %}"/>  -->
 <link rel="stylesheet" type="text/css" href="{% static 'reservations/lookup.css' %}"/>
 {% endblock %}
 {% block content %}
@@ -88,12 +86,40 @@
                     </div> 
                 </div>
             </div>
-            <form method="post" action="{% url 'delete_reservation' myReservation.reservationID %}">
-                {% csrf_token %}
-                <input type="hidden" name="reservation_id" value="{{ myReservation.reservationID }}">
-                <button type="submit" id="cancel-booking" name="delete_reservation_button">Delete Reservation</button>
-            </form>
-        </div>
+            <div>
+                <button type="button" class="cancel-booking" id="show-custom-modal">Delete Reservation</button>
+            </div>
+            <!-- Custom Modal and Overlay -->
+            <div class="modal-overlay" id="custom-modal-overlay"></div>
+                <div class="custom-modal" id="custom-modal">
+                    <div class="close-modal" id="custom-modal-close">&times;</div>
+                    <h2>Warning!</h2>
+                    <h3>You are about to delete your reservation</h3>
+                    <h4>Please Read Carefully</h4>
+                    <p class="custom-model-text">Pressing “Yes, Delete Reservation” will permanently delete this reservation.
+                        You will lose your reserved booking dates and any information attached to the current 
+                        reservation.</p>
+                    <form id="delete-form" method="post" action="{% url 'delete_reservation' myReservation.reservationID %}">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <b>Are you sure you want to delete the following reservation?</b>
+                            <div class="review-details-delete">
+                                <p><strong>Confirmation #:</strong> <span>{{myReservation.confirmationKey}}</span></p>
+                                <p><strong>Reservation #:</strong> <span>{{myReservation.reservationID}}</span></p>
+                                <p><strong>Total Stay Cost:</strong> <span>${{myReservation.totalPrice}}</span></p>
+                                <p><strong>Check In:</strong> {{myReservation.checkInDate}}</p>
+                                <p><strong>Check Out:</strong> {{myReservation.checkOutDate}}</p>
+                                <p><strong>Room Details:</strong> {{ myReservation.roomID }}</p>
+                                <p><strong># of Guests:</strong> {{myReservation.guests}}</p>
+                                <p><strong>Email Contact:</strong> {{myReservation.userID}}</p>
+                            </div> 
+                            <input type="hidden" name="reservation_id" value="{{ myReservation.reservationID }}">
+                            <button type="button" id="do-not-cancel" class="cancel-booking" data-dismiss="modal">No, Keep Reservation</button>
+                            <button type="submit" id="yes-cancel" class="cancel-booking" name="delete_reservation_button">Yes, Delete Reservation</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
     {% else %}
         {% if messages %}
             {% for message in messages %}
@@ -110,6 +136,31 @@
             {% endfor %}
         {% endif %}
     {% endif %}
-</div> 
-<!-- NOTICE NEED TO ADD CONFIRMATION PATHWAY FOR RESERVATION DELETION -->
+</div> <script>
+    // JavaScript to handle modal interaction
+    document.getElementById("show-custom-modal").addEventListener("click", function() {
+        document.getElementById("custom-modal").style.display = "flex";
+        document.getElementById("custom-modal-overlay").style.display = "block";
+    });
+     
+    // Close the modal when clicking cancel-booking
+    document.getElementById("do-not-cancel").addEventListener("click", function() {
+        document.getElementById("custom-modal").style.display = "none";
+        document.getElementById("custom-modal-overlay").style.display = "none";
+    });
+
+    // Close the modal when clicking the X
+    document.getElementById("custom-modal-close").addEventListener("click", function() {
+        document.getElementById("custom-modal").style.display = "none";
+        document.getElementById("custom-modal-overlay").style.display = "none";
+    });
+
+    // Close the modal when clicking outside of it
+    document.getElementById("custom-modal-overlay").addEventListener("click", function(e) {
+        if (e.target === this) { // Only close if the click is on the overlay itself
+            document.getElementById("custom-modal").style.display = "none";
+            document.getElementById("custom-modal-overlay").style.display = "none";
+        }
+    });
+</script>
 {% endblock content%}
