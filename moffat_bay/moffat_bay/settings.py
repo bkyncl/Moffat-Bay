@@ -181,8 +181,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Email backend settings
+# save to file settings - uncomment to activate
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+
+#custom mail server settings 
+#EMAIL_BACKEND = 'django.core.mail.backends.EmailBackend'
+#EMAIL_HOST = 'mail.moffat-bay.org'
+#EMAIL_HOST_USER = 'bravoteam'
+
+
 
 # Auto-logout settings:
 AUTO_LOGOUT = {'IDLE_TIME': timedelta(minutes=15),
