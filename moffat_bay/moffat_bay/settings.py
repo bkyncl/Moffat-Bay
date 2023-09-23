@@ -14,6 +14,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
 
 ROOT_URLCONF = 'moffat_bay.urls'
@@ -181,3 +183,8 @@ MEDIA_URL = '/media/'
 # Email backend settings
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+
+# Auto-logout settings:
+AUTO_LOGOUT = {'IDLE_TIME': timedelta(minutes=15),
+               'SESSION_TIME': timedelta(minutes=60),
+               'MESSAGE': 'The session has expired. Please login again to continue.'}
