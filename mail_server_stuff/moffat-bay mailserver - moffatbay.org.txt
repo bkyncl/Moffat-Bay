@@ -1,0 +1,35 @@
+moffat-bay mailserver - moffatbay.org
+170.187.167.21
+ssh:
+root: BravoTeam123!
+bravoteam: Bravo123!
+
+mailbox user: (mailbox that email can be recieved at)
+bravoteam (bravoteam@moffat-bay.org)
+
+-root login disabled - use command su after ssh connection from bravoteam user account
+-ssh keys required :
+	ssh keys: c:/users/markw/.ssh/id_rsa.pub
+	ssh config file: /etc/ssh/sshd_config (for login permissions (root/password))
+
+ufw allowed ports:
+ssh, 25, 465, 587, 110, 995, 143, 993
+
+certbot file paths
+cert: /etc/letsencrypt/live/mail.moffat-bay.org/fullchain.pem
+key: /etc/letsencrypt/live/mail.moffat-bay.org/privkey.pem
+expires: 2023-12-20
+
+Mysql:
+root : BravoTeam123!
+bravoteam: Bravo123!
+
+virtual_users:
+mwitt@moffat-bay.org : Bravo123!
+bkyncl@moffat-bay.org : Bravo123!
+noreply@moffat-bay.org : Bravo123!
+
+environment variable / sensitive info: (secret key, email/db access)
+/etc/moffat_bay_config.json
+secret key: django-insecure-f@y7(bv4vu1%28-3)gbb*y_38)$&2hbr#6ul7m09o87xf@@cxy
+
