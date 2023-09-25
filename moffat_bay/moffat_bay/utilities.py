@@ -101,7 +101,7 @@ def alt_find_available_rooms(checkInDate, checkOutDate, overlapping_reservations
     return available_rooms
 
 def send_email_confirmation(reservation):
-    sender = "confirmations@Moffay-Bay-Lodge.com"
+    sender = "confirmations@moffat-bay.org"
     subject = f"Your Reservation Confirmation for " + str(reservation.checkInDate) + " to " + str(reservation.checkOutDate)
     message = (f"Greetings " + reservation.userID.first_name + "!\n\n" + 
                "Your reservation for Moffat-Bay Lodge is confirmed!\n\n"  +
@@ -133,7 +133,7 @@ def send_contact_email(contact_data):
         f"Regards,\n"
         f"Moffat-Bay Marina & Lodge"
     )
-    recipient = ["contact@Moffay-Bay-Lodge.com"]  # Replace with the recipient's email address
+    recipient = ["bravoteam@moffat-bay.org"]  # Replace with the recipient's email address
 
     try:
         # Attempt to send the email
