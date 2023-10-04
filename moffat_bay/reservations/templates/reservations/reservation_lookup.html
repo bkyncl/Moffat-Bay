@@ -78,8 +78,8 @@
                         <p><strong>Confirmation #:</strong> <span class="price">{{myReservation.confirmationKey}}</span></p>
                         <p><strong>Reservation #:</strong> <span class="price">{{myReservation.reservationID}}</span></p>
                         <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{myReservation.totalPrice}}</span></p>
-                        <p><strong>Check In:</strong> {{myReservation.checkInDate}}</p>
-                        <p><strong>Check Out:</strong> {{myReservation.checkOutDate}}</p>
+                        <p><strong>Check In:</strong> {{myReservation.checkInDate|date:"Y-m-d"}}</p>
+                        <p><strong>Check Out:</strong> {{myReservation.checkOutDate|date:"Y-m-d"}}</p>
                         <p><strong>Room Details:</strong> {{ myReservation.roomID }}</p>
                         <p><strong># of Guests:</strong> {{myReservation.guests}}</p>
                         <p><strong>Email Contact:</strong> {{myReservation.userID}}</p>
@@ -107,8 +107,8 @@
                                 <p><strong>Confirmation #:</strong> <span>{{myReservation.confirmationKey}}</span></p>
                                 <p><strong>Reservation #:</strong> <span>{{myReservation.reservationID}}</span></p>
                                 <p><strong>Total Stay Cost:</strong> <span>${{myReservation.totalPrice}}</span></p>
-                                <p><strong>Check In:</strong> {{myReservation.checkInDate}}</p>
-                                <p><strong>Check Out:</strong> {{myReservation.checkOutDate}}</p>
+                                <p><strong>Check In:</strong> {{myReservation.checkInDate|date:"Y-m-d"}}</p>
+                                <p><strong>Check Out:</strong> {{myReservation.checkOutDate|date:"Y-m-d"}}</p>
                                 <p><strong>Room Details:</strong> {{ myReservation.roomID }}</p>
                                 <p><strong># of Guests:</strong> {{myReservation.guests}}</p>
                                 <p><strong>Email Contact:</strong> {{myReservation.userID}}</p>

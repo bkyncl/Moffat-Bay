@@ -85,8 +85,8 @@
             <p style="text-align: center;">We look forward to seeing you soon!</p>
             <br>
             <p><strong>Total Stay Cost:</strong> <span class="total-cost">${{reservation.totalPrice}}</span></p>
-            <p><strong>Check In:</strong> {{reservation.checkInDate}}</p>
-            <p><strong>Check Out:</strong> {{reservation.checkOutDate}}</p>
+            <p><strong>Check In:</strong> {{reservation.checkInDate|date:"Y-m-d"}}</p>
+            <p><strong>Check Out:</strong> {{reservation.checkOutDate|date:"Y-m-d"}}</p>
             <p><strong>Room Size:</strong> {{reservation.roomID.size}}</p>
             <p><strong>Room #:</strong> {{ reservation.roomID }}</p>
             <p><strong># of Guests:</strong> {{reservation.guests}}</p>
