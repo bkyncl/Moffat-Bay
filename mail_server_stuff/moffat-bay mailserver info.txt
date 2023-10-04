@@ -1,0 +1,32 @@
+moffat-bay mailserver
+50.116.53.41
+users:
+root : BravoTeam123!
+bravoteam: Bravo123!
+
+login: ssh bravoteam@50.116.53.41
+
+hostname: mail.moffat-bay.org
+
+ssh keys: c:/users/markw/.ssh/id_rsa.pub
+ssh config file: /etc/ssh/sshd_config (for login permissions (root/password))
+
+ufw allowed ports:
+ssh, 25, 465, 587, 110, 995, 143, 993
+
+certbot file paths
+cert: /etc/letsencrypt/live/mail.moffat-bay.org/fullchain.pem
+key: /etc/letsencrypt/live/mail.moffat-bay.org/privkey.pem
+expires: 2023-12-20
+
+Mysql:
+root : BravoTeam123!
+mwitt: Bravo123!
+
+virtual_domains:
+1 : mail.moffat-bay.org
+
+virtual_users:
+mwitt@moffat-bay.org : Bravo123!
+bkyncl@moffat-bay.org : Bravo123!
+noreply@moffat-bay.org : Bravo123!
