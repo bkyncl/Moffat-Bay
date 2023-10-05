@@ -12,9 +12,19 @@ from django.core.validators import RegexValidator
 
 #search availability form and booking form:
 class AvailabilityForm(forms.Form):
-    checkInDate = forms.DateField(widget=forms.NumberInput(attrs={'type':'date', 'class': 'room-search-input'}), required=True)
-    checkOutDate = forms.DateField(widget=forms.NumberInput(attrs={'type':'date', 'class': 'room-search-input'}), required=True)
-    guests = forms.ChoiceField(choices=guestChoices, widget=forms.Select(attrs={'class': 'room-search-input'}), required=True)
+    checkInDate = forms.DateField(
+        widget=forms.NumberInput(attrs={'type': 'date', 'class': 'room-search-input'}),
+        required=True
+    )
+    checkOutDate = forms.DateField(
+        widget=forms.NumberInput(attrs={'type': 'date', 'class': 'room-search-input'}),
+        required=True
+    )
+    guests = forms.ChoiceField(
+        choices=guestChoices,
+        widget=forms.Select(attrs={'class': 'room-search-input'}),
+        required=True
+    )
 
 #price change forms for admin site:
 class NightlyCostPriceUpdateForm(forms.Form):

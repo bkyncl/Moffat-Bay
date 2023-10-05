@@ -124,8 +124,7 @@
     vertical-align: middle;
 
 }
-.grid-item input,
-.grid-item select {
+.room-search-input  {
     font-size: .9vw;
     width: 7vw;
     height: auto;
@@ -421,14 +420,12 @@
         padding-bottom: 2px;
         gap: 2px;
     }
-    .grid-item input,
-    .grid-item select {
+    .room-search-input {
         font-size: .8vw;
         width: 9vw;
-        height: 1.5vw;
-        border: none;
+        height: auto;
         border-radius: 2px;
-        border: .05vw solid #121212;
+        border: .1vw solid #121212;
         background-color: #fff;
     }
     .centered-container,

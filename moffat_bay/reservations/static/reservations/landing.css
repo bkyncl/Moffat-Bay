@@ -127,6 +127,7 @@
     background-color: #fff;
 }
 
+
 /* styling of room search and feture container under 750px */
 @media (max-width: 750px) { 
     .search {
@@ -139,7 +140,7 @@
     .room-search-input  {
         font-size: .8vw;
         width: 9vw;
-        height: 1.5vw;
+        height: auto;
         border: none;
         border-radius: 2px;
         background-color: #fff;
